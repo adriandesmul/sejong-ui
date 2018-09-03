@@ -4,6 +4,8 @@ import Username from './username';
 import Login from './login';
 import Logout from './logout';
 
+const classNames = require('classnames');
+
 class Auth extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class Auth extends React.Component {
       encodeURIComponent('password') + '=' +
       encodeURIComponent(data.password);
 
-    fetch('http://localhost:3000/auth/login', {
+    fetch(API_URL + '/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -50,11 +52,14 @@ class Auth extends React.Component {
   }
 
   render() {
+    let showLogin = classNames({hide: (this.state.username)});
+    let showLogout = classNames({hide: (!this.state.username)});
+
     return (
       <div>
         <Username name={this.state.username} />
-        <Login attemptLogin={this.attemptLogin}/>
-        <Logout logout={this.logout} />
+        <Login className={showLogin} attemptLogin={this.attemptLogin}/>
+        <Logout className={showLogout} logout={this.logout} />
       </div>
     )
   }

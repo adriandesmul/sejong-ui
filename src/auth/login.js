@@ -8,15 +8,13 @@ class Login extends React.Component {
       username: null,
       password: null
     }
-    
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleInputChange(event) {
     const target = event.target;
-
-    console.log(target.name, target.value);
 
     this.setState({
       [target.name]: target.value
@@ -33,7 +31,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.className}>
         <label>Username</label>
         <input
           type="text"

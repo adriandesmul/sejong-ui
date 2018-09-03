@@ -1,4 +1,5 @@
 import _ from 'lodash';
+//import 'froala-design-blocks';
 import './style.scss';
 
 import React from 'react';
@@ -22,7 +23,7 @@ class AuthorizedRequest extends React.Component {
       return;
     }
 
-    fetch('http://localhost:3000/user', {
+    fetch(API_URL + '/user', {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token
