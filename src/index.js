@@ -1,11 +1,14 @@
 import _ from 'lodash';
 //import 'froala-design-blocks';
 import './style.scss';
+import 'react-quill/dist/quill.snow.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Auth from './auth/auth';
+import User from './user/user';
+import SijoEntry from './writingEntry/sijoEntry';
 
 class AuthorizedRequest extends React.Component {
   constructor(props) {
@@ -23,7 +26,7 @@ class AuthorizedRequest extends React.Component {
       return;
     }
 
-    fetch(API_URL + '/user', {
+    fetch(API_URL + '/demographics', {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token
@@ -31,7 +34,6 @@ class AuthorizedRequest extends React.Component {
     }).then((result) => {
       return result.text();
     }).then((data) => {
-      console.log(data);
       this.setState({data: data});
     })
   }
@@ -48,6 +50,7 @@ class AuthorizedRequest extends React.Component {
 
 ReactDOM.render(<Auth />, document.getElementById('auth'));
 ReactDOM.render(<AuthorizedRequest />, document.getElementById('request'));
+ReactDOM.render(<SijoEntry />, document.getElementById('sijo'));
 
 const Index = () => {
   return <div>Hello react!</div>;
