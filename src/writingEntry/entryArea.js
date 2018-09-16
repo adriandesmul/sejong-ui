@@ -15,6 +15,10 @@ class EntryArea extends React.Component {
     this.formats = ['bold', 'italic', 'underline'];
   }
 
+  componentDidMount() {
+    this.setState({ text: this.props.initialValue })
+  }
+
   handleChange(value) {
     this.setState({ text: value });
     this.props.onChange(this.state.text)

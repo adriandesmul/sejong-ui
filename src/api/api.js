@@ -9,8 +9,27 @@ function formatPayload(payload) {
   return formattedPayload;
 }
 
+function get(route, cb) {
+
+  var token = localStorage.getItem('loginToken');
+  if (!token) { return; }
+
+  fetch(API_URL + route, {
+    method: 'GET',
+    headers: { 'Authorization': 'Bearer ' + token }
+  }).then((results) => {
+    if (results.status !== 200) {
+      cb(true, null);
+      return
+    }
+    return results.text()
+  }).then((data) => {
+    cb(false, JSON.parse(data));
+  })
+
+}
+
 function post(route, payload, cb) {
-  console.log(route, payload, formatPayload(payload))
 
   var token = localStorage.getItem('loginToken');
   if (!token) { return; }
@@ -23,11 +42,12 @@ function post(route, payload, cb) {
     },
     body: formatPayload(payload)
   }).then((results) => {
-    console.log(results)
     cb(results.status)
   })
+
 }
 
 module.exports = {
+  get: get,
   post: post
 }

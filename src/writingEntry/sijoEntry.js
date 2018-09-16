@@ -5,14 +5,26 @@ import API from '../api/api';
 class SijoEntry extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       title: '',
       body: '',
-      msg: null
+      msg: null,
+      haveData: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+  }
+
+  componentDidMount() {
+    API.get('/writing/sijo', (err, data) => {
+      this.setState({
+        title: data.title,
+        body: data.body,
+        haveData: true
+      })
+    });
   }
 
   handleInputChange(event) {
@@ -29,8 +41,6 @@ class SijoEntry extends React.Component {
   }
 
   handleSave() {
-    console.log(this.state);
-
     var payload = {
       title: this.state.title,
       body: this.state.body,
@@ -58,11 +68,15 @@ class SijoEntry extends React.Component {
         <input
           type="text"
           name="title"
+          value={this.state.title}
           onChange={this.handleInputChange}
         />
+        {this.state.haveData &&
         <EntryArea
+          initialValue={this.state.body}
           onChange={this.handleBodyChange}
         />
+        }
         <button onClick={this.handleSave}>Save</button>
       </div>
     )
