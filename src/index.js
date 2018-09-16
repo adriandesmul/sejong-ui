@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Auth from './auth/auth';
-import User from './user/user';
+//import User from './user/user';
 import SijoEntry from './writingEntry/sijoEntry';
 
 class AuthorizedRequest extends React.Component {
