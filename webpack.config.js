@@ -38,7 +38,7 @@ function fromDir(startPath, filter) {
   })
 }
 
-fromDir('./src/static', '.html');
+fromDir('./src/static', '.ejs');
 const staticPlugins = htmlFiles.map((file) => {
   return new htmlWebpackPlugin({
     template: file,
@@ -76,11 +76,6 @@ module.exports = {
         test: /\.js$/,
         use: [
           'babel-loader'
-        ]
-      }, {
-        test: /\.html$/,
-        use: [
-          'html-loader'
         ]
       }
     ]
