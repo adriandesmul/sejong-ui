@@ -60,7 +60,7 @@ class SijoEntry extends React.Component {
     let msg = this.state.msg;
     return (
       <div>
-        <p>SijoEntry</p>
+        <p>Sijo Entry</p>
         {msg &&
           <p>{msg}</p>
         }

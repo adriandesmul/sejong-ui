@@ -58,8 +58,8 @@ class Auth extends React.Component {
     return (
       <div>
         <Username name={this.state.username} />
-        <Login className={showLogin} attemptLogin={this.attemptLogin}/>
-        <Logout className={showLogout} logout={this.logout} />
+        {!this.state.username && <Login attemptLogin={this.attemptLogin}/>}
+        {this.state.username && <Logout logout={this.logout} />}
       </div>
     )
   }
