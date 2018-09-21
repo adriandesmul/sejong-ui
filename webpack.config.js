@@ -2,31 +2,25 @@ const path = require('path');
 const fs = require('fs');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const Nunjucks = require('nunjucks');
+const mkdirp = require('mkdirp');
 
 const API_URL = {
   local: JSON.stringify('http://localhost:3000')
 }
 var environment = (process.env.NODE_ENV == 'local') ? 'production' : 'local'
 
-const indexPlugin = new htmlWebpackPlugin({
-  template: './src/index.html',
-  filename: './index.html'
-});
-
 var htmlFiles = [];
 
 function fromDir(startPath, filter) {
-  console.log('Looking at dir: ' + startPath);
 
   if (!fs.existsSync(startPath)) {
-    console.log("Dir doesn't exist: " + startPath);
     return;
   }
 
   var files = fs.readdirSync(startPath);
 
   files.forEach((file) => {
-    console.log(file)
     const filename = path.join(startPath, file);
     const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
@@ -38,23 +32,25 @@ function fromDir(startPath, filter) {
   })
 }
 
-fromDir('./src/static', '.ejs');
-const staticPlugins = htmlFiles.map((file) => {
-  return new htmlWebpackPlugin({
-    template: file,
-    filename: file.split(path.normalize('./src/static'))[1]
-  })
+fromDir('./src/static', '.html');
+htmlFiles.map((file) => {
+  let compiledFile = Nunjucks.render(file);
+  let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+  mkdirp.sync(path.dirname(saveTo))
+  fs.writeFileSync(saveTo, compiledFile);
 })
-
-let htmlPlugins = [indexPlugin].concat(staticPlugins).concat([new webpack.DefinePlugin({
-  'API_URL': API_URL[environment]
-})])
-console.log(htmlPlugins)
 
 module.exports = {
   entry: './src/index.js',
-  watch: true,
-  plugins: htmlPlugins,
+  plugins: [
+    new htmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './writing/competition/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'API_URL': API_URL[environment]
+    })
+  ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
