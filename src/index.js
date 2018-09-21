@@ -6,9 +6,9 @@ import 'react-quill/dist/quill.snow.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Auth from './auth/auth';
+import Auth from './dynamic/auth/auth';
 //import User from './user/user';
-import SijoEntry from './writingEntry/sijoEntry';
+import SijoEntry from './dynamic/writingEntry/sijoEntry';
 
 class AuthorizedRequest extends React.Component {
   constructor(props) {
