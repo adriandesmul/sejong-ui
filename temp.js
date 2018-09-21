@@ -1,20 +1,19 @@
 const path = require('path');
 const fs = require('fs');
+const Nunjucks = require('nunjucks');
+const mkdirp = require('mkdirp');
 
 var htmlFiles = [];
 
 function fromDir(startPath, filter) {
-  console.log('Looking at dir: ' + startPath);
 
   if (!fs.existsSync(startPath)) {
-    console.log("Dir doesn't exist: " + startPath);
     return;
   }
 
   var files = fs.readdirSync(startPath);
 
   files.forEach((file) => {
-    console.log(file)
     const filename = path.join(startPath, file);
     const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
@@ -28,8 +27,8 @@ function fromDir(startPath, filter) {
 
 fromDir('./src/static', '.html');
 htmlFiles.map((file) => {
-  console.log('test--');
-  console.log(file.split(path.normalize('./src/static')))
+  let compiledFile = Nunjucks.render(file);
+  let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+  mkdirp.sync(path.dirname(saveTo))
+  fs.writeFileSync(saveTo, compiledFile);
 })
-console.log(path.normalize('./src/static'))
-console.log(htmlFiles);
