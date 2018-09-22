@@ -3,6 +3,7 @@ import React from 'react';
 import Username from './username';
 import Login from './login';
 import Logout from './logout';
+import './auth.scss';
 
 const classNames = require('classnames');
 
@@ -56,7 +57,7 @@ class Auth extends React.Component {
     let showLogout = classNames({hide: (!this.state.username)});
 
     return (
-      <div>
+      <div className="scs-auth">
         <Username name={this.state.username} />
         {!this.state.username && <Login attemptLogin={this.attemptLogin}/>}
         {this.state.username && <Logout logout={this.logout} />}

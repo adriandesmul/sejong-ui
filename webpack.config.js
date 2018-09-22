@@ -44,7 +44,7 @@ module.exports = {
   entry: './src/index.js',
   plugins: [
     new htmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/dynamic/index.html',
       filename: './writing/competition/index.html'
     }),
     new webpack.DefinePlugin({

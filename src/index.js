@@ -10,5 +10,5 @@ import Auth from './dynamic/auth/auth';
 //import User from './user/user';
 import SijoEntry from './dynamic/writingEntry/sijoEntry';
 
-ReactDOM.render(<Auth />, document.getElementById('auth'));
-ReactDOM.render(<SijoEntry />, document.getElementById('sijo'));
+if (document.getElementById('auth')) ReactDOM.render(<Auth />, document.getElementById('auth'));
+if (document.getElementById('sijo')) ReactDOM.render(<SijoEntry />, document.getElementById('sijo'));

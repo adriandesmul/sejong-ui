@@ -2,6 +2,24 @@
 
 $blue: #1010BB;
 
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.header {
+    height: 4rem;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #333;
+    align-items: center;
+    padding: 0rem 1rem;
+}
+
+#auth {
+  color: white;
+}
+
 .hello {
   color: $blue;
 }
