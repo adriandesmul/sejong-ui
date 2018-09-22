@@ -20,8 +20,8 @@ class SijoEntry extends React.Component {
   componentDidMount() {
     API.get('/writing/sijo', (err, data) => {
       this.setState({
-        title: data.title,
-        body: data.body,
+        title: data ? data.title : '',
+        body: data ? data.body : '',
         haveData: true
       })
     });
