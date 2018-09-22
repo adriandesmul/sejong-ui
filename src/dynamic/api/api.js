@@ -32,7 +32,7 @@ function get(route, cb) {
 function post(route, payload, cb) {
 
   var token = localStorage.getItem('loginToken');
-  if (!token) { return; }
+  if (!token) { cb(true, null); return; }
 
   fetch(API_URL + route, {
     method: 'POST',

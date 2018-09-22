@@ -1,0 +1,50 @@
+.scs-module {
+
+  width: 50rem;
+  margin: 10px;
+  align-self: center;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+
+  .scs-header {
+    background: #ffdfba;
+    padding: 1rem;
+  }
+
+  .scs-message {
+
+    margin: 1rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    &.error {
+      background-color: #ffb3ba;
+    }
+
+    &.success {
+      background-color: #baffc9;
+    }
+  }
+
+  .scs-input {
+    margin: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #CCC;
+    padding: 0.5rem;
+  }
+
+  .quill {
+    margin: 1rem;
+  }
+
+  .scs-button {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #BAE1FF;
+    width: 5rem;
+    text-align: center;
+    align-self: center;
+  }
+}

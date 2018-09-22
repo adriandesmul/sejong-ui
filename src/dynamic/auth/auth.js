@@ -37,9 +37,10 @@ class Auth extends React.Component {
       },
       body: loginString
     }).then((results) => {
-        if (results.status !== 200) { return; }
+        if (results.status !== 200) { return null; }
         return results.text();
     }).then((data) => {
+        if (!data) { return; }
         localStorage.setItem('loginToken', data);
         var userData = decodeToken(data);
         this.setState(userData);
@@ -78,8 +79,15 @@ function decodeToken(token) {
 
   if (loginToken) {
     var encodedDetails = loginToken.split('.')[1];
-    var userDetails = JSON.parse(atob(encodedDetails));
+    var userDetails;
 
+    try {
+      userDetails = JSON.parse(atob(encodedDetails));
+    } catch(error) {
+      localStorage.clear();
+    }
+
+    if (!userDetails) { return userObj; }
     userObj.username = userDetails.user;
     userObj.admin = userDetails.admin;
   }

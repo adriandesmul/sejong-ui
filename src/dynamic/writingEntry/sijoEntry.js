@@ -1,6 +1,9 @@
 import React from 'react';
 import EntryArea from './entryArea';
 import API from '../api/api';
+import './writingEntry.scss';
+
+const classNames = require('classnames');
 
 class SijoEntry extends React.Component {
   constructor(props) {
@@ -49,25 +52,35 @@ class SijoEntry extends React.Component {
 
     API.post('/writing/save', payload, (status) => {
       if (status != '200') {
-        this.setState({ msg: 'Save error' });
+        this.setState({ msg: {
+          body: 'Save error',
+          type: 'error'
+        }});
       } else {
-        this.setState({ msg: 'Save successful' });
+        this.setState({ msg: {
+          body: 'Save successful',
+          type: 'success'
+        }});
       }
     })
   }
 
   render() {
     let msg = this.state.msg;
+    let msgClass;
+    if (msg) { msgClass = classNames(['scs-message', msg.type]) }
+
     return (
-      <div>
-        <p>Sijo Entry</p>
+      <div className="scs-module">
+        <div className="scs-header">Sijo Entry</div>
         {msg &&
-          <p>{msg}</p>
+          <div className={msgClass}>{msg.body}</div>
         }
-        <label>Sijo title:</label>
         <input
           type="text"
           name="title"
+          placeholder="Sijo title"
+          className="scs-input"
           value={this.state.title}
           onChange={this.handleInputChange}
         />
@@ -77,7 +90,7 @@ class SijoEntry extends React.Component {
           onChange={this.handleBodyChange}
         />
         }
-        <button onClick={this.handleSave}>Save</button>
+        <a className="scs-button" onClick={this.handleSave}>Save</a>
       </div>
     )
   }

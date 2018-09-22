@@ -10,7 +10,8 @@ class Login extends React.Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleInputChange(event) {
@@ -19,6 +20,12 @@ class Login extends React.Component {
     this.setState({
       [target.name]: target.value
     })
+  }
+
+  handleKeyPress(event) {
+    if (event.key == "Enter") {
+      this.handleSubmit();
+    }
   }
 
   handleSubmit(event) {
@@ -43,6 +50,7 @@ class Login extends React.Component {
           name="password"
           placeholder="Password"
           onChange={this.handleInputChange}
+          onKeyPress={this.handleKeyPress}
         />
         <a onClick={this.handleSubmit}>Login</a>
       </div>
