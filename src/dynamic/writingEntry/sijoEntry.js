@@ -22,12 +22,16 @@ class SijoEntry extends React.Component {
 
   componentDidMount() {
     API.get('/writing/sijo', (err, data) => {
-      this.setState({
+      !this.isCancelled && this.setState({
         title: data ? data.title : '',
         body: data ? data.body : '',
         haveData: true
       })
     });
+  }
+
+  componentWillUnmount() {
+    this.isCancelled = true;
   }
 
   handleInputChange(event) {
@@ -76,6 +80,7 @@ class SijoEntry extends React.Component {
         {msg &&
           <div className={msgClass}>{msg.body}</div>
         }
+        {this.state.haveData &&
         <input
           type="text"
           name="title"
@@ -84,6 +89,7 @@ class SijoEntry extends React.Component {
           value={this.state.title}
           onChange={this.handleInputChange}
         />
+        }
         {this.state.haveData &&
         <EntryArea
           initialValue={this.state.body}
