@@ -47,7 +47,27 @@ function post(route, payload, cb) {
 
 }
 
+function post_unsecure(route, payload, cb) {
+
+  let err = false;
+
+  fetch(API_URL + route, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body: formatPayload(payload)
+  }).then((results) => {
+    if (results.status !== 200) { err = true }
+    return results.text()
+  }).then((data) => {
+    cb(err, data);
+  })
+
+}
+
 module.exports = {
   get: get,
-  post: post
+  post: post,
+  post_unsecure: post_unsecure
 }

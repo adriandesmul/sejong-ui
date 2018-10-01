@@ -3,6 +3,7 @@ import React from 'react';
 import Username from './username';
 import Login from './login';
 import Logout from './logout';
+import CreateAccount from './createAccount';
 import './auth.scss';
 
 const classNames = require('classnames');
@@ -12,6 +13,7 @@ class Auth extends React.Component {
     super(props);
 
     this.attemptLogin = this.attemptLogin.bind(this);
+    this.newAccountLogin = this.newAccountLogin.bind(this);
     this.logout = this.logout.bind(this);
 
     var userData = decodeToken();
@@ -48,24 +50,35 @@ class Auth extends React.Component {
 
   }
 
+  newAccountLogin(data) {
+    localStorage.setItem('loginToken', data);
+    var userData = decodeToken(data);
+    this.setState(userData);
+  }
+
   logout() {
     localStorage.removeItem('loginToken');
     this.setState(decodeToken());
   }
 
   render() {
-    let showLogin = classNames({hide: (this.state.username)});
-    let showLogout = classNames({hide: (!this.state.username)});
-
-    return (
-      <div className="scs-auth">
-        <Username name={this.state.username} />
-        {!this.state.username && <Login attemptLogin={this.attemptLogin}/>}
-        {this.state.username && <Logout logout={this.logout} />}
-      </div>
-    )
+    if (!this.state.username) {
+      return (
+        <div className="scs-auth">
+          <Login attemptLogin={this.attemptLogin}/>
+          <span>&nbsp;|&nbsp;</span>
+          <CreateAccount newAccountLogin={this.newAccountLogin}/>
+        </div>
+      )
+    } else {
+      return (
+        <div className="scs-auth">
+          <Username name={this.state.username} />
+          <Logout logout={this.logout} />
+        </div>
+      )
+    }
   }
-
 }
 
 function decodeToken(token) {

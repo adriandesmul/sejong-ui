@@ -6,7 +6,8 @@ class Login extends React.Component {
 
     this.state = {
       username: null,
-      password: null
+      password: null,
+      loginOpen: false
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -38,21 +39,28 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className={this.props.className}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          onChange={this.handleInputChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={this.handleInputChange}
-          onKeyPress={this.handleKeyPress}
-        />
-        <a onClick={this.handleSubmit}>Login</a>
+      <div>
+        <p onClick={() => {this.setState((state) => {
+          return {'loginOpen': !state.loginOpen}
+        })}}>Login</p>
+        {this.state.loginOpen &&
+          <div className="scs-loginWindow">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={this.handleInputChange}
+              onKeyPress={this.handleKeyPress}
+            />
+            <a className="scs-button" onClick={this.handleSubmit}>Login</a>
+          </div>
+        }
       </div>
     )
   }
