@@ -3,7 +3,7 @@ import React from 'react';
 function Logout(props) {
   return (
     <div className={props.className}>
-      <a onClick={props.logout}>Logout</a>
+      <a onClick={props.logout}>Log off</a>
     </div>
   )
 }
