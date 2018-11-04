@@ -93,6 +93,8 @@ workflows:
               only: dev
       - prod-approval:
           type: approval
+          requires:
+            - build
           filters:
             branches:
               only: master
