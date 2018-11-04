@@ -54,10 +54,8 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
       - run:
-          name: Check contents
-          command: cd dist && ls
-      - run:
           name: Deploy to S3
+          working_directory: ~/repo/dist
           command: aws s3 sync . s3://dev.sejong.argibus.com --delete
 
 workflows:
