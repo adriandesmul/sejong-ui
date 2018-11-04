@@ -4,7 +4,7 @@
   "description": "Sejong Website",
   "private": true,
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode production",
+    "build": "webpack --config webpack.config.js --mode development",
     "start": "webpack-dev-server --mode development --open --env.NODE_ENV=local"
   },
   "repository": {
