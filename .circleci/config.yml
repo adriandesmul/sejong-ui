@@ -91,11 +91,12 @@ workflows:
           filters:
             branches:
               only: dev
-      - deploy-prod:
-          context: sejong-argibus
+      - prod-approval:
           type: approval
-          requires:
-            - build
           filters:
             branches:
               only: master
+      - deploy-prod:
+          context: sejong-argibus
+          requires:
+            - prod-approval
