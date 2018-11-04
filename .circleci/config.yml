@@ -49,16 +49,16 @@ jobs:
     working_directory: ~/repo
     steps:
       - attach_workspace:
-          at: ./dist
+          at: .
       - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
-          name: See folder contents
+          name: Check contents
           command: ls
       - run:
           name: Deploy to S3
-          command: aws s3 sync dist s3://dev.sejong.argibus.com --delete
+          command: aws s3 sync . s3://dev.sejong.argibus.com --delete
 
 workflows:
   version: 2
