@@ -93,6 +93,7 @@ workflows:
               only: dev
       - deploy-prod:
           context: sejong-argibus
+          type: approval
           requires:
             - build
           filters:
