@@ -38,18 +38,17 @@ jobs:
       # run tests!
       # - run: npm test
 
-  build:
-    deploy:
-      docker:
-        - image: circleci/python:2.7-jessie
-      working_directory: ~/repo
-      steps:
-        - run:
-          name: Install awscli
-          command: sudo pip install awscli
-        - run:
-          name: Deploy to S3
-          command: aws s3 sync dist s3://dev.sejong.argibus.com --delete
+  deploy:
+    docker:
+      - image: circleci/python:2.7-jessie
+    working_directory: ~/repo
+    steps:
+      - run:
+        name: Install awscli
+        command: sudo pip install awscli
+      - run:
+        name: Deploy to S3
+        command: aws s3 sync dist s3://dev.sejong.argibus.com --delete
 
 workflows:
   version: 2
