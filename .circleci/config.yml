@@ -59,7 +59,7 @@ jobs:
           command: aws s3 sync . s3://dev.sejong.argibus.com --delete --acl public-read
       - run:
           name: Clear CloudFront cache
-          command: aws cloudfront create-invalidation --distribution-id=E1EKJA32KYO2YA --paths /
+          command: aws cloudfront create-invalidation --distribution-id=E1EKJA32KYO2YA --paths /*
 
 workflows:
   version: 2
