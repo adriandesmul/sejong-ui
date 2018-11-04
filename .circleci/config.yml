@@ -35,6 +35,8 @@ jobs:
 
       - run: npm run build
 
+      - run: ls
+
       - persist_to_workspace:
           root: dist
 
