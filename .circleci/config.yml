@@ -66,6 +66,7 @@ workflows:
     jobs:
       - build
       - deploy-dev:
+          context: sejong-argibus
           requires:
             - build
           filters:
