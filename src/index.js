@@ -7,7 +7,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Auth from './dynamic/auth/auth';
-//import User from './user/user';
 import SijoEntry from './dynamic/writingEntry/sijoEntry';
 
 if (document.getElementById('auth')) ReactDOM.render(<Auth />, document.getElementById('auth'));

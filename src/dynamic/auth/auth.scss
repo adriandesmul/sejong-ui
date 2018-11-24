@@ -1,3 +1,5 @@
+@import '../../styles/colors';
+
 .scs-auth {
   display: flex;
 
@@ -34,7 +36,7 @@
   }
 
   .scs-button {
-    background-color: #baffc9;
+    background-color: $lightAccent;
     color: black;
     width: auto;
   }
@@ -43,8 +45,8 @@
     width: 19rem;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
-    background-color: #ffb3ba;
-    color: black;
+    background-color: $failure;
+    color: white;
     padding: 0.5rem;
   }
 }

@@ -1,6 +1,5 @@
 @import './styles/reset';
-
-$blue: #1010BB;
+@import 'styles/colors';
 
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
   font-family: Arial;
@@ -11,7 +10,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
     height: 4rem;
     display: flex;
     flex-direction: row-reverse;
-    background-color: #333;
+    background-color: $primary;
     align-items: center;
     padding: 0rem 1rem;
 }
@@ -36,7 +35,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
   margin: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #BAE1FF;
+  background-color: $lightAccent;
   width: 5rem;
   text-align: center;
   align-self: center;

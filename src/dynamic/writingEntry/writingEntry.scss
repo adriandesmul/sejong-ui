@@ -1,3 +1,5 @@
+@import '../../styles/colors';
+
 .scs-module {
 
   width: 50rem;
@@ -8,7 +10,8 @@
   flex-direction: column;
 
   .scs-header {
-    background: #ffdfba;
+    background: $primary;
+    color: white;
     padding: 1rem;
   }
 
@@ -19,18 +22,20 @@
     padding: 1rem;
 
     &.error {
-      background-color: #ffb3ba;
+      background-color: $failure;
+      color: white;
     }
 
     &.success {
-      background-color: #baffc9;
+      background-color: $success;
+      color: white;
     }
   }
 
   .scs-input {
     margin: 1rem;
     border-radius: 0.5rem;
-    border: 1px solid #CCC;
+    border: 1px solid $primary;
     padding: 0.5rem;
   }
 
