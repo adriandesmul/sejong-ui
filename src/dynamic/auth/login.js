@@ -51,7 +51,10 @@ class Login extends React.Component {
   }
 
   handleForgotPasswordSubmit(event) {
-    API.post_unsecure('/auth/forgotPassword', {email: this.state.email}, (status) => {
+    API.post_unsecure('/auth/forgotPassword', {
+      email: this.state.email,
+      username: this.state.forgotUsername
+    }, (status) => {
       this.setState({
         forgotPasswordOpen: false,
         forgotPasswordSuccess: true
@@ -94,7 +97,13 @@ class Login extends React.Component {
         }
         {this.state.forgotPasswordOpen &&
           <div className="scs-loginWindow">
-            <p>Please enter the email address used for your account</p>
+            <p>Please enter the username and email address used for your account</p>
+            <input
+              type="text"
+              name="forgotUsername"
+              placeholder="Username"
+              onChange={this.handleInputChange}
+            />
             <input
               type="text"
               name="email"
