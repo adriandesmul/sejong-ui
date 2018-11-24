@@ -18,6 +18,7 @@
 .scs-loginWindow, .scs-createAccountWindow {
   position: fixed;
   background-color: #333;
+  z-index: 200;
 
   width: 20rem;
   padding: 0.5rem;
@@ -49,4 +50,13 @@
     color: white;
     padding: 0.5rem;
   }
+}
+
+.scs-shim {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
