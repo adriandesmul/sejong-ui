@@ -4,6 +4,9 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const Nunjucks = require('nunjucks');
 const mkdirp = require('mkdirp');
+const watch = require('watch');
+
+Nunjucks.configure({noCache: true})
 
 const API_URL = {
   local: JSON.stringify('http://localhost:3000')
@@ -39,6 +42,28 @@ htmlFiles.map((file) => {
   mkdirp.sync(path.dirname(saveTo))
   fs.writeFileSync(saveTo, compiledFile);
 })
+
+if (environment == 'local') {
+  watch.createMonitor('./src/static', (monitor) => {
+    monitor.on('changed', () => {
+
+      console.log("-- Update HTML --")
+
+      htmlFiles = [];
+
+      fromDir('./src/static', '.html');
+      htmlFiles.map((file) => {
+        let compiledFile = Nunjucks.render(file);
+        console.log(compiledFile)
+        let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+        console.log(saveTo)
+        mkdirp.sync(path.dirname(saveTo))
+        fs.writeFileSync(saveTo, compiledFile);
+      })
+
+    })
+  })
+}
 
 module.exports = {
   entry: './src/index.js',

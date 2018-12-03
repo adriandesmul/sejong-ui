@@ -51,7 +51,7 @@ class SijoEntry extends React.Component {
     var payload = {
       title: this.state.title,
       body: this.state.body,
-      entryType: 'sijo'
+      entry_type: 'sijo'
     }
 
     API.post('/writing/save', payload, (status) => {
