@@ -54,7 +54,6 @@ if (environment == 'local') {
       fromDir('./src/static', '.html');
       htmlFiles.map((file) => {
         let compiledFile = Nunjucks.render(file);
-        console.log(compiledFile)
         let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
         console.log(saveTo)
         mkdirp.sync(path.dirname(saveTo))
