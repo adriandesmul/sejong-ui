@@ -11,7 +11,8 @@ Nunjucks.configure({noCache: true})
 const API_URL = {
   local: JSON.stringify('http://localhost:3000')
 }
-var environment = (process.env.NODE_ENV == 'local') ? 'production' : 'local'
+
+var environment = (process.env.NODE_ENV == 'local') ? 'local' : 'production'
 
 var htmlFiles = [];
 
@@ -37,6 +38,7 @@ function fromDir(startPath, filter) {
 
 fromDir('./src/static', '.html');
 htmlFiles.map((file) => {
+  console.log('Building: ', file)
   let compiledFile = Nunjucks.render(file);
   let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
   mkdirp.sync(path.dirname(saveTo))
