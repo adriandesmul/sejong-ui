@@ -16,7 +16,7 @@ var environment = (process.env.NODE_ENV == 'local') ? 'local' : 'production'
 
 var htmlFiles = [];
 
-function fromDir(startPath, filter) {
+function fromDir(startPath, filter, arr) {
 
   if (!fs.existsSync(startPath)) {
     return;
@@ -28,15 +28,15 @@ function fromDir(startPath, filter) {
     const filename = path.join(startPath, file);
     const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
-      fromDir(filename, filter);
+      fromDir(filename, filter, arr);
     } else if (filename.indexOf(filter) >= 0) {
-      htmlFiles.push(filename);
+      arr.push(filename);
     }
 
   })
 }
 
-fromDir('./src/static', '.html');
+fromDir('./src/static', '.html', htmlFiles);
 htmlFiles.map((file) => {
   console.log('Building: ', file)
   let compiledFile = Nunjucks.render(file);
@@ -44,6 +44,22 @@ htmlFiles.map((file) => {
   mkdirp.sync(path.dirname(saveTo))
   fs.writeFileSync(saveTo, compiledFile);
 })
+
+// FONT TRANSFER
+var fontFiles = [];
+fromDir('./src', '.eot', fontFiles);
+fromDir('./src', '.woff', fontFiles);
+fromDir('./src', '.woff2', fontFiles);
+fromDir('./src', '.ttf', fontFiles);
+fromDir('./src', '.css', fontFiles);
+
+fontFiles.map((file) => {
+  console.log('Building: ', file)
+  let saveTo = path.join('./dist',file.split(path.normalize('./src'))[1]);
+  mkdirp.sync(path.dirname(saveTo))
+  fs.copyFileSync(file, saveTo);
+})
+
 
 if (environment == 'local') {
   watch.createMonitor('./src/static', (monitor) => {
@@ -53,7 +69,7 @@ if (environment == 'local') {
 
       htmlFiles = [];
 
-      fromDir('./src/static', '.html');
+      fromDir('./src/static', '.html', htmlFiles);
       htmlFiles.map((file) => {
         let compiledFile = Nunjucks.render(file);
         let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);

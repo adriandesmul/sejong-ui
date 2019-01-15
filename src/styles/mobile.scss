@@ -1,0 +1,114 @@
+@media screen and (max-width: 1400px) {
+	.dropdown-link, .footer-item, .footer-right {
+		padding:8px;
+	}
+	.footer {
+		height: 45px;
+	}
+	.dropdown-inner-container {
+		font-size: 0.9em
+	}
+	.content, .dropdown-menu {
+		padding-right: 5%;
+		padding-left: 5%;
+	}
+	.dropdown-inner-container {
+		margin-left: 5%;
+	}
+	.main-body {
+		padding-left:5%;
+		padding-right:5%;
+	}
+}
+.mobile-navbar, .mobile-button {
+	display:none; }
+@media screen and (max-width: 800px) {
+	.navbar {
+		display: none;
+	}
+	.header {
+		height: 50px;
+	}
+	.mobile-button {
+		display:block;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.mobile-navbar {
+		display:none;
+	}
+}
+.mobile-navbar {
+	position: absolute;
+	width:60%;
+	top: 100;
+	left: 0;
+}
+.mobile-navbar a, .mobile-button a {
+	color: white;
+	text-decoration: none;
+	font-size: 1rem;
+}
+.mobile-button .icon {
+	padding-left: 10%;
+	font-size: 2rem;
+}
+.mobile-button a {
+	padding:5px;
+	margin:0px;
+	z-index:100;
+}
+.mobile-button {
+	background-color: grey;
+	padding: 5px;
+	padding-bottom: 5px;
+}
+.mobile-login {
+	float:right;
+}
+.mobile-navbar.expand {
+	-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.mobile-navbar.expand, .mobile-m01.expand, .mobile-m10.expand, .mobile-m10 a {
+	display: block;
+}
+.mobile-m01, .mobile-m10 {
+	padding:0px;
+	margin:0px;
+	display: block;
+	z-index:-1;
+}
+a.mobile-m01:hover, .mobile-m10 a:hover {
+	transition: color 0.2s;
+}
+a.mobile-m01:hover {
+	color: green;
+}
+.mobile-m10 a:hover {
+	color: black;
+}
+.mobile-m01.expand, .mobile-m10.expand {
+    width:100%;
+    -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+a.mobile-m01 {
+	padding: 5px 10px;
+	border: 1px #A5CEA5 solid;
+	border-bottom: none;
+	background-color: #0B410B;
+}
+.mobile-m10 {
+	display: none;
+}
+.mobile-m10 a {
+	padding:5px 10px;
+	margin: 0px;
+	background-color: #4C8A4C;
+	border: 1px #A5CEA5 solid;
+	border-bottom: none;
+}
+/* .mobile-m10 a:nth-last-child(1) {
+	border-bottom: 2px #dddddd solid;
+} */

@@ -1,11 +1,15 @@
+@import url("//hello.myfonts.net/count/37f332");
 @import './styles/reset';
 @import 'styles/colors';
-
+@import 'styles/effects';
+@import 'styles/fonts';
+@import 'styles/master';
+/*
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
   font-family: Arial;
   font-size: 12px;
 }
-
+*/
 .header {
     height: 4rem;
     display: flex;
