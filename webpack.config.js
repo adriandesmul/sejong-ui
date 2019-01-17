@@ -79,7 +79,7 @@ module.exports = {
       filename: './writing/competition/index.html'
     }),
     new webpack.DefinePlugin({
-      'API_URL': API_URL[environment]
+      'API_URL': API_URL['local']
     })
   ],
   output: {
