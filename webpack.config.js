@@ -12,8 +12,6 @@ const API_URL = {
   local: JSON.stringify('http://localhost:3000')
 }
 
-var environment = (process.env.NODE_ENV == 'local') ? 'local' : 'production'
-
 var htmlFiles = [];
 
 function fromDir(startPath, filter, arr) {
@@ -73,28 +71,6 @@ imgFiles.map((file) => {
   fs.copyFileSync(file, saveTo);
 })
 
-
-if (environment == 'local') {
-  watch.createMonitor('./src/static', (monitor) => {
-    monitor.on('changed', () => {
-
-      console.log("-- Update HTML --")
-
-      htmlFiles = [];
-
-      fromDir('./src/static', '.html', htmlFiles);
-      htmlFiles.map((file) => {
-        let compiledFile = Nunjucks.render(file);
-        let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
-        console.log(saveTo)
-        mkdirp.sync(path.dirname(saveTo))
-        fs.writeFileSync(saveTo, compiledFile);
-      })
-
-    })
-  })
-}
-
 module.exports = {
   entry: './src/index.js',
   plugins: [
@@ -112,7 +88,27 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    compress: true
+    compress: true,
+    after: (app, server) => {
+      watch.createMonitor('./src', (monitor) => {
+        monitor.on('changed', () => {
+
+          console.log("-- Update HTML --")
+
+          htmlFiles = [];
+
+          fromDir('./src/static', '.html', htmlFiles);
+          htmlFiles.map((file) => {
+            let compiledFile = Nunjucks.render(file);
+            let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+            console.log(saveTo)
+            mkdirp.sync(path.dirname(saveTo))
+            fs.writeFileSync(saveTo, compiledFile);
+          })
+
+        })
+      })
+    }
   },
   module: {
     rules: [
