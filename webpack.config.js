@@ -60,6 +60,19 @@ fontFiles.map((file) => {
   fs.copyFileSync(file, saveTo);
 })
 
+// IMG TRANSFER
+var imgFiles = [];
+fromDir('./src', '.jpg', imgFiles);
+fromDir('./src', '.gif', imgFiles);
+fromDir('./src', '.png', imgFiles);
+
+imgFiles.map((file) => {
+  console.log('Building: ', file)
+  let saveTo = path.join('./dist',file.split(path.normalize('./src'))[1]);
+  mkdirp.sync(path.dirname(saveTo))
+  fs.copyFileSync(file, saveTo);
+})
+
 
 if (environment == 'local') {
   watch.createMonitor('./src/static', (monitor) => {
