@@ -57,7 +57,8 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -88,10 +89,21 @@ module.exports = {
       {
         test: /\.?css$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'resolve-url-loader',
-          'sass-loader'
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader'
+          }, {
+            loader: 'resolve-url-loader',
+            options: {
+              root: ''
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       }, {
         test: /\.(eot|woff|woff2|ttf|jpg|png|gif)$/,
