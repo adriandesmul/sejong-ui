@@ -9,7 +9,8 @@ const watch = require('watch');
 Nunjucks.configure({noCache: true})
 
 const API_URL = {
-  local: JSON.stringify('http://localhost:3000')
+  local: JSON.stringify('http://localhost:3000'),
+  prod: JSON.stringify('https://api.sejongculturalsociety.info')
 }
 
 var htmlFiles = [];
@@ -51,7 +52,7 @@ module.exports = {
       filename: './writing/competition/index.html'
     }),
     new webpack.DefinePlugin({
-      'API_URL': API_URL['local']
+      'API_URL': API_URL['prod']
     })
   ],
   output: {
