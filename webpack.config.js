@@ -114,6 +114,7 @@ module.exports = {
               outputPath(url, resourcePath, context) {
                 const relativePath = path.relative(context, resourcePath);
                 const newPath = relativePath.split(path.normalize('src/'))[1]
+                console.log(newPath)
                 return newPath
               }
             }
