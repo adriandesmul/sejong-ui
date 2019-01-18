@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const Nunjucks = require('nunjucks');
 const mkdirp = require('mkdirp');
 const watch = require('watch');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 Nunjucks.configure({noCache: true})
 
@@ -47,6 +48,10 @@ htmlFiles.map((file) => {
 module.exports = {
   entry: ['./src/index.js'],
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
     new htmlWebpackPlugin({
       template: './src/dynamic/index.html',
       filename: './writing/competition/index.html'
@@ -90,7 +95,7 @@ module.exports = {
         test: /\.?css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: MiniCssExtractPlugin.loader
           }, {
             loader: 'css-loader'
           }, {
