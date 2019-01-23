@@ -68,6 +68,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    watchOptions: {
+      poll: true
+    },
     after: (app, server) => {
       watch.createMonitor('./src', (monitor) => {
         monitor.on('changed', () => {
