@@ -1,9 +1,30 @@
-{% extends "../templates/large.html" %}
-{% block title %}
-sldjkfklsadj
-{% endblock %}
-{% block body %}
-Why hello there!
-<h1>Header 1</h1>
-<p>Paragraph</p>
-{% endblock %}
+{% set title = "hello world" %}
+{% extends "../templates/_page.njk" %}
+
+  {% block content %}
+    <div class="content" style="
+        background-image:url('./library/homepic.jpg');
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;">
+    <div style="padding-top:35%;">
+      <div style="color:white; padding:10px 20px; background-color:#fefefe; background: rgba(0, 0, 0, 0.5); width:100%;">
+        <h1>Welcome to the Sejong Cultural Society.</h1>
+      </div>
+    </div>
+    <div style="background-color:#fefefe; width:100%; padding:10px 20px;">
+      <h1>What to expect on this page</h1>
+      <p>Upcoming Korean community events<br/>
+        Upcoming/recent Sejong events<br/>
+        What's new<br/>
+        Interesting news<br/>
+        Brief who we are</p>
+      <h2>Lorem ipsum</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non magna massa. Ut vel sapien sed ante porttitor consequat. Proin vitae elit id augue blandit elementum. Vivamus commodo iaculis commodo. Nulla at nunc ut ligula porta pellentesque. Pellentesque eget sollicitudin metus, ac faucibus ligula. Quisque finibus molestie efficitur. Etiam in dui quis justo placerat aliquet quis mollis enim. In semper neque purus, et blandit ex ultricies vitae. Mauris in pharetra elit. Aenean sodales eros ipsum, ac sodales mi mattis at. Etiam efficitur, justo ut auctor finibus, eros eros lobortis ante, sed aliquet elit lacus vel sem. Donec molestie venenatis sapien, eu tincidunt elit gravida ut. Integer aliquet laoreet urna, et rhoncus orci. Duis sagittis id neque at tincidunt. Duis posuere non tortor ut sollicitudin.</p>
+      <p>Proin porta nisl ac tempus ultricies. Vivamus vitae dui sit amet ligula dignissim lacinia vitae ut elit. Duis vitae dictum metus. Etiam quis ante mauris. Suspendisse molestie imperdiet cursus. Sed viverra urna ut massa sagittis ullamcorper. Etiam ultrices nunc vitae nulla eleifend, ac pellentesque neque suscipit. Integer elementum sapien malesuada risus finibus, eu dapibus magna rutrum.</p>
+      <p>Vivamus id blandit tortor. In hac habitasse platea dictumst. Morbi eget turpis eros. Maecenas at justo sed sem semper sollicitudin ac eu arcu. Proin vitae ligula turpis. Curabitur urna neque, rhoncus et volutpat mattis, auctor id sapien. Aenean leo turpis, euismod ac dapibus placerat, aliquet quis lorem. Integer vitae magna tellus. Phasellus consectetur lacus vitae quam facilisis, sit amet venenatis ex accumsan. In finibus neque ac tincidunt tincidunt. Proin tristique quis nulla et consectetur.</p>
+      <p>Morbi varius tristique mi et aliquet. Sed scelerisque massa id ligula semper egestas. Nam a rhoncus neque, sed aliquet augue. Integer tincidunt est a tristique ullamcorper. Suspendisse ut vestibulum nulla. Maecenas sodales purus sed pellentesque blandit. Donec scelerisque, neque id semper maximus, turpis lacus tincidunt nisi, quis viverra felis diam ut diam. Nam cursus eget lorem a maximus.</p>
+      <p>Suspendisse consequat dignissim tellus. Phasellus pretium risus sed sem luctus, vitae mollis arcu sollicitudin. Sed blandit, lacus non ornare dapibus, tortor sem varius velit, ac dignissim mi ipsum non dolor. Ut pretium nunc vel pulvinar eleifend. Aenean nec vestibulum massa. Nullam tempor aliquam sem a dignissim. Cras nec accumsan nisi. Maecenas porttitor pretium ex, ac porttitor mi tincidunt vel. Ut ac semper sapien, a aliquet tellus. Proin id pharetra est. Nulla rutrum condimentum urna quis sagittis. In sed elit pretium, condimentum dolor non, fringilla velit. Donec sit amet ex a elit varius blandit. Duis luctus nulla tortor, a iaculis leo vehicula eu. </p>
+    </div>
+    </div>
+  {% endblock %}

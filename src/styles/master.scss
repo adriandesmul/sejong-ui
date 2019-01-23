@@ -24,6 +24,9 @@ body, .container, .dropdown-inner-container {
 	font-size: 18px;
 	line-height:1.6em;
 }
+p {
+  margin: 18px 0;
+}
 b {
 	font-family: 'GillSansMTPro-Bold';
 }
@@ -31,10 +34,15 @@ b {
 h1 {
 	font-family: 'Bison-DemiBold';
 	font-size: 36px;
+  margin: 0.8em 0;
 }
 h2 {
 	font-family: 'Bison-DemiBold';
 	font-size: 24px;
+  margin: 0.8em 0;
+}
+ul {
+  padding-left: 40px;
 }
 .dropdown-menu h1 {
 	font-size: 24px;
