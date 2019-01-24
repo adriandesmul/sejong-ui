@@ -1,54 +1,11 @@
-:root {
-    --turquoise: #54aba5;
-    --duskrose: #ab5482;
-    --bronze: #ab9454;
-    --lilac: #c7c3f2;
-    --bubblegum: #edbfe8;
-    --chartreuse: #d4ed96;
-    --peach: #edcd96;
-    --sky: #c3eaf2;
-}
-/* */
-body {
-	background-image:url('../library/homepic_dk.jpg');
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-/* */
-body, .container, .dropdown-inner-container {
+/***************************************************************** TOP LAYOUT */
+.container, .dropdown-inner-container {
+	line-height:1.6em;
 	margin:0px;
 	padding:0px;
 	z-index:-50;
 	font-family: 'GillSansMTPro-Light';
 	font-size: 18px;
-}
-.container, .dropdown-inner-container {
-	line-height:1.6em;
-}
-p {
-  margin: 18px 0;
-	line-height: 1.2em;
-}
-b {
-	font-family: 'GillSansMTPro-Bold';
-}
-
-h1 {
-	font-family: 'Bison-DemiBold';
-	font-size: 36px;
-  margin: 0.67em 0;
-}
-h2 {
-	font-family: 'Bison-DemiBold';
-	font-size: 24px;
-  margin: 0.8em 0;
-}
-ul {
-  padding-left: 40px;
-}
-.dropdown-menu h1 {
-	font-size: 24px;
 }
 .container, .navbar, .dropdown-menu, .dropdown-item, .dropdown-inner, .mobile-m10,
 .mobile-navbar, .footer, .footer-menu, .footer-item, .footer-right {
@@ -61,50 +18,19 @@ ul {
 }
 .header {
 	width:100%;
-	color: white;
-	font-size: 2rem;
-	text-align: center;
+	height: 110px;
 	z-index: 1;
 	background-image: url('../library/hmjg.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 110px;
 }
-.logo {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	background-color: darkseagreen;
-}
+
+/********************************************************************* NAVBAR */
 .navbar {
 	width:100%;
-	color:grey;
  	position: sticky;
  	top: 0;
-}
-.navbar-bg {
-	width:100%;
-	position: absolute;
-	top: 0;
-	height: 110px;
-	z-index: -1;
-	-webkit-filter: blur(5px);
-	filter: blur(5px);
-	background-attachment: fixed;
-	background-image:url('../library/homepic.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-.navbar-bg-color {
-	width:100%;
-	position: absolute;
-	top: 0;
-	height: 110px;
-	z-index: -1;
- 	background-color: black;
- 	opacity: 0.2;
 }
 .navbar ul, .footer ul {
 	list-style: none;
@@ -120,27 +46,27 @@ ul {
 	padding-left:15%;
 	padding-right:15%;
 }
-.flex {
-	flex:1;
+.dropdown-menu h1 {
+	font-size: 24px;
 }
 .dropdown-item {
 	display:block;
 	transition: color 0.2s;
 }
-.dropdown-item:hover {
-	color:lightpink;
-}
 .dropdown-item:hover > .dropdown-inner {
-    visibility: visible;
+  visibility: visible;
     /* next three lines for new effect */
 	transition-delay: 0s, 0s, 0.2s;
 	opacity: 0.9;
     /* for slide-down
 	transform: translateY(0%); */
-	/* old slide-down
+		/* old slide-down
 	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     */
+}
+.dropdown-item .login {
+	color:white;
 }
 .dropdown-link {
 	z-index: 1000;
@@ -157,8 +83,6 @@ ul {
 	left:0;
 	z-index:-10;
 	clear:both;
-	background-color: black;
-	color:white;
 	padding-bottom:0px;
 	margin:0px;
 	/* next four lines for new effect */
@@ -179,67 +103,33 @@ ul {
 .dropdown-menu a {
 	text-decoration: none;
 	transition: color 0.2s;
-	color: white;
-}
-.dropdown-inner a {
-	color: darkseagreen;
-}
-.dropdown-inner a:hover {
-	color:violet;
-}
-.navbar {
- 	background-color: grey;
-}
-.header, .logo {
-	background-color: darkseagreen;
-}
-.navbar li.active {
-	border-color: violet;
 }
 /* Instead of next two items
 li.dropdown-item:hover {
 	background-color: steelblue;
 }
 */
-li.dropdown-item:hover {
-	border-top: 4px violet solid;
+.dropdown-item:hover {
+	border-top: 4px solid;
 }
-li.dropdown-item {
-	border-top: 4px grey solid;
+.dropdown-item {
+	border-top: 4px solid;
 }
-/**************************/
-.wrapper {
-	background-color:#fefefe;
-	width:100%;
-	padding:10px 30px;
-	margin: 50px 0px;
-}
-.content {
-	z-index: -10000;
-	position: relative;
-	min-height: 77.5vh;
-	padding-left: 15%;
-	padding-right: 15%;
-	padding-bottom: 20px;
-}
+
+/********************************************************************* FOOTER */
 .footer {
-	background-color:#464646;
 	height: 60px;
 	z-index: -100;
 }
 .footer a {
-	color: gold;
 	transition: color 0.2s;
 	text-decoration: none;
 }
-.footer a:hover {
-	color: coral;
-}
 .footer-menu {
-	padding: 0px;
-	padding-left: 15%;
-	padding-right: 15%;
 	margin: 0px;
+	padding: 0px;
+	padding-right: 15%;
+	padding-left: 15%;
 }
 .footer-item {
 	padding: 15px;
@@ -248,4 +138,32 @@ li.dropdown-item {
 .footer-right {
 	padding: 15px;
 	float:right;
+}
+
+/******************************************************************** AERO NAV*/
+.navbar-bg, .navbar-bg-color {
+	width:100%;
+	top: 0;
+	position: absolute;
+	height: 110px;
+	z-index: -1;
+}
+.navbar-bg {
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+	background-attachment: fixed;
+	background-image:url('../library/homepic.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.navbar-bg-color {
+	opacity: 0.2;
+}
+
+/********************************************************************** OTHER */
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
 }

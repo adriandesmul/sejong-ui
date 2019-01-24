@@ -1,10 +1,12 @@
 @import url("//hello.myfonts.net/count/37f332");
-@import 'styles/reset';
-@import 'styles/colors';
-@import 'styles/effects';
-@import 'styles/fonts';
-@import 'styles/master';
-@import 'styles/mobile';
+@import 'styles/_reset';
+@import 'styles/_colors';
+@import 'styles/_effects';
+@import 'styles/_fonts';
+@import 'styles/_content';
+@import 'styles/_layout';
+@import 'styles/_mobile';
+
 /*
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
   font-family: Arial;

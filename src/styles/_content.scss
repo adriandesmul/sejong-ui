@@ -1,0 +1,78 @@
+:root {
+    --turquoise: #54aba5;
+    --duskrose: #ab5482;
+    --bronze: #ab9454;
+    --lilac: #c7c3f2;
+    --bubblegum: #edbfe8;
+    --chartreuse: #d4ed96;
+    --peach: #edcd96;
+    --sky: #c3eaf2;
+}
+/* */
+body {
+	background-image:url('../library/homepic_dk.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+/* */
+body {
+	margin:0px;
+	padding:0px;
+	z-index:-50;
+	font-family: 'GillSansMTPro-Light';
+}
+p {
+  margin: 18px 0;
+	line-height: 1.3em;
+	font-size: 18px;
+}
+b, a {
+	font-family: 'GillSansMTPro-Medium';
+}
+.navbar a, .footer a {
+	font-family: 'GillSansMTPro-Light';
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-family: 'Bison-DemiBold';
+	font-size: 36px;
+  margin: 0.67em 0 0.2em;
+}
+h2 {
+	font-family: 'Bison-DemiBold';
+	font-size: 24px;
+  margin: 0;
+}
+h4, h4 a {
+	font-family: 'Bison-DemiBold';
+	font-size: 24px;
+	margin: 1.5em 0 0;
+}
+ul {
+  padding-left: 40px;
+}
+.flex {
+	flex:1;
+}
+
+/**************************/
+.wrapper {
+	background-color:#fefefe;
+	width:96%;
+	padding:10px 30px;
+	margin: 50px 0px;
+}
+.content {
+	z-index: -10000;
+	position: relative;
+	min-height: 77.5vh;
+	padding-left: 15%;
+	padding-right: 15%;
+}

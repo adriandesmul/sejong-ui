@@ -9,3 +9,59 @@ $warning: #BB7F20;
 $failure: #F44336;
 
 $blue: #1010BB;
+
+a {
+	color: $lightAccent;
+}
+a:hover {
+	color:grey;
+}
+h2 {
+	color:grey;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LAYOUT */
+.navbar, .dropdown-item {
+	background-color: grey;
+	border-color: grey;
+}
+.navbar .active, .dropdown-item:hover {
+	border-color: violet;
+}
+.dropdown-menu a {
+	color: white;
+}
+
+.navbar-bg-color {
+ 	background-color: black;
+}
+.dropdown-inner {
+	background-color: black;
+	color:white;
+}
+.dropdown-inner a {
+	color: darkseagreen;
+}
+.dropdown-inner a:hover {
+	color:violet;
+}
+
+.footer {
+	background-color:#464646;
+	color: white;
+}
+.footer a {
+	color: gold;
+}
+.footer a:hover {
+	color: coral;
+}
+
+/*
+.header, .logo {
+	background-color: darkseagreen;
+}
+.dropdown-item:hover {
+	color:lightpink;
+}
+*/

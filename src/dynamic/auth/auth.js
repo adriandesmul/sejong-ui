@@ -66,11 +66,14 @@ class Auth extends React.Component {
       return (
         <div className="scs-auth">
           <Login attemptLogin={this.attemptLogin}/>
-          <span>&nbsp;|&nbsp;</span>
-          <CreateAccount newAccountLogin={this.newAccountLogin}/>
         </div>
       )
-    } else {
+    } else
+
+		// <span>&nbsp;|&nbsp;</span>
+		// <CreateAccount newAccountLogin={this.newAccountLogin}/>
+
+		{
       return (
         <div className="scs-auth">
           <Username name={this.state.username} />

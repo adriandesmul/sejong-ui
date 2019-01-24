@@ -73,9 +73,13 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <p onClick={() => {this.setState((state) => {
-          return {'loginOpen': !state.loginOpen}
-        })}}>Login</p>
+        <div class="dropdown-item">
+					<a href="#">
+						<div class="dropdown-link" onClick={() => {this.setState((state) => {
+		          return {'loginOpen': !state.loginOpen}
+						})}}>Log in</div>
+					</a>
+				</div>
         {this.state.loginOpen &&
           <div className="scs-loginWindow">
             <input
@@ -91,8 +95,8 @@ class Login extends React.Component {
               onChange={this.handleInputChange}
               onKeyPress={this.handleKeyPress}
             />
-            <a className="scs-button" onClick={this.handleSubmit}>Login</a>
-            <a className="scs-button" onClick={this.handleForgotPassword}>Forgot password</a>
+            <a className="scs-button" onClick={this.handleSubmit}>Log in</a>
+            <a className="scs-button pw" onClick={this.handleForgotPassword}>Forgot password</a>
           </div>
         }
         {this.state.forgotPasswordOpen &&

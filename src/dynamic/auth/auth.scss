@@ -2,6 +2,7 @@
 
 .scs-auth {
   display: flex;
+	overflow: hidden;
 
   input {
     border-radius: 5px;
@@ -14,33 +15,38 @@
     cursor: pointer;
   }
 }
-
 .scs-loginWindow, .scs-createAccountWindow {
-  position: fixed;
+  position: absolute;
   background-color: #333;
   z-index: 200;
 
-  width: 20rem;
-  padding: 0.5rem;
+  padding: 10px;
   border-radius: 0.5rem;
 
-  right: 1rem;
-  top: 5rem;
+  right: 10%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   input {
-    width: 19rem;
+    width: 15rem;
     margin-bottom: 0.5rem;
+		font-family: 'GillSansMTPro-Light';
+		font-size: 16px;
   }
 
   .scs-button {
-    background-color: $lightAccent;
-    color: black;
+    color: $lightAccent;
     width: auto;
   }
+	.scs-button.pw {
+		font-size: 13px;
+		line-height: 1em;
+	}
+	.scs-button:hover {
+		color: white;
+	}
 
   .scs-error {
     width: 19rem;
@@ -59,4 +65,10 @@
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+@media screen and (max-width: 1400px) {
+	.scs-loginWindow, .scs-createAccountWindow {
+		right: 0;
+	}
 }
