@@ -1,0 +1,18 @@
+.index, .index-item {
+	display:flex;
+}
+
+.tab {
+	outline:none;
+}
+.tab:hover {
+	cursor: pointer;
+}
+
+.card{
+	display:none;
+}
+
+.tab:focus + .card{
+	display:block;
+}

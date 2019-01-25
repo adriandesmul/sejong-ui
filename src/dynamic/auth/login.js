@@ -1,6 +1,8 @@
 import React from 'react';
 import API from '../api/api';
 
+const classNames = require('classnames');
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -74,7 +76,7 @@ class Login extends React.Component {
     return (
       <div>
         <div class="dropdown-item">
-					<a href="#">
+					<a>
 						<div class="dropdown-link" onClick={() => {this.setState((state) => {
 		          return {'loginOpen': !state.loginOpen}
 						})}}>Log in</div>

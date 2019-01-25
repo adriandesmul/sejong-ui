@@ -24,6 +24,12 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+	.navbar.aero-bg {
+		height: 48px;
+	}
+	.navbar.aero {
+		margin-top: -48px;
+	}
 }
 .mobile-navbar, .mobile-button {
 	display:none; }

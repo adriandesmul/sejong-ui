@@ -24,7 +24,7 @@ body {
 }
 p {
   margin: 18px 0;
-	line-height: 1.3em;
+	line-height: 1.4em;
 	font-size: 18px;
 }
 b, a {
@@ -50,10 +50,17 @@ h2 {
 	font-size: 24px;
   margin: 0;
 }
-h4, h4 a {
+h3, h3 a {
 	font-family: 'Bison-DemiBold';
 	font-size: 24px;
 	margin: 1.5em 0 0;
+}
+h4 {
+	font-family: 'GillSansMTPro-Medium';
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
 }
 ul {
   padding-left: 40px;

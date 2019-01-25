@@ -20,23 +20,31 @@ h2 {
 	color:grey;
 }
 
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LAYOUT */
-.navbar, .dropdown-item {
-	background-color: grey;
-	border-color: grey;
+.wrapper {
+	background-color: #fafafa;
 }
-.navbar .active, .dropdown-item:hover {
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LAYOUT */
+/*
+.navbar, .dropdown-item {
+	background-color: dimgrey;
+	border-color: dimgrey;
+}
+*/
+.navbar.active, .dropdown-item:hover, div.dropdown-item:hover {
 	border-color: violet;
+}
+.navbar.aero {
+	background: rgba(0, 0, 0, 0.4);
 }
 .dropdown-menu a {
 	color: white;
 }
 
-.navbar-bg-color {
- 	background-color: black;
-}
 .dropdown-inner {
-	background-color: black;
+	/* remove bg-color for aero
+	background-color: rgba(0,0,0,0.9);
+	*/
 	color:white;
 }
 .dropdown-inner a {
