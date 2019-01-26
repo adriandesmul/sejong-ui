@@ -15,25 +15,9 @@ class WritingPM extends React.Component {
 		    }
     }
 
-		componentWillMount() {
-			document.addEventListener('mousedown', this.handleClick, false);
-		}
-
-		componentWillUnmount() {
-			document.removeEventListener('mousedown', this.handleClick, false);
-		}
-
-		handleClick = (e) => {
-			if (this.node.contains(e.target)) {
-				return;
-			}
-
-			this.handleClickOutside();
-		}
-
 		render() {
 	    return (
-	      <div ref={node => this.node = node}>
+	      <div>
 					<div class="tab" onClick={
 						() => {this.setState((state) => {
 							return {'hiphopOpen': !state.hiphopOpen}
