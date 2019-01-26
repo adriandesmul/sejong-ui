@@ -1,18 +1,58 @@
 .index, .index-item {
 	display:flex;
 }
-
+.row {
+	position:relative;
+	width: 100%;
+}
 .tab {
 	outline:none;
+	float:left;
+	clear:left;
+	width:20%;
+	display:block;
 }
 .tab:hover {
 	cursor: pointer;
 }
 
 .card{
-	display:none;
+	width:70%;
+	float:right;
 }
 
 .tab:focus + .card{
 	display:block;
+}
+.tab:after {
+  content: "";
+  display: table;
+}
+
+.help .tab, .taba {
+	border: 2px solid blue;
+}
+.help .card, .carda {
+	border: 2px solid green;
+}
+
+input[type=checkbox] {
+	display:none;
+}
+input label {
+  display: block;
+}
+input[type=checkbox]:checked + label + div.card {
+  display: block;
+}
+
+.taba {
+	float: left;
+	clear: left;
+	width:20%;
+}
+.carda {
+	width:70%;
+	right:0;
+	position:absolute;
 }

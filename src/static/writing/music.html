@@ -18,12 +18,27 @@
 			<p><a href="#hi">hip-hop</a> | <a href="#ja">jazz</a> | <a href="#ar">Korean art songs</a> | <a href="#cl">contemporary classical</a><br/>
 				<b>click on headers below to expand or hide</b></p>
 
-			<div class="tab" tabindex="1">
+			<div id="writingPM" style="height:100px;border:2px solid red;"></div>
+
+			<div class="row">
+				<div class="taba" tabindex="1">
+					Hip-hop
+				</div>
+				<div class="carda">
+					Elephant Rebellion and Suwan Choi
+				</div>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<input type="checkbox" id="hiphop" />
+				<label for="hiphop" class="tab">
 					<h1>Hip-Hop</h1>
 					<h2>Elephant Rebellion and Suwan Choi</h2>
-			</div>
-			<div class="card">
-				<h3>Artists</h3>
+				</label>
+				<div class="card" id="hiphop">
+					<h3>Artists</h3>
 						<p><b>Elephant Rebellion</b><br/>
 							TJ “TJ GT” Ayodele<br/>
 							Elgin “DJ LOKari” Bokari<br/>
@@ -33,12 +48,12 @@
 					<h5 style="margin-bottom:-10px;">"They Say Go"</h5>
 						<p>based on "Still Here" by <a href="/writing/past/2013/winnerssijo.php#1">Roberto Santos</a>, winner of the 2013 Sejong Writing Competition sijo category</p>
 						<blockquote>
-							<p><b>Still  Here</b><br/>
+							<p><b>Still Here</b><br/>
 							They say go, return to land that I don't know. It makes no sense.<br/>
 						Born and raised American, so Mexico is still foreign.<br/>
 						Culture kept, but this is my home. Immigrant, no: Hispanic.</p>
 						</blockquote>
-				<h5 style="margin-bottom:-10px;">"Be Here"</h5>
+					<h5 style="margin-bottom:-10px;">"Be Here"</h5>
 					<p>based on "Chung-sang-ri" by Hwang Chin-i (c. 1506-1560), one of the most famous courtesans in Korean history</p>
 					<blockquote>
 						<p><b>Chung-sang-ri</b> (Jade Green Stream)<br/>
@@ -46,41 +61,39 @@
 						Once you have reached the broad sea, to return again will be hard,<br/>
 						While the Bright Moon fills these empty hills, why not pause? Then go on, if you will.	</p>
 					</blockquote>
-			</div>
+				</div>
 
-			<div class="tab" tabindex="2">
-						<h1>Jazz</h1>
-						<h2>Columbia College Chicago Jazz Combo and Scott Hall</h2>
-			</div>
-			<div class="card">
-					<h3>Artists</h3>
-						<p><b>Columbia College Chicago Jazz Combo</b><br/>
-							Adam Dib, alto saxophone<br/>
-							Michael Hilgendorf, guitar <br/>
-							Zane DeBord, bass <br/>
-							Lyle Luckett, percussion</p>
-						<p><b>Scott Hall</b>, composer</p>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/VkH1FPlkaJg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-					<h5 style="margin-bottom:-10px;">"Bass Strings"</h5>
-						<p>composed by Scott Hall (Columbia College), based on "Tennis" by children's author and poet Linda Sue Park</p>
-						<blockquote>
-							<p><b>Tennis</b><br/>
-								When the professionals play,<br/>
-								it’s like watching a metronome:<br/>
-								Racquet to racquet and back again,<br/>
-								the ball keeps a perfect, steady beat.<br/><br/>
-								When I’m on the court with my friends,<br/>
-								we improvise: jazz, hip-hop.</p>
-			</div>
+				<div class="tab" tabindex="2">
+							<h1>Jazz</h1>
+							<h2>Columbia College Chicago Jazz Combo and Scott Hall</h2>
+				</div>
+				<div class="card">
+						<h3>Artists</h3>
+							<p><b>Columbia College Chicago Jazz Combo</b><br/>
+								Adam Dib, alto saxophone<br/>
+								Michael Hilgendorf, guitar <br/>
+								Zane DeBord, bass <br/>
+								Lyle Luckett, percussion</p>
+							<p><b>Scott Hall</b>, composer</p>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/VkH1FPlkaJg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						<h5 style="margin-bottom:-10px;">"Bass Strings"</h5>
+							<p>composed by Scott Hall (Columbia College), based on "Tennis" by children's author and poet Linda Sue Park</p>
+							<blockquote>
+								<p><b>Tennis</b><br/>
+									When the professionals play,<br/>
+									it’s like watching a metronome:<br/>
+									Racquet to racquet and back again,<br/>
+									the ball keeps a perfect, steady beat.<br/><br/>
+									When I’m on the court with my friends,<br/>
+									we improvise: jazz, hip-hop.</p>
+				</div>
 
-				<div class="updown" id="artsongs">
-					<a id="ar">
-					<div id="title">
-						<h1><a href="#">Korean Art Songs<div class="icon"></div></a></h1>
+
+				<div class="tab" tabindex="3">
+						<h1>Korean Art Songs</h1>
 						<h2>Ghibong Kim and Sojung Lee</h2>
 				</div>
-			</div>
-				<div class="videos" id="artsongs" style="display:none;">
+				<div class="card">
 					<h3 style="margin-bottom:-10px">Artists</h3>
 						<p><b>Ghibong Kim</b>, baritone<br/>
 							<b>Sojung Lee</b>, piano</p>
@@ -126,15 +139,14 @@
 								and ask her where she is going ?</p>
 						</blockquote>
 			</div>
+			</div>
 
-				<div class="updown" id="classical">
-					<a id="cl">
-					<div id="title">
-						<h1><a href="#">Contemporary Classical<div class="icon"></div></a></h1>
+				<div class="row">
+					<div class="tab" tabindex="4">
+						<h1>Contemporary Classical</h1>
 						<h2>Misook Kim and Teddy Niedermaier</h2>
 				</div>
-			</div>
-				<div class="videos" id="classical" style="display:none;">
+				<div class="card">
 					<h3 style="margin-bottom:-10px">Artists</h3>
 						<p><b>Yoorhi Choi</b>, violin<br/>
 							<b>Sojung Lee</b>, piano</p>
@@ -186,6 +198,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they say the mountain is too high.</p>
 							</blockquote>
 				</div>
+				</div>
+
+				<div style="clear:both;"></div>
 
 			</div>
 
