@@ -8,55 +8,47 @@ class WritingPM extends React.Component {
     super(props);
 
     this.state = {
-		      title: '',
-		      body: '',
-		      msg: null,
-		      haveData: false
-		    }
-    }
+      contentOpen: 'hipHop'
+		}
+
+    this.changeContent = this.changeContent.bind(this);
+  }
+
+  changeContent(content) {
+    this.setState({ contentOpen: content });
+  }
+
 
 		render() {
 	    return (
 	      <div>
-					<div class="tab" onClick={
-						() => {this.setState((state) => {
-							return {'hiphopOpen': !state.hiphopOpen}
-					})}}>Hip-hop</div>
-					<div class="tab" onClick={
-						() => {this.setState((state) => {
-							return {'jazzOpen': !state.jazzOpen}
-					})}}>Jazz</div>
-					<div class="tab" onClick={
-						() => {this.setState((state) => {
-							return {'classicalOpen': !state.classicalOpen}
-					})}}>Classical</div>
-					<div class="tab" onClick={
-						() => {this.setState((state) => {
-							return {'artOpen': !state.artOpen}
-					})}}>Korean Art Songs</div>
+					<div class="tab" onClick={() => {this.changeContent('hipHop')}}>Hip-hop</div>
+          <div class="tab" onClick={() => {this.changeContent('jazz')}}>Jazz</div>
+          <div class="tab" onClick={() => {this.changeContent('classical')}}>Classical</div>
+          <div class="tab" onClick={() => {this.changeContent('art')}}>Korean Art Songs</div>
 
-					{this.state.hiphopOpen &&
+					{this.state.contentOpen == "hipHop" &&
 						<div class="card">
 							<div>
 								<h1>Hip-hop</h1>
 							</div>
 						</div>
 					}
-					{this.state.jazzOpen &&
+					{this.state.contentOpen == "jazz" &&
 						<div class="card">
 							<div>
 								<h1>Jazz</h1>
 							</div>
 						</div>
 					}
-					{this.state.classicalOpen &&
+					{this.state.contentOpen == "classical" &&
 						<div class="card">
 							<div>
 								<h1>Classical</h1>
 							</div>
 						</div>
 					}
-					{this.state.artOpen &&
+					{this.state.contentOpen == "art" &&
 						<div class="card">
 							<div>
 								<h1>Korean Art Songs</h1>
