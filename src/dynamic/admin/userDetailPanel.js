@@ -22,15 +22,39 @@ class UserDetailPanel extends React.Component {
 
   render() {
     var userData = [];
+    var essayData, sijoData;
 
     if (this.state.data) {
       for (let key in this.state.data) {
-        userData.push(
-          <div className="adminDetailRow" key={key}>
-            <div className="adminDetailRow-key">{key}</div>
-            <div className="adminDetailRow-value">{this.state.data[key]}</div>
-          </div>
-        );
+        if (key == "essay") {
+          let essay = this.state.data[key];
+          let essayBody = {__html: essay.body}
+          essayData = (
+            <div className="adminDetailWriting">
+              <p><strong>Title: </strong>{essay.title}</p>
+              <p><strong>Division: </strong>{essay.division}</p>
+              <p><strong>Folktale: </strong>{essay.folktale}</p>
+              <div dangerouslySetInnerHTML={essayBody}></div>
+            </div>
+          )
+        } else if (key == "sijo") {
+          let sijo = this.state.data[key];
+          let sijoBody = {__html: sijo.body}
+          sijoData = (
+            <div className="adminDetailWriting">
+              <p><strong>Title: </strong>{sijo.title}</p>
+              <p><strong>Division: </strong>{sijo.division}</p>
+              <div dangerouslySetInnerHTML={sijoBody}></div>
+            </div>
+          )
+        } else {
+          userData.push(
+            <div className="adminDetailRow" key={key}>
+              <div className="adminDetailRow-key">{key}</div>
+              <div className="adminDetailRow-value">{this.state.data[key]}</div>
+            </div>
+          );
+        }
       }
     }
 
@@ -39,7 +63,12 @@ class UserDetailPanel extends React.Component {
         <div>
           <h2>Welcome {this.state.user.username}</h2>
           <a href="/admin">Back to admin panel</a>
+          <h2>Demographic data</h2>
           {userData}
+          <h2>Sijo</h2>
+          {sijoData}
+          <h2>Essay</h2>
+          {essayData}
         </div>
       )
     } else {
