@@ -1,5 +1,5 @@
 import React from 'react';
-import API from '../api/api';
+import SlideDown from 'react-slidedown';
 
 const classNames = require('classnames');
 
@@ -8,7 +8,8 @@ class WritingPM extends React.Component {
     super(props);
 
     this.state = {
-      contentOpen: 'hipHop'
+      contentOpen: 'hipHop',
+      expand: false
 		}
 
     this.changeContent = this.changeContent.bind(this);
@@ -22,21 +23,21 @@ class WritingPM extends React.Component {
 		render() {
 	    return (
 	      <div>
-					<div class="tab contain">
-						<div class="tab h" onClick={() => {this.changeContent('hipHop')}}>
+					<div className="tab contain">
+						<div className="tab h" onClick={() => {this.changeContent('hipHop')}}>
 							<h3>Hip-hop</h3></div>
-	          <div class="tab h" onClick={() => {this.changeContent('jazz')}}>
+	          <div className="tab h" onClick={() => {this.changeContent('jazz')}}>
 							<h3>Jazz</h3></div>
-	          <div class="tab h" onClick={() => {this.changeContent('classical')}}>
+	          <div className="tab h" onClick={() => {this.changeContent('classical')}}>
 							<h3>Classical</h3></div>
-	          <div class="tab h" onClick={() => {this.changeContent('art')}}>
+	          <div className="tab h" onClick={() => {this.changeContent('art')}}>
 							<h3>Korean Art Songs</h3></div>
 					</div>
 
 					{this.state.contentOpen == "hipHop" &&
 						<div>
-							<div class="mov">
-								<div class="text">
+							<div className="mov">
+								<div className="text">
 									<h1>Hip-hop</h1>
 									<h2>Elephant Rebellion and Suwan Choi</h2>
 									<p><b>TJ “TJ GT” Ayodele<br/>
@@ -45,59 +46,59 @@ class WritingPM extends React.Component {
 										<b>Suwan Choi</b>, jang-gu</p>
 								</div>
 
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/hZGiu7k9iFA" frameborder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/hZGiu7k9iFA" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
 							</div>
 
-							<div class="card">
-								<h1 class="title">Pieces</h1>
-								<h3 class="b">"They Say Go"</h3>
+							<div className="card">
+								<h1 className="title">Pieces</h1>
+								<h3 className="b">"They Say Go"</h3>
 								<p>based on "Still American" by <a href="/writing/past/2013/winnerssijo.php#1">Roberto Santos</a></p>
 								<p>“They Say Go” is comprised of a series of six sijo and one free verse poem, each one written by a member of Elephant Rebellion in response to “Still American.” &nbsp;
-								<button onClick={() => {this.setState((state) => {
-									return {'expand': !state.expand}
-								})}}>Expand for full lyrics</button></p>
-								{this.state.expand &&
-								<blockquote class="hide">
-									<p><b>Poem 1: Ona Wong</b><br/>
-									Learn English: the official language. This is America.<br/>
-									Are you dumb? That’s what they say:<br/>
-									Teachers, couns’lers, special ed class.<br/>
-									Speaking Shawnee on First Nations Land.<br/>
-									America. Where is that?<br/><br/>
-									<b>Poem 2: Uran Kabashi ("Fu Gee La")</b><br/>
-									Its hard for me, to speak the past, refugee, a lethal path.<br/>
-									But now I’m here, awoken life, its broken right, there’s hope tonight<br/>
-									open lights, and then I speak the truth, at an open mic, with the youth.<br/><br/>
-									<b>Poem 3: Mewael "Mo Beats" Michael ("American No Dream")</b><br/>
-									I hear a sound that is shockingly disturbing my dreams<br/>
-									They call it an alarm clock, and it’s supposed to wake you up<br/>
-									But when I wake up, I feel more asleep than when I’m dreaming<br/><br/>
-									<b>Poem 4: Elgin "DJ Lokari" Bokari ("Lorena Bu&ntilde;i's Poem")</b><br/>
-									She left home borrowed money took the plane to a foreign land.<br/>
-									She worked hard for her young child, her aging mom and ailing dad.<br/>
-									Now she’s home, balikbayan box she is flown in, modern day slave.<br/><br/>
-									<b>Poem 5: Mergen "Monotone" Batdelger</b><br/>
-									I say, I cannot for I have never attempted<br/>
-									I don’t know for I have yet to unravel the truth<br/>
-									But how dare I answer questions I have yet to question<br/>
-									always been a foreigner on a quest,<br/>
-									alienated based on where I was born at<br/><br/>
-									<b>Poem 6: Angel Pantoja</b><br/>
-									They call my people criminals<br/>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;saying we’ve stolen all their jobs<br/>
-									We who leave behind our families<br/>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to work in fields all day<br/>
-									America, you criminals;<br/>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let us correct your twisted ways<br/><br/>
-									<b>Poem 7: Micah Gray</b><br/>
-									Who can stop—humanity’s—<br/>
-									Deceptive ways—can someone see<br/>
-									It is me—the one who lives—<br/>
-									Searching for love—in this new age<br/>
-									Gifted be—the messenger who—flies ahead with—(battered wings) x2</p>
-								</blockquote>
-								}
-								<h3 class="b">"Still American"</h3>
+								<button onClick={() => {this.setState({expand: !this.state.expand})}}>Expand for full lyrics</button></p>
+								<SlideDown>
+                { this.state.expand ?
+  								<blockquote>
+  									<p><b>Poem 1: Ona Wong</b><br/>
+  									Learn English: the official language. This is America.<br/>
+  									Are you dumb? That’s what they say:<br/>
+  									Teachers, couns’lers, special ed class.<br/>
+  									Speaking Shawnee on First Nations Land.<br/>
+  									America. Where is that?<br/><br/>
+  									<b>Poem 2: Uran Kabashi ("Fu Gee La")</b><br/>
+  									Its hard for me, to speak the past, refugee, a lethal path.<br/>
+  									But now I’m here, awoken life, its broken right, there’s hope tonight<br/>
+  									open lights, and then I speak the truth, at an open mic, with the youth.<br/><br/>
+  									<b>Poem 3: Mewael "Mo Beats" Michael ("American No Dream")</b><br/>
+  									I hear a sound that is shockingly disturbing my dreams<br/>
+  									They call it an alarm clock, and it’s supposed to wake you up<br/>
+  									But when I wake up, I feel more asleep than when I’m dreaming<br/><br/>
+  									<b>Poem 4: Elgin "DJ Lokari" Bokari ("Lorena Bu&ntilde;i's Poem")</b><br/>
+  									She left home borrowed money took the plane to a foreign land.<br/>
+  									She worked hard for her young child, her aging mom and ailing dad.<br/>
+  									Now she’s home, balikbayan box she is flown in, modern day slave.<br/><br/>
+  									<b>Poem 5: Mergen "Monotone" Batdelger</b><br/>
+  									I say, I cannot for I have never attempted<br/>
+  									I don’t know for I have yet to unravel the truth<br/>
+  									But how dare I answer questions I have yet to question<br/>
+  									always been a foreigner on a quest,<br/>
+  									alienated based on where I was born at<br/><br/>
+  									<b>Poem 6: Angel Pantoja</b><br/>
+  									They call my people criminals<br/>
+  									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;saying we’ve stolen all their jobs<br/>
+  									We who leave behind our families<br/>
+  									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to work in fields all day<br/>
+  									America, you criminals;<br/>
+  									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let us correct your twisted ways<br/><br/>
+  									<b>Poem 7: Micah Gray</b><br/>
+  									Who can stop—humanity’s—<br/>
+  									Deceptive ways—can someone see<br/>
+  									It is me—the one who lives—<br/>
+  									Searching for love—in this new age<br/>
+  									Gifted be—the messenger who—flies ahead with—(battered wings) x2</p>
+  								</blockquote>
+                : null }
+								</SlideDown>
+								<h3 className="b">"Still American"</h3>
 								<blockquote>
 									<p><b>Still American</b><br/>
 										They say go, return to land that I don't know. It makes no sense.<br/>
@@ -108,10 +109,10 @@ class WritingPM extends React.Component {
 								<blockquote>
 									<p>I'm <b>Roberto Santos</b>, an 18-year-old senior at John B. Alexander High School. I had first heard of the Sejong Writing Competition as a class assignment for my English 4 class, and winning first place came as a great surprise! Without my teacher pushing the class to join, I  probably would've never done it out of fear of failure. The fact that I won something for just writing thoughts I’ve always had with a creative twist still blows my mind!</p>
 									<p>I live in a border town made up of a Hispanic/Mexican majority, where Spanish is spoken just as much as English; although I’m proud of my heritage, English is still my primary language. In my spare time I make music with my friends and spend time with my family. I plan on majoring in musical engineering and help expose  some of my talented friends’ music.</p>
-									<p class="attribute">(2013)</p>
+									<p className="attribute">(2013)</p>
 								</blockquote>
 
-								<h3 class="b">"Be Here"</h3>
+								<h3 className="b">"Be Here"</h3>
 								<p>based on "Chung-sang-ri" by Hwang Chin-i (c. 1506-1560)</p>
 								<blockquote>
 									<p><b>Chung-sang-ri</b> (Jade Green Stream)<br/>
@@ -123,15 +124,15 @@ class WritingPM extends React.Component {
 								<p>However, few of her sijo and musical compositions have survived, as she was denounced and vilified immediately after her death for her status as a courtesan.  There has been some speculation amongst academics that this sentiment was prompted by jealous contemporaries.</p>
 							</div>
 
-							<h1 class="title">Artists</h1>
+							<h1 className="title">Artists</h1>
 							<p><b>Elephant Rebellion</b> is a collective of artists and activists dedicated to empowering communities through the power of arts and education. They began organizing after their friend and fellow artist/activist John Vietnam Nguyen passed away. He left behind a legacy of inspiring change in the community through positive action and self-determination. Since then they have grown to become an organization that has been giving back to our community through music, dance, poetry, educational workshops and much more. They currently organize at Bridgeview Bank in the Uptown neighborhood of Chicago, IL.</p>
-							<p class="last">Elephant Rebellion's website can be found at <a href="http://www.elephantrebellion.org/">www.elephantrebellion.org</a>.</p>
+							<p className="last">Elephant Rebellion's website can be found at <a href="http://www.elephantrebellion.org/">www.elephantrebellion.org</a>.</p>
 							<p><b>Suwan Choi</b> (<em>jang-gu</em>), a Korean traditional musican, is an Artist-in-Residence at the Global Pungmul Institute of Chicago. He received a Bachelor of Arts in Korean Traditional Performing Arts. He is a former performance director of the Korean traditional performing arts troupe NJ&P and was a grand prize winner at the World Samulnori Competition in Korea. Choi recently performed at the Chicago Asian American Jazz Festival. The <em>jang-gu</em> is the most widely used drum in the traditional music of Korea. The first depiction of the instrument is in a mural inside a tomb dating back to the Goguryeo kingdom (37 BC—935 AD), a predecessor to modern-day Korea. The jang-gu has an hourglass-shaped body with two sides, called heads, made from animal skin. The two heads are played with bamboo sticks, mallets, or hands. Each head produces a different sound in pitch and timbre; when played together, they are believed to represent the harmony of man and woman. </p>
 						</div>
 					}
 					{this.state.contentOpen == "jazz" &&
-						<div class="mov">
-							<div class="text">
+						<div className="mov">
+							<div className="text">
 								<h1>Jazz</h1>
 								<h2>Columbia College Chicago Jazz Combo</h2>
 									<p><b>Adam Dib</b>, alto saxophone<br/>
@@ -140,14 +141,14 @@ class WritingPM extends React.Component {
 										<b>Lyle Luckett</b>, percussion<br/>
 										<b>Scott Hall</b>, composer</p>
 							</div>
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/VkH1FPlkaJg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-							<div class="card">
-								<h1 class="title">Pieces</h1>
-									<h3 class="b">"Bass Strings"</h3>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/VkH1FPlkaJg" frameBorder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							<div className="card">
+								<h1 className="title">Pieces</h1>
+									<h3 className="b">"Bass Strings"</h3>
 										<p>composed by Scott Hall<br/>
 											based on "Tennis" by Linda Sue Park</p>
 										<p>About "Bass Strings"</p>
-									<h3 class="b">"Tennis"</h3>
+									<h3 className="b">"Tennis"</h3>
 										<blockquote>
 											<p><b>Tennis</b><br/>
 												When the professionals play,<br/>
@@ -158,15 +159,15 @@ class WritingPM extends React.Component {
 												we improvise: jazz, hip-hop.</p>
 										</blockquote>
 										<p>About Linda Sue Park</p>
-								<h1 class="title">Artists and Composers</h1>
-									<h1 class="b">Columbia College Chicago Jazz Combo</h1>
-									<h1 class="b">Scott Hall</h1>
+								<h1 className="title">Artists and Composers</h1>
+									<h1 className="b">Columbia College Chicago Jazz Combo</h1>
+									<h1 className="b">Scott Hall</h1>
 							</div>
 						</div>
 					}
 					{this.state.contentOpen == "classical" &&
-						<div class="mov">
-							<div class="text">
+						<div className="mov">
+							<div className="text">
 								<h1>Contemporary Classical</h1>
 								<p><b>Yoorhi Choi</b>, violin<br/>
 									<b>Sojung Lee</b>, piano<br/>
@@ -176,14 +177,14 @@ class WritingPM extends React.Component {
 									<b>Jennifer Woodrum</b>, clarinet<br/>
 									<b>Teddy Niedermaier</b>, composer</p>
 							</div>
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/2saZZb3NEbg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-							<div class="card">
-								<h1 class="title">Pieces</h1>
-									<h3 class="b">"Ga-Go-Pa"</h3>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/2saZZb3NEbg" frameBorder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							<div className="card">
+								<h1 className="title">Pieces</h1>
+									<h3 className="b">"Ga-Go-Pa"</h3>
 										<p>composed by Misook Kim<br/>
 											based on "Nostalgia" by Yi Un-Sang</p>
 										<p>About "Bass Strings"</p>
-									<h3 class="b">"Nostalgia"</h3>
+									<h3 className="b">"Nostalgia"</h3>
 										<blockquote>
 											<p><b>Nostalgia</b>, <em>translated by Jang Gyong-ryol</em><br/>
 												Vividly I see in my mind’s eye the Southern Sea so blue and serene.<br/>
@@ -200,11 +201,11 @@ class WritingPM extends React.Component {
 												How I long to go back to those days when there were no tears at all! </p>
 										</blockquote>
 										<p>About Yi Un-Sang</p>
-									<h3 class="b">"Trio"</h3>
+									<h3 className="b">"Trio"</h3>
 										<p>composed by Teddy Niedermaier<br/>
 											based on sijo by Yi Myunghan, Hwang Chin-i, and Yang Sa Eun</p>
 										<p>About "Trio"</p>
-									<h3 class="b">Three Poems</h3>
+									<h3 className="b">Three Poems</h3>
 										<blockquote>
 											<p><b>untitled</b> by Yi Myunghan<br/>
 											If on the pathways of dreams <br/>
@@ -226,26 +227,26 @@ class WritingPM extends React.Component {
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they say the mountain is too high.</p>
 											</blockquote>
 										<p>About Yi Un-Sang</p>
-								<h1 class="title">Artists and Composers</h1>
-									<h1 class="b">everyone</h1>
+								<h1 className="title">Artists and Composers</h1>
+									<h1 className="b">everyone</h1>
 							</div>
 						</div>
 					}
 					{this.state.contentOpen == "art" &&
-						<div class="mov">
-							<div class="mov">
-								<div class="text">
+						<div className="mov">
+							<div className="mov">
+								<div className="text">
 									<h1>Korean Art Songs</h1>
 									<p><b>Ghibong Kim</b>, baritone<br/>
 									 	<b>Sojung Lee</b>, piano</p>
 								</div>
 
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/HFInmnQ7vTc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/HFInmnQ7vTc" frameBorder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 							</div>
 
-							<div class="card">
-								<h1 class="title">Pieces</h1>
-									<h3 class="b">"The Swing"</h3>
+							<div className="card">
+								<h1 className="title">Pieces</h1>
+									<h3 className="b">"The Swing"</h3>
 										<p>composed by Gum Suhyun (1919-1992), based on sijo by Kim Mal-bong (1901-1961)</p>
 										<blockquote>
 											<p><b>The Swing</b>, <em>translated by Jang Gyong-ryol</em><br/>
@@ -256,7 +257,7 @@ class WritingPM extends React.Component {
 												As she pushes off twice, the world lays itself flat beneath her feet.<br/>
 												Myriad worries of the mind are all blown away in the wind.</p>
 									</blockquote>
-									<h3 class="b">"Stars"</h3>
+									<h3 className="b">"Stars"</h3>
 										<p>composed by Lee Soo-in (b. 1939), based on sijo by Yi Pyong-gi (1891-1968)</p>
 										<blockquote>
 											<p><b>Stars</b>, <em>translated by Jaihiun Kim</em><br/>
@@ -267,7 +268,7 @@ class WritingPM extends React.Component {
 												Whose stars can they be? Which one is mine?<br/>
 												Standing alone in the night, I count them one by one. </p>
 												</blockquote>
-									<h3 class="b">"Spring Maiden"</h3>
+									<h3 className="b">"Spring Maiden"</h3>
 										<p>composed by Hong Nan-pa (1898-1941), based on sijo by Yi Un-sang (1903-1982)</p>
 										<blockquote>
 											<p><b>Spring Maiden</b>, <em>translated by Jaihiun Kim</em><br/>
@@ -285,7 +286,7 @@ class WritingPM extends React.Component {
 												and ask her where she is going ?</p>
 										</blockquote>
 
-							<h1 class="title">Artists</h1>
+							<h1 className="title">Artists</h1>
 								<p><b>Ghibong Kim</b></p>
 								<p><b>Sojung Lee</b></p>
 							</div>

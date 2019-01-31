@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {SlideDown} from 'react-slidedown'
+import {SlideDown} from 'react-slidedown';
 import 'react-slidedown/lib/slidedown.css'
 
 class MyDropdown extends React.Component {
