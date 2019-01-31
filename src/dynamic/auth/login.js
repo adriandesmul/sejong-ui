@@ -12,7 +12,8 @@ class Login extends React.Component {
       password: null,
       loginOpen: false,
       forgotPasswordOpen: false,
-      forgotPasswordSuccess: false
+      forgotPasswordSuccess: false,
+      error: null
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -42,6 +43,12 @@ class Login extends React.Component {
     this.props.attemptLogin({
       username: this.state.username,
       password: this.state.password
+    }, (result) => {
+      if (result) {
+        this.setState({
+          error: result
+        })
+      }
     });
   }
 
@@ -73,6 +80,12 @@ class Login extends React.Component {
   }
 
   render() {
+    var error;
+
+    if (this.state.error) {
+      error = (<div className="scs-error">{this.state.error}</div>)
+    }
+
     return (
       <div>
         <div className="dropdown-item">
@@ -97,6 +110,7 @@ class Login extends React.Component {
               onChange={this.handleInputChange}
               onKeyPress={this.handleKeyPress}
             />
+            {error}
             <a className="scs-button" onClick={this.handleSubmit}>Log in</a>
             <a className="scs-button pw" onClick={this.handleForgotPassword}>Forgot password</a>
           </div>

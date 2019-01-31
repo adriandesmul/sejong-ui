@@ -24,7 +24,7 @@ class Auth extends React.Component {
     }
   }
 
-  attemptLogin(data) {
+  attemptLogin(data, cb) {
 
     const loginString =
       encodeURIComponent('username') + '=' +
@@ -39,7 +39,10 @@ class Auth extends React.Component {
       },
       body: loginString
     }).then((results) => {
-        if (results.status !== 200) { return null; }
+        if (results.status !== 200) {
+          cb('Wrong password')
+          return null;
+        }
         return results.text();
     }).then((data) => {
         if (!data) { return; }
@@ -78,9 +81,11 @@ class Auth extends React.Component {
 
 		{
       return (
-        <div className="scs-auth">
-          <Username name={this.state.username} />
-          <Logout logout={this.logout} />
+        <div className="scs-auth dropdown-item">
+          <div className="dropdown-link">
+            <Username name={this.state.username} />
+            <Logout logout={this.logout} />
+          </div>
         </div>
       )
     }

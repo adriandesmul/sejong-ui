@@ -22,8 +22,8 @@
   background-color: #333;
   z-index: 200;
 
-  padding: 10px;
-  border-radius: 0.5rem;
+  padding: 20px 10px;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
 
   right: 10%;
 
@@ -51,7 +51,7 @@
 	}
 
   .scs-error {
-    width: 19rem;
+    //width: 19rem;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     background-color: $failure;

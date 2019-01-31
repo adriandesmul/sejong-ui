@@ -2,7 +2,7 @@ import React from 'react';
 
 function Username(props) {
   if (props.name) {
-    return <div>{props.name} |&nbsp;</div>;
+    return <a>{props.name} |&nbsp;</a>;
   }
   return <div></div>;
 }
