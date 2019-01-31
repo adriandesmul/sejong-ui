@@ -1,58 +1,64 @@
-.index, .index-item {
-	display:flex;
-}
-.row {
-	position:relative;
-	width: 100%;
-}
 .tab {
-	outline:none;
 	float:left;
 	clear:left;
-	width:20%;
 	display:block;
-}
-.tab:hover {
-	cursor: pointer;
-}
-
-.card{
-	width:70%;
-	float:right;
-}
-
-.tab:focus + .card{
-	display:block;
-}
-.tab:after {
-  content: "";
-  display: table;
-}
-
-.help .tab, .taba {
-	border: 2px solid blue;
-}
-.help .card, .carda {
-	border: 2px solid green;
-}
-
-input[type=checkbox] {
-	display:none;
-}
-input label {
-  display: block;
-}
-input[type=checkbox]:checked + label + div.card {
-  display: block;
-}
-
-.taba {
-	float: left;
-	clear: left;
 	width:20%;
+
+	h3 {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	:hover {
+		cursor: pointer;
+	}
+
 }
-.carda {
-	width:70%;
-	right:0;
-	position:absolute;
+
+.tab.h {
+	display: inline;
+	clear: none;
+	background-color: grey;
+	color: white;
+	border: none;
+	text-align: center;
+	padding: 4px;
+	transition: background-color 0.3s ease;
+	border-radius: 3em 3em 0em 0em / 5em 5em 0em 0em;
+
+	:hover {
+		background-color: darkgrey;
+		transition: background-color 0.3s ease;
+		border-radius: 3em 3em 0em 0em / 5em 5em 0em 0em;
+	}
+}
+.tab.contain {
+	border-bottom: solid 2px grey;
+	width: 100%;
+	margin-left: -30px;
+	margin-right: -90px;
+	padding-left: 60px;
+}
+
+.card, .mov {
+	clear:both;
+}
+
+.mov {
+	padding: 20px 0px 30px;
+
+	iframe {
+		float: left;
+		margin-bottom: 30px;
+	}
+
+	.text {
+		float:left;
+		width: 30%;
+	}
+
+	h1 {
+		margin-top: 0px;
+	}
+
 }
