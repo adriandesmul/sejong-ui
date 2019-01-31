@@ -75,9 +75,9 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <div class="dropdown-item">
+        <div className="dropdown-item">
 					<a>
-						<div class="dropdown-link" onClick={() => {this.setState((state) => {
+						<div className="dropdown-link" onClick={() => {this.setState((state) => {
 		          return {'loginOpen': !state.loginOpen}
 						})}}>Log in</div>
 					</a>

@@ -1,0 +1,40 @@
+.adminUserList {
+  .adminUserRow {
+    display: flex;
+
+    &.adminRowHeader {
+      font-family: "GillSansMTPro-Bold"
+    }
+
+    div {
+      flex: 100px;
+
+      &.cell-short {
+        flex: 1;
+      }
+
+      &.cell-medium {
+        flex: 2;
+      }
+
+      &.cell-long {
+        flex: 3;
+      }
+    }
+  }
+}
+
+.adminDetailRow {
+  display: flex;
+
+  .adminDetailRow-key {
+    font-family: "GillSansMTPro-Bold";
+    flex: 0 0 200px;
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  .adminDetailRow-value {
+    flex: 1;
+  }
+}

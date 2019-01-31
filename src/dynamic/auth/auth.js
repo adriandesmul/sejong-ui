@@ -46,6 +46,7 @@ class Auth extends React.Component {
         localStorage.setItem('loginToken', data);
         var userData = decodeToken(data);
         this.setState(userData);
+        window.location.reload();
     });
 
   }
@@ -54,11 +55,13 @@ class Auth extends React.Component {
     localStorage.setItem('loginToken', data);
     var userData = decodeToken(data);
     this.setState(userData);
+    window.location.reload();
   }
 
   logout() {
     localStorage.removeItem('loginToken');
     this.setState(decodeToken());
+    window.location.reload();
   }
 
   render() {
