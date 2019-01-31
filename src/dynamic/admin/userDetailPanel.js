@@ -31,6 +31,7 @@ class UserDetailPanel extends React.Component {
           let essayBody = {__html: essay.body}
           essayData = (
             <div className="adminDetailWriting">
+              <p><strong>Status: </strong>{essay.status ? 'Complete' : 'Incomplete'}</p>
               <p><strong>Title: </strong>{essay.title}</p>
               <p><strong>Division: </strong>{essay.division}</p>
               <p><strong>Folktale: </strong>{essay.folktale}</p>
@@ -42,6 +43,7 @@ class UserDetailPanel extends React.Component {
           let sijoBody = {__html: sijo.body}
           sijoData = (
             <div className="adminDetailWriting">
+              <p><strong>Status: </strong>{sijo.status ? 'Complete' : 'Incomplete'}</p>
               <p><strong>Title: </strong>{sijo.title}</p>
               <p><strong>Division: </strong>{sijo.division}</p>
               <div dangerouslySetInnerHTML={sijoBody}></div>

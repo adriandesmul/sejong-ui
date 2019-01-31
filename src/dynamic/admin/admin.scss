@@ -10,7 +10,7 @@
       flex: 100px;
 
       &.cell-short {
-        flex: 1;
+        flex: 0.5;
       }
 
       &.cell-medium {
@@ -19,6 +19,16 @@
 
       &.cell-long {
         flex: 3;
+      }
+
+      &.cell-success {
+        background-color: green;
+        text-align: center;
+      }
+
+      &.cell-failure {
+        background-color: red;
+        text-align: center;
       }
     }
   }

@@ -42,7 +42,7 @@ function post(route, payload, cb) {
     },
     body: formatPayload(payload)
   }).then((results) => {
-    cb(results.status)
+    cb(results.status, results.text())
   })
 
 }

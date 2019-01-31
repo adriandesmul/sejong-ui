@@ -35,6 +35,9 @@ class UserList extends React.Component {
           <div className="cell-long">Email</div>
           <div className="cell-medium">First name</div>
           <div className="cell-medium">Last name</div>
+          <div className="cell-short">D</div>
+          <div className="cell-short">S</div>
+          <div className="cell-short">E</div>
         </div>
         {users}
       </div>
