@@ -45,15 +45,40 @@ h1 {
 	font-size: 36px;
   margin: 0.67em 0 0.2em;
 }
+h1.a {
+	margin-top: 40px;
+}
+h1.title {
+	background-color: darkseagreen;
+	color: white;
+	padding: 8px;
+	padding-left: 30px;
+	margin: 30px -30px 20px -30px;
+
+	+ * {
+		margin-top: 20px;
+		padding-top: 0px;
+	}
+}
 h2 {
 	font-family: 'Bison-DemiBold';
 	font-size: 24px;
   margin: 0;
 }
+h2 + iframe {
+	margin-top: 20px;
+}
 h3, h3 a {
 	font-family: 'Bison-DemiBold';
 	font-size: 24px;
 	margin: 1.5em 0 0;
+}
+h3.b {
+	margin-bottom: 0px;
+}
+h3.b + p {
+	margin-top: 0px;
+	padding-top: 0px;
 }
 h4 {
 	font-family: 'GillSansMTPro-Medium';
@@ -71,6 +96,7 @@ ul {
 blockquote {
 	margin-left: 2em;
 	margin-right: 3em;
+	margin-top: 1em;
 }
 
 /**************************/
@@ -86,4 +112,37 @@ blockquote {
 	min-height: 77.5vh;
 	padding-left: 15%;
 	padding-right: 15%;
+}
+
+p.last {
+	padding-bottom: 15px;
+}
+
+.attribute {
+	text-align: right;
+	margin-bottom: -25px;
+}
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.hide {
+}
+
+button { /* Green */
+	background-color: steelblue;
+	border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+	border-radius: 4px;
+	font-family: 'GillSansMTPro-Light';
+	font-size: 18px;
+}
+button:hover {
+	transition: background-color 0.3s ease;
+	background-color: darkseagreen;
 }

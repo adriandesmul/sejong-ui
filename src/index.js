@@ -9,6 +9,7 @@ import SijoEntry from './dynamic/writingEntry/sijoEntry';
 import WritingPM from './dynamic/videos/writingPM';
 import AdminPanel from './dynamic/admin/adminPanel';
 import UserDetailPanel from './dynamic/admin/userDetailPanel';
+import MyDropdown from './dynamic/videos/test';
 
 // EXTRA IMAGES
 import './library/logo_white_nourl.gif';
@@ -18,3 +19,4 @@ if (document.getElementById('sijo')) ReactDOM.render(<SijoEntry />, document.get
 if (document.getElementById('writingPM')) ReactDOM.render(<WritingPM />, document.getElementById('writingPM'));
 if (document.getElementById('adminPanel')) ReactDOM.render(<AdminPanel />, document.getElementById('adminPanel'));
 if (document.getElementById('userDetailPanel')) ReactDOM.render(<UserDetailPanel />, document.getElementById('userDetailPanel'));
+if (document.getElementById('my-dropdown-slidedown')) ReactDOM.render(<MyDropdown />, document.getElementByClass('my-dropdown-slidedown'));
