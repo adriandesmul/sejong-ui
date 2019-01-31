@@ -3,11 +3,21 @@ import React from 'react'
 import {SlideDown} from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
-export function MyDropdown(props) {
-  return (
-    <SlideDown className={'my-dropdown-slidedown'}>
-      {props.open ? props.children : null}
-			<p>Hello world</p>
-    </SlideDown>
-  )
+class MyDropdown extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+      <SlideDown className="my-dropdown-slidedown">
+        {this.props.open ? this.props.children : null}
+        <p>Hello world</p>
+      </SlideDown>
+    )
+  }
+
 }
+
+export default MyDropdown
