@@ -1,0 +1,22 @@
+@import '../../styles/colors';
+
+.scs-selection-options {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+
+  .scs-selection-option {
+    flex: 1 0 5rem;
+    padding: 0.5rem;
+    margin: 0rem 0.5rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    background-color: $primary;
+    color: white;
+    font-family: 'GillSansMTPro-Bold';
+    text-align: center;
+
+    &.selected {
+      background-color: $success;
+    }
+  }
+}

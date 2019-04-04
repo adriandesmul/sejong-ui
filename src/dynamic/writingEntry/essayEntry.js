@@ -2,30 +2,37 @@ import React from 'react';
 import EntryArea from './entryArea';
 import API from '../api/api';
 import './writingEntry.scss';
+import ButtonOptions from '../common/buttonOptions';
 
 const classNames = require('classnames');
 
-class SijoEntry extends React.Component {
+class EssayEntry extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       title: '',
       body: '',
-      msg: null,
+      division: null,
+      folktale: null,
       unsavedChanges: false,
+      msg: null,
       haveData: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
+    this.selectDivison = this.selectDivison.bind(this);
+    this.selectFolktale = this.selectFolktale.bind(this);
     this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
-    API.get('/writing/sijo', (err, data) => {
+    API.get('/writing/essay', (err, data) => {
       !this.isCancelled && this.setState({
         title: data ? data.title : '',
         body: data ? data.body : '',
+        division: data ? data.division : null,
+        folktale: data ? data.folktale : null,
         unsavedChanges: false,
         haveData: true
       })
@@ -52,11 +59,29 @@ class SijoEntry extends React.Component {
     });
   }
 
+  selectDivison(division) {
+    if (division === "Junior") {
+      this.setState({ division: division, unsavedChanges: true })
+    } else {
+      this.setState({
+        division: division,
+        folktale: null,
+        unsavedChanges: true
+      })
+    }
+  }
+
+  selectFolktale(folktale) {
+    this.setState({ folktale: folktale, unsavedChanges: true })
+  }
+
   handleSave() {
     var payload = {
       title: this.state.title,
       body: this.state.body,
-      entry_type: 'sijo'
+      division: this.state.division,
+      folktale: this.state.folktale,
+      entry_type: 'essay'
     }
 
     API.post('/writing/save', payload, (status) => {
@@ -83,24 +108,37 @@ class SijoEntry extends React.Component {
 
     return (
       <div className="scs-module">
-      <div className="scs-header">
-        <span>Sijo Entry</span>
-        {this.state.unsavedChanges && <span>Unsaved changes</span>}
-      </div>
+        <div className="scs-header">
+          <span>Essay Entry</span>
+          {this.state.unsavedChanges && <span>Unsaved changes</span>}
+        </div>
         {msg &&
           <div className={msgClass}>{msg.body}</div>
         }
-        {this.state.haveData &&
         <div className="scs-module-element">
           <label>Title: </label>
           <input
             type="text"
             name="title"
-            placeholder="Sijo title"
+            placeholder="Essay title"
             className="scs-input"
             value={this.state.title}
             onChange={this.handleInputChange}
           />
+        </div>
+        <div className="scs-module-element">
+          <label>Division: </label>
+          <ButtonOptions options={['Junior', 'Senior', 'Adult']}
+                         onUpdate={this.selectDivison}
+                         value={this.state.division} />
+        </div>
+        {this.state.division === 'Junior' &&
+        <div className="scs-module-element">
+          <label>Folktale: </label>
+          <ButtonOptions options={['Folktale A', 'Folktale B', 'Folktale C', 'Folktale D',
+                          'Folktale E', 'Folktale F', 'Folktale G', 'Folktale H']}
+                         onUpdate={this.selectFolktale}
+                         value={this.state.folktale} />
         </div>
         }
         {this.state.haveData &&
@@ -115,4 +153,4 @@ class SijoEntry extends React.Component {
   }
 }
 
-export default SijoEntry;
+export default EssayEntry;
