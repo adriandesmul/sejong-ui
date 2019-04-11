@@ -22,7 +22,11 @@ function get(route, cb) {
       cb(true, null);
       return
     }
-    return results.json()
+    if (route === '/writing/generate/sijo' || route === '/writing/generate/essay') {
+      return results.blob();
+    } else {
+      return results.json();
+    }
   }).then((data) => {
     cb(false, data);
   })

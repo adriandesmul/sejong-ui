@@ -19,6 +19,7 @@ class SijoEntry extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handlePreview = this.handlePreview.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +78,25 @@ class SijoEntry extends React.Component {
     })
   }
 
+  handlePreview() {
+    API.get('/writing/generate/sijo', (error, data) => {
+      console.log(data)
+      var newBlob = new Blob([data], {type: "application/pdf"})
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob);
+        return;
+      }
+
+      const url = window.URL.createObjectURL(newBlob);
+      var link = document.createElement('a');
+      link.href = url;
+      link.download="preview.pdf";
+      link.click();
+      setTimeout(() => window.URL.revokeObjectURL(url), 100)
+    })
+  }
+
   render() {
     let msg = this.state.msg;
     let msgClass;
@@ -112,6 +132,7 @@ class SijoEntry extends React.Component {
         />
         }
         <a className="scs-button" onClick={this.handleSave}>Save</a>
+        <a className="scs-button" onClick={this.handlePreview}>Preview</a>
       </div>
     )
   }
