@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Auth from './dynamic/auth/auth';
+import DemographicsEntry from './dynamic/demographics/demographicsEntry';
 import SijoEntry from './dynamic/writingEntry/sijoEntry';
 import EssayEntry from './dynamic/writingEntry/essayEntry';
 import WritingPM from './dynamic/videos/writingPM';
@@ -16,6 +17,7 @@ import MyDropdown from './dynamic/videos/test';
 import './library/logo_white_nourl.gif';
 
 if (document.getElementById('auth')) ReactDOM.render(<Auth />, document.getElementById('auth'));
+if (document.getElementById('demographics')) ReactDOM.render(<DemographicsEntry />, document.getElementById('demographics'));
 if (document.getElementById('sijo')) ReactDOM.render(<SijoEntry />, document.getElementById('sijo'));
 if (document.getElementById('essay')) ReactDOM.render(<EssayEntry />, document.getElementById('essay'));
 if (document.getElementById('writingPM')) ReactDOM.render(<WritingPM />, document.getElementById('writingPM'));

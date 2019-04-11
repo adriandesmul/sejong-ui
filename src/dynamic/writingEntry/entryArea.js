@@ -13,6 +13,12 @@ class EntryArea extends React.Component {
       ]
     }
     this.formats = ['bold', 'italic', 'underline'];
+
+    if (this.props.type === 'sijo') {
+      this.modules.toolbar[0].push({'indent': '-1'})
+      this.modules.toolbar[0].push({'indent': '+1'})
+      this.formats.push('indent')
+    }
   }
 
   componentDidMount() {

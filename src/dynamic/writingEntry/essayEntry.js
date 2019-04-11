@@ -3,6 +3,7 @@ import EntryArea from './entryArea';
 import API from '../api/api';
 import './writingEntry.scss';
 import ButtonOptions from '../common/buttonOptions';
+import constants from '../common/constants';
 
 const classNames = require('classnames');
 
@@ -85,7 +86,7 @@ class EssayEntry extends React.Component {
     }
 
     API.post('/writing/save', payload, (status) => {
-      if (status != '200') {
+      if (status !== 200) {
         this.setState({ msg: {
           body: 'Save error',
           type: 'error'
@@ -128,15 +129,14 @@ class EssayEntry extends React.Component {
         </div>
         <div className="scs-module-element">
           <label>Division: </label>
-          <ButtonOptions options={['Junior', 'Senior', 'Adult']}
+          <ButtonOptions options={constants.essayDivisions}
                          onUpdate={this.selectDivison}
                          value={this.state.division} />
         </div>
         {this.state.division === 'Junior' &&
         <div className="scs-module-element">
           <label>Folktale: </label>
-          <ButtonOptions options={['Folktale A', 'Folktale B', 'Folktale C', 'Folktale D',
-                          'Folktale E', 'Folktale F', 'Folktale G', 'Folktale H']}
+          <ButtonOptions options={constants.juniorFolktales}
                          onUpdate={this.selectFolktale}
                          value={this.state.folktale} />
         </div>
@@ -145,6 +145,7 @@ class EssayEntry extends React.Component {
         <EntryArea
           initialValue={this.state.body}
           onChange={this.handleBodyChange}
+          type='essay'
         />
         }
         <a className="scs-button" onClick={this.handleSave}>Save</a>

@@ -22,9 +22,9 @@ function get(route, cb) {
       cb(true, null);
       return
     }
-    return results.text()
+    return results.json()
   }).then((data) => {
-    cb(false, JSON.parse(data));
+    cb(false, data);
   })
 
 }
@@ -41,9 +41,14 @@ function post(route, payload, cb) {
       'Authorization': 'Bearer ' + token
     },
     body: formatPayload(payload)
-  }).then((results) => {
-    cb(results.status, results.text())
-  })
+  }).then(res => {
+      if (res.status !== 200) { cb(res.status, res.text()); return null; }
+      return res.text();
+    })
+    .then((results) => {
+      if (!results) { cb(500); return; }
+      cb(200, results)
+    })
 
 }
 

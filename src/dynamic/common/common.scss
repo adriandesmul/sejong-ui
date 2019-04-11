@@ -20,3 +20,59 @@
     }
   }
 }
+
+.scs-dropdown {
+  font-size: 1rem;
+  background-color: white;
+  margin-left: 0.5rem;
+}
+
+.scs-selectionTable {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  .scs-selectionTable-header, .scs-selectionTable-row {
+    flex: 1;
+    display: flex;
+  }
+
+  .scs-selectionTable-header {
+    font-family: "GillSansMTPro-Bold";
+    border-bottom: 2px solid black;
+  }
+
+  .scs-selectionTable-row {
+    padding: 0.5rem 0rem;
+    border-bottom: 1px solid black;
+  }
+
+  .scs-selectionTable-cell {
+    flex: 1;
+    display: flex;
+
+    &.cell-sm {
+      flex: 0 0 5rem;
+    }
+  }
+
+  .scs-selectionTable-select {
+    background-color: $primary;
+    color: white;
+    margin: 0rem 0.5rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scs-selectionTable-create {
+    flex: 1;
+    border-radius: 0.5rem;
+    border: 1px solid $primary;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+}

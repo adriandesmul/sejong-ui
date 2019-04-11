@@ -48,3 +48,11 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
   align-self: center;
   color: white;
 }
+
+.scs-inline-button {
+  background-color: $primary;
+  color: white;
+  margin: 0rem 0.5rem;
+  padding: 0rem 0.5rem;
+  text-align: center;
+}

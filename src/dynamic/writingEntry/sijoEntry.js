@@ -60,7 +60,8 @@ class SijoEntry extends React.Component {
     }
 
     API.post('/writing/save', payload, (status) => {
-      if (status != '200') {
+      console.log(status)
+      if (status !== 200) {
         this.setState({ msg: {
           body: 'Save error',
           type: 'error'
@@ -107,6 +108,7 @@ class SijoEntry extends React.Component {
         <EntryArea
           initialValue={this.state.body}
           onChange={this.handleBodyChange}
+          type='sijo'
         />
         }
         <a className="scs-button" onClick={this.handleSave}>Save</a>
