@@ -53,12 +53,12 @@ class WritingPM extends React.Component {
 								<h1 className="title">Pieces</h1>
 								<h3 className="b">"They Say Go"</h3>
 								<p>based on "Still American" by <a href="/writing/past/2013/winnerssijo.php#1">Roberto Santos</a></p>
-								<p>“They Say Go” is comprised of a series of six sijo and one free verse poem, each one written by a member of Elephant Rebellion in response to “Still American.” &nbsp;
-								<button onClick={() => {this.setState({expand: !this.state.expand})}}>Expand for full lyrics</button></p>
+								<p>“They Say Go” is comprised of a series of six sijo and one free verse poem, each one written by a member of Elephant Rebellion in response to “Still American.”</p>
+								<p><button onClick={() => {this.setState({expand: !this.state.expand})}}>Expand for full lyrics</button></p>
 								<SlideDown>
                 { this.state.expand ?
-  								<blockquote>
-  									<p><b>Poem 1: Ona Wong</b><br/>
+									<blockquote><p>
+										<b>Poem 1: Ona Wong</b><br/>
   									Learn English: the official language. This is America.<br/>
   									Are you dumb? That’s what they say:<br/>
   									Teachers, couns’lers, special ed class.<br/>
@@ -94,8 +94,8 @@ class WritingPM extends React.Component {
   									Deceptive ways—can someone see<br/>
   									It is me—the one who lives—<br/>
   									Searching for love—in this new age<br/>
-  									Gifted be—the messenger who—flies ahead with—(battered wings) x2</p>
-  								</blockquote>
+  									Gifted be—the messenger who—flies ahead with—(battered wings) x2
+									</p></blockquote>
                 : null }
 								</SlideDown>
 								<h3 className="b">"Still American"</h3>

@@ -17,15 +17,15 @@ body {
 }
 /* */
 body {
-	margin:0px;
-	padding:0px;
+	margin:0;
+	padding:0;
 	z-index:-50;
 	font-family: 'GillSansMTPro-Light';
 }
 p {
-  margin: 18px 0;
-	line-height: 1.4em;
-	//font-size: 18px;
+  margin: 1rem 0;
+	line-height: 1.6rem;
+	font-size: 1.12rem;
 }
 b, a {
 	font-family: 'GillSansMTPro-Medium';
@@ -42,23 +42,25 @@ a:hover {
 
 h1 {
 	font-family: 'Bison-DemiBold';
-	font-size: 36px;
-  margin: 0.67em 0 0.2em;
+	font-size: 2.3rem;
+  margin: 1rem 0 0.4rem;
+	line-height: 2rem;
 }
 h1.a {
-	margin-top: 40px;
+	margin-top: 1rem;
 }
 h1.title {
 	background-color: darkseagreen;
 	color: white;
-	padding: 8px;
-	padding-left: 30px;
-	margin: 30px -30px 20px -30px;
+	padding: 0.6rem;
+	padding-left: 1rem;
+	margin: 3rem -1.85rem 2rem -1.86rem;
 
 	+ * {
-		margin-top: 20px;
-		padding-top: 0px;
+		margin-top: 1rem;
+		padding-top: 0;
 	}
+
 }
 h2 {
 	font-family: 'Bison-DemiBold';
@@ -74,11 +76,19 @@ h3, h3 a {
 	margin: 1.5em 0 0;
 }
 h3.b {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 h3.b + p {
-	margin-top: 0px;
-	padding-top: 0px;
+	margin-top: 0;
+	padding-top: 0;
+}
+h3.notice.blue {
+	border:solid 2px #23577e;
+	background-color: #c5e3fa;
+	margin-top:25px;
+	padding:20px 10px 25px;
+	text-align: center;
+	color:#23577e;
 }
 h4 {
 	font-family: 'GillSansMTPro-Medium';

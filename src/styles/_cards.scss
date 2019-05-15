@@ -2,11 +2,10 @@
 	float:left;
 	clear:left;
 	display:block;
-	width:20%;
 
 	h3 {
-		margin: 0px;
-		padding: 0px;
+		margin: 0;
+		padding: 0;
 	}
 
 	:hover {
@@ -22,22 +21,26 @@
 	color: white;
 	border: none;
 	text-align: center;
-	padding: 4px;
+	padding: 0.2rem 4rem;
+	margin: 0;
 	transition: background-color 0.3s ease;
-	border-radius: 3em 3em 0em 0em / 5em 5em 0em 0em;
+/*	border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem; */
 
 	:hover {
 		background-color: darkgrey;
 		transition: background-color 0.3s ease;
-		border-radius: 3em 3em 0em 0em / 5em 5em 0em 0em;
+		border: none;
+/* the following two lines remove the hover border problem */
+		margin: -0.2rem -4rem;
+		padding: 0.2rem 4rem;
+/*		border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem; */
 	}
 }
 .tab.contain {
-	border-bottom: solid 2px grey;
+	border-bottom: none;
 	width: 100%;
-	margin-left: -30px;
-	margin-right: -90px;
-	padding-left: 60px;
+	margin-left: -1.86rem;
+	padding-left: 0;
 }
 
 .card, .mov {
@@ -45,20 +48,16 @@
 }
 
 .mov {
-	padding: 20px 0px 30px;
+	padding: 1.5rem 0 2rem;
 
 	iframe {
 		float: left;
-		margin-bottom: 30px;
+		margin-bottom: 2rem;
 	}
 
 	.text {
 		float:left;
 		width: 30%;
-	}
-
-	h1 {
-		margin-top: 0px;
 	}
 
 }

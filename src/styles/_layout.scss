@@ -1,11 +1,11 @@
 /***************************************************************** TOP LAYOUT */
 .container, .dropdown-inner-container {
-	line-height:1.6em;
-	margin:0px;
-	padding:0px;
+	line-height:1.8rem;
+	margin:0;
+	padding:0;
 	z-index:-50;
 	font-family: 'GillSansMTPro-Light';
-	font-size: 18px;
+	font-size: 1.2rem;
 }
 .container, .navbar, .dropdown-menu, .dropdown-item, .dropdown-inner, .mobile-m10,
 .mobile-navbar, .footer, .footer-menu, .footer-item, .footer-right {
@@ -18,7 +18,7 @@
 }
 .header {
 	width:100%;
-	height: 110px;
+	height: 110px; /* 110px */
 	z-index: 1;
 	background-image: url('../library/hmjg.jpg');
 	background-size: cover;
@@ -34,7 +34,7 @@
 }
 .navbar ul, .footer ul {
 	list-style: none;
-	margin: 0px;
+	margin: 0;
 	height:100%;
 }
 .dropdown-menu, .dropdown-item, .dropdown-inner, .dropdown-link, .footer-item,
@@ -42,12 +42,13 @@
 	display:flex;
 }
 .dropdown-menu {
-	padding:0px;
+	padding:0;
 	padding-left:15%;
 	padding-right:15%;
-}
-.dropdown-menu h1 {
-	font-size: 24px;
+
+	h1 {
+		font-size: 1.6rem;
+	}
 }
 .dropdown-item {
 	display:block;
@@ -76,9 +77,9 @@
 }
 .dropdown-link {
 	z-index: 1000;
-	padding:14px 18px;
+	padding:1.2rem 1.75rem;
 	cursor: pointer;
-	font-size: 18px;
+	font-size: 1.2rem;
 	overflow:hidden;
 	white-space:nowrap;
 }
@@ -89,8 +90,8 @@
 	left:0;
 	z-index:-10;
 	clear:both;
-	padding-bottom:0px;
-	margin:0px;
+	padding-bottom:0;
+	margin:0;
 	/* next four lines for new effect */
 	opacity:0;
 	z-index: -1;
@@ -101,7 +102,7 @@
 }
 .dropdown-inner-container {
 	margin-left:15%;
-	padding:10px 0px 30px;
+	padding:0.8rem 0 2rem;
 }
 .dropdown-inner-container div {
 	float:left;
@@ -116,19 +117,19 @@ li.dropdown-item:hover {
 }
 */
 .navbar {
-	border-top: 4px solid;
+	border-top: 0.2rem solid;
 }
 .dropdown-item {
-	border-top: 4px solid;
-	margin-top: -4px;
+	border-top: 0.2rem solid;
+	margin-top: -0.2rem;
 }
 .dropdown-item:hover {
-	border-top: 4px solid;
+	border-top: 0.2rem solid;
 }
 
 /********************************************************************* FOOTER */
 .footer {
-	height: 60px;
+	height: 4rem;
 	z-index: -100;
 }
 .footer a {
@@ -136,17 +137,17 @@ li.dropdown-item:hover {
 	text-decoration: none;
 }
 .footer-menu {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	padding-right: 15%;
 	padding-left: 15%;
 }
 .footer-item {
-	padding: 15px;
+	padding: 1rem;
 	float:left;
 }
 .footer-right {
-	padding: 15px;
+	padding: 1rem;
 	float:right;
 }
 
@@ -167,6 +168,7 @@ li.dropdown-item:hover {
 }
 .navbar.aero {
 	margin-top: -61px;
+	line-height: 1.2rem;
 }
 
 /********************************************************************** OTHER */
@@ -174,5 +176,5 @@ li.dropdown-item:hover {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 10px;
+	padding: 0.4rem;
 }
