@@ -15,7 +15,14 @@ class EductionSelect extends React.Component {
   }
 
   updateSchool(school) {
-    this.setState({school: school});
+    if (school === null) {
+      this.setState({
+        school: null,
+        teacher: null
+      });
+    } else {
+      this.setState({school: school});
+    }
   }
 
   updateTeacher(teacher) {
@@ -24,6 +31,8 @@ class EductionSelect extends React.Component {
 
   render() {
     const school = this.state.school;
+    const teacher = this.state.teacher;
+    console.log(school)
 
     return (
       <div style={{paddingBottom: '1rem'}}>
@@ -36,6 +45,17 @@ class EductionSelect extends React.Component {
         }
         { !school &&
           <SchoolSelect onUpdate={this.updateSchool} />
+        }
+        { school && !teacher &&
+          <TeacherSelect onUpdate={this.updateTeacher}
+                         school_id={school.school_id} />
+        }
+        { teacher &&
+          <div className="scs-module-element">
+            <span className="bold">Teacher:</span>&nbsp;
+            {teacher.teacher_name}
+            <div className="scs-inline-button" onClick={() => this.updateTeacher(null)}>Edit</div>
+          </div>
         }
       </div>
     )
