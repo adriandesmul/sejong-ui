@@ -1,0 +1,132 @@
+<head>
+<style>
+body {
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.boxes {
+  text-align: center;
+}
+
+.boxes div {
+  background: #eef0e1;
+  position: relative;
+  margin: 3rem auto 0;
+}
+
+.boxes strong {
+  margin-top: 10px;
+}
+
+.boxes .center {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 17px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: #cfcd96;
+}
+
+.scroll::-webkit-scrollbar-track-piece:start {
+  background: #eee;
+}
+
+.scroll::-webkit-scrollbar-track-piece:end {
+  background: #eee;
+}
+
+.border {
+  border: 10px solid #cfcd96;
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+.padding {
+  padding: 10px;
+}
+
+.left {
+  text-align: left;
+}
+</style>
+</head>
+<body>
+<section class="boxes">
+	<h2>clientWidth,clientHeight</h2>
+	<div id="box1">
+		<strong>padding,border,scrollなし</strong>
+		<p class="center"><span id="info_w1"></span><span id="info_h1"></span></p>
+	</div>
+	<div id="box2">
+		<strong>padding 10px</strong>
+		<p class="center"><span id="info_w2"></span><span id="info_h2"></span></p>
+					<p class="left">text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br></p>
+								<p class="left">text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br></p>
+											<p class="left">text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br></p>
+														<p class="left">text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br></p>
+	</div>
+	<div id="box3" class="border">
+		<strong>border 10px</strong>
+		<p class="center"><span id="info_w3"></span><span id="info_h3"></span></p>
+	</div>
+<div id="box4" class="border border-box">
+		<strong>border 10px<br>box-sizing border-box</strong>
+		<p class="center"><span id="info_w4"></span><span id="info_h4"></span></p>
+	</div>
+	<div id="box5" class="scroll">
+		<strong>scrollあり</strong>
+		<p class="center"><span id="info_w5"></span><span id="info_h5"></span></p>
+					<p class="left">text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br></p>
+
+	</div>
+</section>
+</body>
+
+
+
+<script>
+var client_w1 = document.getElementById('box1').clientWidth;
+var client_h1 = document.getElementById('box1').clientHeight;
+document.getElementById('info_w1').innerHTML = 'width:' + client_w1 + 'px × ';
+document.getElementById('info_h1').innerHTML = 'height:' + client_h1 + 'px';
+
+var client_w2 = document.getElementById('box2').clientWidth;
+var client_h2 = document.getElementById('box2').clientHeight;
+document.getElementById('info_w2').innerHTML = 'width:' + client_w2 + 'px × ';
+document.getElementById('info_h2').innerHTML = 'height:' + client_h2 + 'px';
+
+var client_w3 = document.getElementById('box3').clientWidth;
+var client_h3 = document.getElementById('box3').clientHeight;
+document.getElementById('info_w3').innerHTML = 'width:' + client_w3 + 'px × ';
+document.getElementById('info_h3').innerHTML = 'height:' + client_h3 + 'px';
+
+var client_w4 = document.getElementById('box4').clientWidth;
+var client_h4 = document.getElementById('box4').clientHeight;
+document.getElementById('info_w4').innerHTML = 'width:' + client_w4 + 'px × ';
+document.getElementById('info_h4').innerHTML = 'height:' + client_h4 + 'px';
+
+var client_w5 = document.getElementById('box5').clientWidth;
+var client_h5 = document.getElementById('box5').clientHeight;
+document.getElementById('info_w5').innerHTML = 'width:' + client_w5 + 'px × ';
+document.getElementById('info_h5').innerHTML = 'height:' + client_h5 + 'px';
+</script>
