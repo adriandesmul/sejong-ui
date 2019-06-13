@@ -29,6 +29,10 @@ p {
 }
 b, a {
 	font-family: 'GillSansMTPro-Medium';
+	font-weight: bold;
+}
+.dropdown-item a {
+	font-weight: normal;
 }
 .navbar a, .footer a {
 	font-family: 'GillSansMTPro-Light';
@@ -112,16 +116,18 @@ blockquote {
 /**************************/
 .wrapper {
 	background-color:#fefefe;
-	width:96%;
+/*	width:96%; */
 	padding:10px 30px 25px;
-	margin: 50px 0px;
+	margin: 50px 15%;
 }
 .content {
 	z-index: -10000;
 	position: relative;
 	min-height: 77.5vh;
+/*
 	padding-left: 15%;
 	padding-right: 15%;
+*/
 }
 
 p.last {
@@ -155,4 +161,30 @@ button { /* Green */
 button:hover {
 	transition: background-color 0.3s ease;
 	background-color: darkseagreen;
+}
+
+.clear {
+	clear:both;
+}
+
+ul.tabular {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	margin-top: 1rem;
+	line-height: 1.6rem; }
+ul.tabular li {
+	float: left;
+	width: 20%;}
+
+img {
+	float:left;
+ 	margin: 1rem;
+	margin-left: 0rem;
+
+		.alt {
+			float:right;
+			margin-left: 1rem;
+			margin-right: 0rem;
+		}
 }

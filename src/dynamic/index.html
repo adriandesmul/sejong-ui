@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,12 +10,19 @@
   <div class="header">
     <div id="auth"></div>
   </div>
-  <div id="demographics" class="scs-demographics">
-  <div class="scs-writing">
-    <section id="sijo"></section>
-    <section id="essay"></section>
-  </div>
-  hello
+	hello
+  <section id="sijo"></section>
 <script type="text/javascript" src="/bundle.js"></script>
 </body>
 </html>
+-->
+
+{% set title = "hello world" %}
+{% extends "../templates/_page.njk" %}
+
+  {% block content %}
+		<div class="wrapper">
+	  <section id="sijo"></section>
+
+		</div>
+	{% endblock %}
