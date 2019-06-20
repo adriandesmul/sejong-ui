@@ -34,10 +34,6 @@ h1, h2, h3 {
 		font-family: 'Bison-DemiBold';
 	}
 }
-.text, .wrapper {
-	font-size: 1.12rem;
-	line-height: 1.6rem;
-}
 .dropdown-item a {
 	font-weight: normal;
 }
@@ -113,19 +109,21 @@ blockquote {
 }
 
 /**************************/
-.text {
-	margin: 5rem 15%;
-	padding: 1rem 1.9rem 2rem;
-	clear:both;
-
-	h3 {
-		margin-top: 1rem;
-	}
-}
 .wrapper {
 /*	width:96%; */
 	padding:0.6rem 1.9rem 2rem;
 	margin: 3.2rem 15%;
+	font-size: 1.12rem;
+	line-height: 1.6rem;
+
+	&.banner {
+		padding: 1rem 1.9rem 2rem;
+		clear:both;
+
+		h3 {
+			margin-top: 1rem;
+		}
+	}
 }
 .quick-access {
 	padding: 0rem;
