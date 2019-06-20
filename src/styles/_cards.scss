@@ -1,3 +1,51 @@
+.theater {
+	&-tab {
+		background-color: $backgroundDark;
+		padding: 0.2rem;
+		margin: 0;
+		border: solid 2px $primary;
+		border-bottom: none;
+		cursor: pointer;
+
+		&:last-of-type {
+			border-bottom: solid 2px $primary;
+		}
+		&.active, &:hover {
+			background-color: $primary;
+			color: white;
+		}
+		&-contain {
+			margin-bottom: 1rem;
+		}
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+
+	&-mov {
+		&-caption {
+			h2 {
+				margin-top: 1rem;
+				margin-bottom: -0.5rem;
+				color: black;
+			}
+		}
+	}
+}
+
+.theater {
+	&-info {
+		h3 {
+			+ p {
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+/*
 .tab {
 	float:left;
 	clear:left;
@@ -12,41 +60,41 @@
 		cursor: pointer;
 	}
 
-}
-
-.tab.h {
-	display: inline;
-	clear: none;
-	background-color: grey;
-	color: white;
-	border: none;
-	text-align: center;
-	padding: 0.2rem 4rem;
-	margin-right: 1rem;
-	transition: background-color 0.3s ease;
-/*	border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem; */
-
-	:hover {
-		background-color: darkgrey;
-		transition: background-color 0.3s ease;
+ 	&.h {
+		display: inline;
+		clear: none;
+		background-color: grey;
+		color: white;
 		border: none;
-/* the following two lines remove the hover border problem */
-		margin: -0.2rem -4rem;
+		text-align: center;
 		padding: 0.2rem 4rem;
-/*		border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem; */
+		margin-right: 1rem;
+		transition: background-color 0.3s ease;
+		/* border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem;
+
+		:hover {
+			background-color: darkgrey;
+			transition: background-color 0.3s ease;
+			border: none;
+			/* the following two lines remove the hover border problem
+			margin: -0.2rem -4rem;
+			padding: 0.2rem 4rem;
+			/* border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem;
+		}
 	}
-}
-.tab.contain {
-	border-bottom: none;
-/*
-	width: 105.6%;
-	margin-left: -1.86rem;
-*/
-	padding-left: 0;
+
+	&.contain {
+		border-bottom: none;
+		padding-left: 0;
+	}
 }
 
 .card, .mov {
 	clear:both;
+}
+
+.card {
+
 }
 
 .mov {
@@ -57,9 +105,10 @@
 		margin-bottom: 2rem;
 	}
 
-	.text {
+	.mov-caption {
 		float:left;
 		width: 30%;
 	}
 
 }
+*/

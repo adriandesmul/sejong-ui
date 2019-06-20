@@ -3,6 +3,7 @@ import EntryArea from './entryArea';
 import API from '../api/api';
 import './writingEntry.scss';
 import ButtonOptions from '../common/buttonOptions';
+import DropdownOptions from '../common/dropdownOptions';
 import constants from '../common/constants';
 
 const classNames = require('classnames');
@@ -128,10 +129,10 @@ class EssayEntry extends React.Component {
     if (msg) { msgClass = classNames(['scs-message', msg.type]) }
 
     return (
-      <div className="scs-module">
+      <div className="scs-module essay">
         <div className="scs-header">
-          <span>Essay Entry</span>
-          {this.state.unsavedChanges && <span>Unsaved changes</span>}
+          <p>Essay Entry</p>
+          {this.state.unsavedChanges && <p className="unsaved">Unsaved changes</p>}
         </div>
         {msg &&
           <div className={msgClass}>{msg.body}</div>
@@ -141,7 +142,7 @@ class EssayEntry extends React.Component {
           <input
             type="text"
             name="title"
-            placeholder="Essay title"
+            placeholder="Essay title optional"
             className="scs-input"
             value={this.state.title}
             onChange={this.handleInputChange}
@@ -162,14 +163,16 @@ class EssayEntry extends React.Component {
         </div>
         }
         {this.state.haveData &&
-        <EntryArea
-          initialValue={this.state.body}
-          onChange={this.handleBodyChange}
-          type='essay'
-        />
+        <div className="scs-entry-area essay">
+					<EntryArea
+          	initialValue={this.state.body}
+          	onChange={this.handleBodyChange}
+          	type='essay'
+        	/>
+				</div>
         }
-        <a className="scs-button" onClick={this.handleSave}>Save</a>
-        <a className="scs-button" onClick={this.handlePreview}>Preview</a>
+        <a className="scs-button save" onClick={this.handleSave}>Save</a>
+        <a className="scs-button preview" onClick={this.handlePreview}>Preview</a>
       </div>
     )
   }

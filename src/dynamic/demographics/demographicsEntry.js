@@ -6,8 +6,8 @@ class DemographicsEntry extends React.Component {
     return(
       <div className="scs-module">
         <div className="scs-header">
-          <span>Personal information</span>
-          <span>Unsaved changes</span>
+          <p>School information</p>
+          <p class="unsaved">Unsaved changes</p>
         </div>
         <EducationSelect />
       </div>

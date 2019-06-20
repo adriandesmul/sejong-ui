@@ -103,11 +103,11 @@ class SijoEntry extends React.Component {
     if (msg) { msgClass = classNames(['scs-message', msg.type]) }
 
     return (
-      <div className="scs-module">
-      <div className="scs-header">
-        <span>Sijo Entry</span>
-        {this.state.unsavedChanges && <span>Unsaved changes</span>}
-      </div>
+      <div className="scs-module sijo">
+	      <div className="scs-header">
+	        <p>Sijo Entry</p>
+	        {this.state.unsavedChanges && <p className="unsaved">Unsaved changes</p>}
+	      </div>
         {msg &&
           <div className={msgClass}>{msg.body}</div>
         }
@@ -117,7 +117,7 @@ class SijoEntry extends React.Component {
           <input
             type="text"
             name="title"
-            placeholder="Sijo title"
+            placeholder="Sijo title optional"
             className="scs-input"
             value={this.state.title}
             onChange={this.handleInputChange}
@@ -125,14 +125,16 @@ class SijoEntry extends React.Component {
         </div>
         }
         {this.state.haveData &&
-        <EntryArea
-          initialValue={this.state.body}
-          onChange={this.handleBodyChange}
-          type='sijo'
-        />
+				<div className="scs-entry-area sijo">
+	        <EntryArea
+	          initialValue={this.state.body}
+	          onChange={this.handleBodyChange}
+	          type='sijo'
+	        />
+				</div>
         }
-        <a className="scs-button" onClick={this.handleSave}>Save</a>
-        <a className="scs-button" onClick={this.handlePreview}>Preview</a>
+        <a className="scs-button save" onClick={this.handleSave}>Save</a>
+        <a className="scs-button preview" onClick={this.handlePreview}>Preview</a>
       </div>
     )
   }

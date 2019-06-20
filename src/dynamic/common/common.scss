@@ -1,25 +1,168 @@
 @import '../../styles/colors';
 
-.scs-selection-options {
-  flex: 1;
+.scs-module {
+  margin: 1.6rem 0;
+  align-self: center;
+  border: 1px solid;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
-  .scs-selection-option {
-    flex: 1 0 5rem;
-    padding: 0.5rem;
-    margin: 0rem 0.5rem 0.5rem 0.5rem;
-    border-radius: 0.5rem;
-    background-color: $primary;
+	p {
+		margin: 0;
+	}
+
+  .scs-header {
+    background: $dark;
     color: white;
-    font-family: 'GillSansMTPro-Bold';
-    text-align: center;
+		margin: 0;
+    padding: 1rem;
+    display: flex;
+		justify-content: space-between;
+		font-size: 1.6rem;
 
-    &.selected {
+		.unsaved {
+			color: $failureLight;
+			font-family: 'GillSansMTPro-Medium';
+			-webkit-text-stroke-width: 0.5px;
+   		-webkit-text-stroke-color: $failure;
+		}
+  }
+
+  .scs-module-element {
+    display: flex;
+    padding: 1rem;
+    padding-bottom: 0rem;
+    align-items: center;
+
+		label {
+			margin-right: 0.5rem;
+		}
+
+		h2 {
+			color: black;
+		}
+  }
+
+  .scs-message {
+    margin: 1rem 1rem 0;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+
+    &.error {
+      background-color: $failure;
+      color: white;
+    }
+
+    &.success {
       background-color: $success;
+      color: white;
     }
   }
+
+  .scs-input {
+    flex: 1;
+    border-radius: 0.5rem;
+    border: 1px solid;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+	&.essay {
+		margin-left: 0.4rem;
+	}
+	&.sijo {
+		margin-right: 0.4rem;
+	}
 }
+
+.scs-entry-area {
+	.quill {
+		margin: 1rem;
+		font-size: 1rem;
+		background-color: white;
+		overflow:auto;
+
+		.ql-container {
+			background-color: white;
+			height: 10rem;
+
+			@at-root .essay#{&} {
+				height: 20rem;
+			}
+		}
+	}
+}
+
+
+.scs-selection-options {
+  display: flex;
+  flex-wrap: wrap;
+	align-items: flex-start;
+}
+
+.scs-selection-option, .scs-button {
+	flex: 1 0 auto;
+	padding: 0.2rem 1rem;
+	margin: 0.2rem;
+	border-radius: 0.5rem;
+	color: white;
+	font-family: 'GillSansMTPro-Light';
+	text-align: center;
+	cursor: pointer;
+	font-weight: normal;
+
+	@at-root .scs-selection-option {
+	  background-color: $darkAccent;
+
+	  &.selected, &:hover {
+	    background-color: $dark;
+	  }
+	}
+
+	@at-root .scs-button {
+		background-color: $lightAccent;
+
+		&.selected, &:hover {
+			background-color: $light;
+		}
+		&.preview {
+			flex: none;
+			background-color: $background;
+			padding: 0;
+			margin: 0;
+			margin-bottom: 1rem;
+			border-radius: 0;
+			color: black;
+			font-size: 0.9rem;
+
+			&:hover {
+				color:$lightAccent;
+			}
+		}
+	}
+}
+
+/*
+.scs-button {
+  color: $lightAccent;
+  width: auto;
+	flex: 1;
+
+	&.selected, &:hover {
+		background-color: $light;
+	}
+
+	&.pw {
+		font-size: 13px;
+		line-height: 1em;
+	}
+
+	&:hover {
+		color: white;
+	}
+}
+*/
 
 .scs-dropdown {
   font-size: 1rem;
@@ -38,7 +181,7 @@
   }
 
   .scs-selectionTable-header {
-    font-family: "GillSansMTPro-Bold";
+    font-family: "GillSansMTPro-Light";
     border-bottom: 2px solid black;
   }
 

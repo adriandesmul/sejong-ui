@@ -19,13 +19,15 @@
 }
 .scs-loginWindow, .scs-createAccountWindow {
   position: absolute;
-  background-color: #333;
   z-index: 200;
+	background-color: $backgroundDark;
+	border: solid 2px;
+	border-top: none;
 
   padding: 20px 10px;
   border-radius: 0rem 0rem 0.5rem 0.5rem;
 
-  right: 10%;
+  right: 15%;
 
   display: flex;
   flex-direction: column;
@@ -34,21 +36,7 @@
   input {
     width: 15rem;
     margin-bottom: 0.5rem;
-		font-family: 'GillSansMTPro-Light';
-		font-size: 16px;
   }
-
-  .scs-button {
-    color: $lightAccent;
-    width: auto;
-  }
-	.scs-button.pw {
-		font-size: 13px;
-		line-height: 1em;
-	}
-	.scs-button:hover {
-		color: white;
-	}
 
   .scs-error {
     //width: 19rem;

@@ -85,7 +85,7 @@ class SchoolSelect extends React.Component {
     return (
       <div>
         <div className="scs-module-element">
-          <h2>Select your school</h2>
+          <p><b>Select your school</b></p>
         </div>
         <div className="scs-module-element">
           <label>Country: </label>

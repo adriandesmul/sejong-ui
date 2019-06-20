@@ -8,63 +8,6 @@
   }
 }
 
-.scs-module {
-  margin: 10px;
-  align-self: center;
-  border: 1px solid;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  font-size: 16px;
-
-  .scs-header {
-    background: $primary;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    font-family: 'GillSansMTPro-Bold';
-    justify-content: space-between;
-  }
-
-  .scs-module-element {
-    display: flex;
-    padding: 1rem;
-    padding-bottom: 0rem;
-    align-items: center;
-  }
-
-  .scs-message {
-
-    margin: 1rem;
-    border-radius: 0.5rem;
-    padding: 1rem;
-
-    &.error {
-      background-color: $failure;
-      color: white;
-    }
-
-    &.success {
-      background-color: $success;
-      color: white;
-    }
-  }
-
-  .scs-input {
-    flex: 1;
-    border-radius: 0.5rem;
-    border: 1px solid $primary;
-    padding: 0.5rem;
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-  }
-
-  .quill {
-    margin: 1rem;
-    font-size: 1rem;
-  }
-}
-
 #essay {
   .ql-editor {
     p {
