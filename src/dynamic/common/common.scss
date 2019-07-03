@@ -1,5 +1,9 @@
 @import '../../styles/colors';
 
+
+
+
+
 .scs-module {
   margin: 1.6rem 0;
   align-self: center;
@@ -11,28 +15,26 @@
 		margin: 0;
 	}
 
-  .scs-header {
-    background: $dark;
-    color: white;
+	.scs-header {
+		background: $dark;
+		color: white;
 		margin: 0;
-    padding: 1rem;
-    display: flex;
+		padding: 1rem;
+		display: flex;
 		justify-content: space-between;
 		font-size: 1.6rem;
 
 		.unsaved {
 			color: $failureLight;
 			font-family: 'GillSansMTPro-Medium';
-			-webkit-text-stroke-width: 0.5px;
-   		-webkit-text-stroke-color: $failure;
 		}
-  }
+	}
 
-  .scs-module-element {
-    display: flex;
-    padding: 1rem;
-    padding-bottom: 0rem;
-    align-items: center;
+	.scs-module-element {
+		display: flex;
+		padding: 1rem;
+		padding-bottom: 0rem;
+		align-items: center;
 
 		label {
 			margin-right: 0.5rem;
@@ -41,32 +43,32 @@
 		h2 {
 			color: black;
 		}
-  }
+	}
 
-  .scs-message {
-    margin: 1rem 1rem 0;
-    border-radius: 0.5rem;
-    padding: 0.2rem 0.5rem;
+	.scs-message {
+		margin: 1rem 1rem 0;
+		border-radius: 0.5rem;
+		padding: 0.2rem 0.5rem;
 
-    &.error {
-      background-color: $failure;
-      color: white;
-    }
+		&.error {
+		background-color: $failure;
+		color: white;
+		}
 
-    &.success {
-      background-color: $success;
-      color: white;
-    }
-  }
+		&.success {
+		background-color: $success;
+		color: white;
+		}
+	}
 
-  .scs-input {
-    flex: 1;
-    border-radius: 0.5rem;
-    border: 1px solid;
-    padding: 0.5rem;
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-  }
+	.scs-input {
+		flex: 1;
+		border-radius: 0.5rem;
+		border: 1px solid;
+		padding: 0.5rem;
+		margin-left: 0.5rem;
+		font-size: 0.8rem;
+	}
 
 	&.essay {
 		margin-left: 0.4rem;
@@ -96,10 +98,11 @@
 
 
 .scs-selection-options {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 	align-items: flex-start;
 }
+
 
 .scs-selection-option, .scs-button {
 	flex: 1 0 auto;
@@ -113,15 +116,17 @@
 	font-weight: normal;
 
 	@at-root .scs-selection-option {
-	  background-color: $darkAccent;
+		background-color: $darkAccent;
 
-	  &.selected, &:hover {
-	    background-color: $dark;
+	  	&.selected, &:hover {
+	    	background-color: $dark;
 	  }
 	}
 
 	@at-root .scs-button {
 		background-color: $lightAccent;
+	    align-self: center;
+	  	width: 5rem;
 
 		&.selected, &:hover {
 			background-color: $light;
@@ -144,6 +149,16 @@
 }
 
 /*
+
+.scs-inline-button {
+  background-color: $primary;
+  color: white;
+  margin: 0rem 0.5rem;
+  padding: 0rem 0.5rem;
+  text-align: center;
+}
+
+
 .scs-button {
   color: $lightAccent;
   width: auto;
@@ -165,57 +180,57 @@
 */
 
 .scs-dropdown {
-  font-size: 1rem;
-  background-color: white;
-  margin-left: 0.5rem;
+	font-size: 1rem;
+	background-color: white;
+	margin-left: 0.5rem;
 }
 
 .scs-selectionTable {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
 
-  .scs-selectionTable-header, .scs-selectionTable-row {
-    flex: 1;
-    display: flex;
-  }
+  	.scs-selectionTable-header, .scs-selectionTable-row {
+	    flex: 1;
+	    display: flex;
+  	}
 
-  .scs-selectionTable-header {
-    font-family: "GillSansMTPro-Light";
-    border-bottom: 2px solid black;
-  }
+	.scs-selectionTable-header {
+		font-family: "GillSansMTPro-Light";
+		border-bottom: 2px solid black;
+	}
 
-  .scs-selectionTable-row {
-    padding: 0.5rem 0rem;
-    border-bottom: 1px solid black;
-  }
+	.scs-selectionTable-row {
+		padding: 0.5rem 0rem;
+		border-bottom: 1px solid black;
+	}
 
-  .scs-selectionTable-cell {
-    flex: 1;
-    display: flex;
+	.scs-selectionTable-cell {
+		flex: 1;
+		display: flex;
 
-    &.cell-sm {
-      flex: 0 0 5rem;
-    }
-  }
+		&.cell-sm {
+			flex: 0 0 5rem;
+		}
+  	}
 
-  .scs-selectionTable-select {
-    background-color: $primary;
-    color: white;
-    margin: 0rem 0.5rem;
-    text-align: center;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+	&-select {
+		background-color: $primary;
+		color: white;
+		margin: 0rem 0.5rem;
+		text-align: center;
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-  .scs-selectionTable-create {
-    flex: 1;
-    border-radius: 0.5rem;
-    border: 1px solid $primary;
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-    font-size: 0.8rem;
-  }
+	&-create {
+		flex: 1;
+		border-radius: 0.5rem;
+		border: 1px solid $primary;
+		padding: 0.5rem;
+		margin-right: 0.5rem;
+		font-size: 0.8rem;
+	}
 }

@@ -32,9 +32,6 @@
 			}
 		}
 	}
-}
-
-.theater {
 	&-info {
 		h3 {
 			+ p {
@@ -44,71 +41,3 @@
 		}
 	}
 }
-
-/*
-.tab {
-	float:left;
-	clear:left;
-	display:block;
-
-	h3 {
-		margin: 0;
-		padding: 0;
-	}
-
-	:hover {
-		cursor: pointer;
-	}
-
- 	&.h {
-		display: inline;
-		clear: none;
-		background-color: grey;
-		color: white;
-		border: none;
-		text-align: center;
-		padding: 0.2rem 4rem;
-		margin-right: 1rem;
-		transition: background-color 0.3s ease;
-		/* border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem;
-
-		:hover {
-			background-color: darkgrey;
-			transition: background-color 0.3s ease;
-			border: none;
-			/* the following two lines remove the hover border problem
-			margin: -0.2rem -4rem;
-			padding: 0.2rem 4rem;
-			/* border-radius: 3rem 3rem 0rem 0rem / 5rem 5rem 0rem 0rem;
-		}
-	}
-
-	&.contain {
-		border-bottom: none;
-		padding-left: 0;
-	}
-}
-
-.card, .mov {
-	clear:both;
-}
-
-.card {
-
-}
-
-.mov {
-	padding: 1.5rem 0 2rem;
-
-	iframe {
-		float: left;
-		margin-bottom: 2rem;
-	}
-
-	.mov-caption {
-		float:left;
-		width: 30%;
-	}
-
-}
-*/

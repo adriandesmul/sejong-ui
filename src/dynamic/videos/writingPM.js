@@ -1,5 +1,6 @@
 import React from 'react';
 import SlideDown from 'react-slidedown';
+import 'react-slidedown/lib/slidedown.css'
 
 const classNames = require('classnames');
 
@@ -60,7 +61,7 @@ class WritingPM extends React.Component {
 							<p>“They Say Go” is comprised of a series of six sijo and one free verse poem, each one written by a member of Elephant Rebellion in response to “Still American.”</p>
 							<p><button onClick={() => {this.setState({expand: !this.state.expand})}}>Expand for full lyrics</button></p>
 							<SlideDown>
-	            { this.state.expand ?
+	            	{ this.state.expand ?
 								<blockquote><p>
 									<b>Poem 1: Ona Wong</b><br/>
 									Learn English: the official language. This is America.<br/>

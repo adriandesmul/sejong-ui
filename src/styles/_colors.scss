@@ -1,18 +1,29 @@
+:root {
+    --turquoise: #54aba5;
+    --duskrose: #ab5482;
+    --bronze: #ab9454;
+    --lilac: #c7c3f2;
+    --bubblegum: #edbfe8;
+    --chartreuse: #d4ed96;
+    --peach: #edcd96;
+    --sky: #c3eaf2;
+}
+
 $primary: darkseagreen;
 $light: palegoldenrod;
 $lightAccent: coral;
 $dark: steelblue;
 $darkAccent: #4CAAC5;
-$writing: #4CAAC5;
+
 $background: #efefef;
 $backgroundDark: #dddddd;
-
 $success: limegreen;
 $warning: sandybrown;
 $failure: crimson;
 $failureLight: lightpink;
 
 $blue: #1010BB;
+
 
 a {
 	color: $darkAccent;
@@ -28,28 +39,26 @@ h2 {
 	background-color: $background;
 }
 
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LAYOUT */
-/*
-.navbar, .dropdown-item {
-	background-color: dimgrey;
-	border-color: dimgrey;
+.green {
+	border-color: darkgreen;
+	background-color: #B0D0B0;
+	color:darkgreen;
 }
-*/
-.navbar.active, .dropdown-item:hover, div.dropdown-item:hover {
+.blue {
+	border-color: #23577e;
+	background-color: #c5e3fa;
+	color:#23577e;
+}
+
+/* ------------------------------------------------------------------- layout */
+.navbar.active, .dropdown-item:hover, div.dropdown-item:hover, .dropdown-item.active {
 	border-color: violet;
 }
 .navbar.aero {
 	background: rgba(0, 0, 0, 0.4);
 }
-.dropdown-menu a {
+.dropdown-menu a, .dropdown-inner {
 	color: white;
-}
-
-.dropdown-inner {
-	/* remove bg-color for aero
-	background-color: rgba(0,0,0,0.9);
-	*/
-	color:white;
 }
 .dropdown-inner a {
 	color: $light;
@@ -59,7 +68,7 @@ h2 {
 }
 
 .footer {
-	background-color:#464646;
+	background-color:dimgrey;
 	color: white;
 }
 .footer a {

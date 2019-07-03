@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{ title }}</title>
-  <link href="/main.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{{ title }}</title>
+	<link href="/main.css" rel="stylesheet">
 </head>
-<body>
+<body class="
+	{% if section == 'writing' %}
+		writing
+	{% elif section == 'music' %}
+		music
+	{% endif %}
+	">
 	<div class="container">
 		<a href="/index.html">
 		<div class="header">
@@ -19,7 +25,10 @@
 
 		<div class="navbar aero">
 			<ul class="dropdown-menu">
-				<li class="dropdown-item">
+				<li class="dropdown-item
+					{% if section == 'about' %}
+						active
+					{% endif %}">
 					<a href="/about/about.html"><div class="dropdown-link">About</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
@@ -39,7 +48,10 @@
 						</div>
 					</div>
 				</li>
-				<li class="dropdown-item">
+				<li class="dropdown-item
+					{% if section == 'writing' %}
+						active
+					{% endif %}">
 					<a href="/writing/index.html"><div class="dropdown-link">Writing</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
@@ -76,16 +88,17 @@
 						</div>
 					</div>
 				</li>
-				<li class="dropdown-item">
+				<li class="dropdown-item
+					{% if section == 'music' %}
+						active
+					{% endif %}">
 					<a href="/music/index.html"><div class="dropdown-link">Music</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
 							<div>
 								<ul>
-									<li><h1>music competition</h1></li>
-									<li><a href="/music/index.html">Music index</a></li>
-									<li><a href="/login.html">Applications</a></li>
-									<li><a href="/music/about.html">About the music competition</a></li>
+									<li><a href="/music/index.html"><h1>music competition</h1></a></li>
+									<li><a href="/writing/competition.html">Applications</a></li>
 								</ul>
 							</div>
 							<div>
@@ -108,7 +121,10 @@
 						</div>
 					</div>
 				</li>
-				<li class="dropdown-item">
+				<li class="dropdown-item
+					{% if section == 'composition' %}
+						active
+					{% endif %}">
 					<a href="/composition/index.html"><div class="dropdown-link">Composition</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
@@ -137,7 +153,10 @@
 						</div>
 					</div>
 				</li>
-				<li class="dropdown-item <?html if(sijo === $activePage):?> active<?html endif;?>">
+				<li class="dropdown-item
+					{% if section == 'sijo' %}
+						active
+					{% endif %}">
 					<a href="/sijo/index.html"><div class="dropdown-link">Sijo projects</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
@@ -168,7 +187,10 @@
 						</div>
 					</div>
 				</li>
-				<li class="dropdown-item ">
+				<li class="dropdown-item
+					{% if section == 'events' %}
+						active
+					{% endif %}">
 					<a href="/events/index.html" ><div class="dropdown-link">Events</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
@@ -204,7 +226,10 @@
 						</div>
 					</div>
 				</li>
-				<li class="dropdown-item">
+				<li class="dropdown-item
+					{% if section == 'resources' %}
+						active
+					{% endif %}">
 					<a href="/resources/index.html"><div class="dropdown-link">Resources</div></a>
 					<div class="dropdown-inner">
 						<div class="dropdown-inner-container">
@@ -243,7 +268,7 @@
 						</div>
 					</div>
 				</li>
-				<li class="flex"></li>
+				<li class="dropdown-item-flex"></li>
 				<div id="auth"></div>
 			</ul>
 		</div>

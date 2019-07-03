@@ -1,6 +1,37 @@
-{% extends "../../templates/base.html" %}
-{% block body %}
-<p>Hello MUSAK! competition</p>
-{{1+1}}
-<h1>header 1 asdfasdf</h1>
-{% endblock %}
+{% set title = "sejong music competition" %}
+{% set section = "music" %}
+{% extends "../../templates/_page.njk" %}
+
+	{% block content %}
+
+		<img src="http://sejongculturalsociety.org/images/newsite/music.jpg" class="page-banner">
+		<div class="wrapper banner">
+			<h1>The 2019 Music Competition is now open.</h1>
+			<h2>Sunday, November 17, 2019<br/>
+				Application deadline: October 31</h2>
+			<div class="notice green">
+				<h3><a href="apply.html">applications</a> | <a href="rules.html">rules</a> | <a href="repertoire.html">repertoire</a></h3>
+			</div>
+
+			<p>The Sixteenth Annual Sejong Music Competition will be held on Sunday, November 17, 2019 at the University of Illinois at Chicago Performing Arts Center.  This competition is open to all pre-college violin and piano students.</p>
+
+			<h3>About</h3>
+				<p>The Sejong Music Competition was created in 2004.  Open currently to violin and piano students, the competition regularly attracts roughly one hundred participants from across the Midwest each year.</p>
+				<p>The goals of the Sejong Music Competition are to discover talented young  musicians and encourage them in their studies, and to also introduce traditional Korean music expressed through Western media. Through this competition we hope to increase the awareness and understanding of Korea’s cultural heritage amongst the younger generations growing up in the United States so as to promote harmony among people of various ethnic backgrounds and bridge Asian and Western cultures.</p>
+
+			<div class="row">
+				<div class="col-item">
+					<h3>Eligibility</h3>
+						<p>This competition is open to all pre-college students residing in the US regardless of ethnic background.</p>
+				</div>
+				<div class="col-item">
+					<h3>Major Supporters</h3>
+						<p>The Sejong Music Competition is co-sponsored by the Korea Times Chicago and made possible through the generous support of the Seoul National University Alumni Association and the <a href="http://www.yonkang.org/en/insideDoosan.do?cmd=viewInsideDoosan&no=20081211113546779089">Doosan Yonkang Foundation</a>.</p>
+				</div>
+			</div>
+
+			<p class="center">If you have any questions, feel free to contact us at <a href="mailto:sejong@sejongculturalsociety.org">sejong@sejongculturalsociety.org</a>.</p>
+
+		</div>
+
+	{% endblock %}
