@@ -12,6 +12,7 @@ import WritingPM from './dynamic/videos/writingPM';
 import AdminPanel from './dynamic/admin/adminPanel';
 import UserDetailPanel from './dynamic/admin/userDetailPanel';
 import MyDropdown from './dynamic/videos/test';
+import WinnersWritingTable from './dynamic/past/winnersWriting';
 
 // EXTRA IMAGES
 import './library/logo_white_nourl.gif';
@@ -24,3 +25,4 @@ if (document.getElementById('writingPM')) ReactDOM.render(<WritingPM />, documen
 if (document.getElementById('adminPanel')) ReactDOM.render(<AdminPanel />, document.getElementById('adminPanel'));
 if (document.getElementById('userDetailPanel')) ReactDOM.render(<UserDetailPanel />, document.getElementById('userDetailPanel'));
 if (document.getElementById('my-dropdown-slidedown')) ReactDOM.render(<MyDropdown />, document.getElementById('my-dropdown-slidedown'));
+if (document.getElementById('winnersWritingTable')) ReactDOM.render(<WinnersWritingTable />, document.getElementById('winnersWritingTable'));

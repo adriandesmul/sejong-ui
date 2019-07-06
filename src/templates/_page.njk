@@ -6,6 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>{{ title }}</title>
 	<link href="/main.css" rel="stylesheet">
+	<link href=
+		{% if section == 'writing' %}
+			"/styles/writing.css"
+		{% elif section == 'music' %}
+			"/styles/music.css"
+		{% endif %}
+		rel="stylesheet">
 </head>
 <body class="
 	{% if section == 'writing' %}

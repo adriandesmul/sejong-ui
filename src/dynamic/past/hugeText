@@ -1,3 +1,0 @@
-export default new hugeText({
-    huge block of text
-});
