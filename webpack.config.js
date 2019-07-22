@@ -1,29 +1,30 @@
-const path = require("path");
-const fs = require("fs");
-const htmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-const Nunjucks = require("nunjucks");
-const mkdirp = require("mkdirp");
-const watch = require("watch");
+const path = require('path');
+const fs = require('fs');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const Nunjucks = require('nunjucks');
+const mkdirp = require('mkdirp');
+const watch = require('watch');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-Nunjucks.configure({ noCache: true });
+Nunjucks.configure({noCache: true})
 
 const API_URL = {
-  local: JSON.stringify("http://localhost:3000"),
-  prod: JSON.stringify("https://api.sejongculturalsociety.info")
-};
+  local: JSON.stringify('http://localhost:3000'),
+  prod: JSON.stringify('https://api.sejongculturalsociety.info')
+}
 
 var htmlFiles = [];
 
 function fromDir(startPath, filter, arr) {
+
   if (!fs.existsSync(startPath)) {
     return;
   }
 
   var files = fs.readdirSync(startPath);
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const filename = path.join(startPath, file);
     const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
@@ -31,67 +32,66 @@ function fromDir(startPath, filter, arr) {
     } else if (filename.indexOf(filter) >= 0) {
       arr.push(filename);
     }
-  });
+
+  })
 }
 
-fromDir("./src/static", ".html", htmlFiles);
-htmlFiles.map(file => {
-  console.log("Building: ", file);
+fromDir('./src/static', '.html', htmlFiles);
+htmlFiles.map((file) => {
+  console.log('Building: ', file)
   let compiledFile = Nunjucks.render(file);
-  let saveTo = path.join(
-    "./dist",
-    file.split(path.normalize("./src/static"))[1]
-  );
-  mkdirp.sync(path.dirname(saveTo));
+  let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+  mkdirp.sync(path.dirname(saveTo))
   fs.writeFileSync(saveTo, compiledFile);
-});
+})
 
+
+>>>>>>> dev
 module.exports = {
-  entry: ["./src/index.js"],
+  entry: ['./src/index.js'],
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new htmlWebpackPlugin({
-      template: "./src/dynamic/index.html",
-      filename: "./writing/competition/index.html"
+      template: './src/dynamic/index.html',
+      filename: './writing/competition/index.html'
     }),
     new webpack.DefinePlugin({
-      API_URL: API_URL["local"]
+      'API_URL': API_URL['local']
     })
   ],
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/"
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     watchOptions: {
       poll: true
     },
     after: (app, server) => {
-      watch.createMonitor("./src", monitor => {
-        monitor.on("changed", () => {
-          console.log("-- Update HTML --");
+      watch.createMonitor('./src', (monitor) => {
+        monitor.on('changed', () => {
+
+          console.log("-- Update HTML --")
 
           htmlFiles = [];
 
-          fromDir("./src/static", ".html", htmlFiles);
-          htmlFiles.map(file => {
+          fromDir('./src/static', '.html', htmlFiles);
+          htmlFiles.map((file) => {
             let compiledFile = Nunjucks.render(file);
-            let saveTo = path.join(
-              "./dist",
-              file.split(path.normalize("./src/static"))[1]
-            );
-            console.log(saveTo);
-            mkdirp.sync(path.dirname(saveTo));
+            let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+            console.log(saveTo)
+            mkdirp.sync(path.dirname(saveTo))
             fs.writeFileSync(saveTo, compiledFile);
-          });
-        });
-      });
+          })
+
+        })
+      })
     }
   },
   module: {
@@ -101,43 +101,40 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: "css-loader"
-          },
-          {
-            loader: "resolve-url-loader",
+          }, {
+            loader: 'css-loader'
+          }, {
+            loader: 'resolve-url-loader',
             options: {
-              root: ""
+              root: ''
             }
-          },
-          {
-            loader: "sass-loader",
+          }, {
+            loader: 'sass-loader',
             options: {
               sourceMap: true
             }
           }
         ]
-      },
-      {
+      }, {
         test: /\.(eot|woff|woff2|ttf|jpg|png|gif)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               outputPath(url, resourcePath, context) {
                 const relativePath = path.relative(context, resourcePath);
-                const newPath = relativePath.split(path.normalize("src/"))[1];
-                return newPath;
+                const newPath = relativePath.split(path.normalize('src/'))[1]
+                return newPath
               }
             }
           }
         ]
-      },
-      {
+      }, {
         test: /\.js$/,
-        use: ["babel-loader"]
+        use: [
+          'babel-loader'
+        ]
       }
     ]
   }
-};
+}
