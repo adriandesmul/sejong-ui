@@ -1,0 +1,285 @@
+/* fonts -------------------------------------------------------------------- */
+
+body, .navbar a, .footer a, button {
+	font-family: 'GillSansMTPro-Light'
+}
+
+b, a, h4 {
+	font-family: 'GillSansMTPro-Medium';
+	font-weight: bold;
+}
+
+h1, h2, h3 {
+	font-family: 'Bison-DemiBold';
+
+	a {
+		font-family: 'Bison-DemiBold';
+	}
+}
+
+/* base styles -------------------------------------------------------------- */
+
+body {
+	background-image:url('../library/homepic_dk.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	margin:0;
+	padding:0;
+	z-index:-50;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 2.3rem;
+  	margin: 1rem 0 0.4rem;
+	line-height: 2rem;
+
+	&.title {
+		background-color: $primary;
+		color: white;
+		padding: 0.6rem;
+		padding-left: 1rem;
+		margin: 3rem -1.9rem 2rem;
+	}
+
+	+ p {
+		margin-top: 2rem;
+	}
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+	margin: 2rem 0 0.2rem;
+
+	+ ul, + ol {
+		margin-top: 0.8rem;
+	}
+}
+
+h4 {
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol {
+  padding-left: 3rem;
+}
+
+blockquote {
+	margin-left: 2em;
+	margin-right: 3em;
+	margin-top: 1em;
+}
+
+button { /* Green */
+	background-color: $dark;
+	border: none;
+	color: white;
+	padding: 0.3rem;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	transition: background-color 0.3s ease;
+	border-radius: 0.3rem;
+	font-size: 1.1rem;
+
+	&:hover {
+		transition: background-color 0.3s ease;
+		background-color: $primary;
+	}
+}
+
+ul {
+	margin-bottom: 0.5rem;
+
+	.tabular {
+		list-style-type: none;
+		margin-left: 0;
+		padding-left: 0;
+		margin-top: 1rem;
+		line-height: 1.6rem; }
+	.tabular li {
+		float: left;
+		width: 20%;}
+}
+
+img {
+	float:left;
+ 	margin: 1rem;
+	margin-left: 0rem;
+
+	.alt {
+		float:right;
+		margin-left: 1rem;
+		margin-right: 0rem;
+	}
+}
+
+table {
+	width: 100%;
+	text-align: left;
+
+	td, th {
+		border: solid 2px #aaaaaa;
+		padding: 0.5rem;
+		margin: 0;
+	}
+	th {
+		font-family: 'GillSansMTPro-Medium';
+		font-weight: bold;
+		vertical-align: middle;
+		text-align: left;
+	}
+}
+
+/* page layout -------------------------------------------------------------- */
+.content {
+	z-index: -10000;
+	position: relative;
+	min-height: 77.5vh;
+}
+
+.wrapper {
+/*	width:96%; */
+	padding:0.6rem 1.9rem 2rem;
+	margin: 3.2rem 15%;
+	font-size: 1.12rem;
+	line-height: 1.6rem;
+
+	&.banner {
+		padding: 1rem 1.9rem 2rem;
+		clear:both;
+	}
+}
+
+.quick-access {
+	padding: 0rem;
+	margin-bottom: -0.2rem;
+	margin-top: 0.2rem;
+	font-size: 1.1rem;
+}
+
+
+/* classes styles ----------------------------------------------------------- */
+.row {
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	margin-right: -2%;
+
+	.col-item {
+    flex: 1 0 5rem;
+		padding: 0;
+		margin-right: 2%;
+	}
+}
+
+.notice {
+	margin-top:1.6rem;
+	padding:1.4rem 1rem 1.6rem;
+	text-align: center;
+	border: solid 2px;
+	background-color: $backgroundDark;
+
+	h3 {
+		margin-top: 0;
+	}
+}
+
+.page-banner {
+	width:100%;
+	margin: 0;
+	margin-bottom: 2rem;
+	border-bottom: solid 2px #444444;
+}
+
+.attribute {
+	text-align: right;
+	margin-bottom: -1.6rem;
+}
+
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.clear {
+	clear:both;
+}
+
+.center {
+	text-align: center;
+	margin: 2rem 0;
+}
+
+
+.theater {
+	&-tab {
+		background-color: $backgroundDark;
+		padding: 0.2rem;
+		margin: 0;
+		border: solid 2px $primary;
+		border-bottom: none;
+		cursor: pointer;
+
+		&:last-of-type {
+			border-bottom: solid 2px $primary;
+		}
+		&.active, &:hover {
+			background-color: $primary;
+			color: white;
+		}
+		&-contain {
+			margin-bottom: 1rem;
+		}
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+
+	&-mov {
+		&-caption {
+			h2 {
+				margin-top: 1rem;
+				margin-bottom: -0.5rem;
+				color: black;
+			}
+		}
+	}
+	&-info {
+		h3 {
+			+ p {
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+.repertoire {
+	tr td:nth-child(1), th, tr:nth-child(1) td:nth-child(2), tr:nth-child(6) td:nth-child(2) {
+		text-align: center;
+	}
+}
+
+
+.last {
+	padding-bottom: 1rem;
+}

@@ -1,0 +1,191 @@
+/***************************************************************** TOP LAYOUT */
+.container, .dropdown-inner-container {
+	line-height:1.8rem;
+	margin:0;
+	padding:0;
+	z-index:-50;
+	font-family: 'GillSansMTPro-Light';
+	font-size: 1.2rem;
+}
+.container, .navbar, .dropdown-menu, .dropdown-item, .dropdown-inner, .mobile-m10,
+.mobile-navbar, .footer, .footer-menu, .footer-item, .footer-right {
+	box-sizing: border-box;
+}
+.container {
+	width:100%;
+	position: absolute;
+	min-height: calc(100vh - 70px);
+}
+.header {
+	width:100%;
+	height: 110px; /* 110px */
+	z-index: 1;
+	background-image: url('../library/hmjg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/********************************************************************* NAVBAR */
+.navbar {
+	width:100%;
+ 	position: sticky;
+ 	top: 0;
+	border-top: 0.2rem solid;
+}
+.navbar ul, .footer ul {
+	list-style: none;
+	margin: 0;
+	height:100%;
+}
+.dropdown-menu, .dropdown-item, .dropdown-inner, .dropdown-link, .footer-item,
+.footer-right {
+	display:flex;
+}
+
+.dropdown-menu {
+	padding:0;
+	padding-left:15%;
+	padding-right:15%;
+
+	h1 {
+		font-size: 1.6rem;
+	}
+}
+
+.dropdown-item {
+	display:block;
+	transition: color 0.2s;
+	border-top: 0.2rem solid;
+	margin-top: -0.2rem;
+
+	a {
+		font-weight: normal;
+	}
+	&-flex {
+		flex: 1;
+	}
+	.login {
+		color:white;
+	}
+}
+
+.dropdown-item:hover > .dropdown-inner {
+  visibility: visible;
+    /* next three lines for new effect */
+	transition-delay: 0s, 0s, 0.2s;
+	opacity: 1;
+	/* background properties for aero	*/
+	background-image: url('../library/homepic_bl.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+	background-blend-mode: overlay;
+    /* for slide-down
+	transform: translateY(0%); */
+		/* old slide-down
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    */
+}
+
+.dropdown-link {
+	z-index: 1000;
+	padding:1.2rem 1.75rem;
+	cursor: pointer;
+	font-size: 1.1rem;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+.dropdown-inner {
+	visibility:hidden;
+	position:absolute;
+	width:100%;
+	left:0;
+	z-index:-10;
+	clear:both;
+	padding-bottom:0;
+	margin:0;
+	/* next four lines for new effect */
+	opacity:0;
+	z-index: -1;
+	transition: all 0.2s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+	/*	for slide-down
+	transform: translateY(-2em);
+	*/
+
+	&-container {
+		margin-left:15%;
+		padding:0.8rem 0 2rem;
+
+		div {
+			float:left;
+		}
+	}
+}
+
+.dropdown-menu a {
+	text-decoration: none;
+	transition: color 0.2s;
+	font-size: 1.1rem;
+}
+/* Instead of next two items
+li.dropdown-item:hover {
+	background-color: steelblue;
+}
+*/
+
+
+/********************************************************************* FOOTER */
+.footer {
+	height: 4rem;
+	z-index: -100;
+
+	a {
+		transition: color 0.2s;
+		text-decoration: none;
+	}
+	&-menu {
+		margin: 0;
+		padding: 0;
+		padding-right: 15%;
+		padding-left: 15%;
+	}
+	&-item {
+		padding: 1rem;
+		float:left;
+	}
+	&-right {
+		padding: 1rem;
+		float:right;
+	}
+}
+
+/******************************************************************** AERO NAV*/
+.navbar {
+
+	&.aero {
+		margin-top: -61px;
+		line-height: 1.2rem;
+
+		&-bg {
+			width:100%;
+			top: 110;
+			height: 61px;
+			z-index: -1;
+			background-attachment: fixed;
+			background-image:url('../library/homepic_bl.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+}
+
+/********************************************************************** OTHER */
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0.4rem;
+}

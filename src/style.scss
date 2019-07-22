@@ -1,46 +1,9 @@
 @import url("//hello.myfonts.net/count/37f332");
-@import './styles/reset';
-@import 'styles/colors';
-@import 'styles/effects';
-@import 'styles/fonts';
-@import 'styles/master';
-/*
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, input{
-  font-family: Arial;
-  font-size: 12px;
-}
-*/
-.header {
-    height: 4rem;
-    display: flex;
-    flex-direction: row-reverse;
-    background-color: $primary;
-    align-items: center;
-    padding: 0rem 1rem;
-}
-
-#auth {
-  color: white;
-}
-
-.hello {
-  color: $blue;
-}
-
-.show {
-  display: block;
-}
-
-.hide {
-  display: none;
-}
-
-.scs-button {
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  background-color: $lightAccent;
-  width: 5rem;
-  text-align: center;
-  align-self: center;
-}
+@import 'styles/_reset';
+@import 'styles/_colors';
+@import 'styles/_effects';
+@import 'styles/_fonts';
+@import 'styles/_content';
+@import 'styles/_layout';
+@import 'styles/_mobile';
+>>>>>>> dev

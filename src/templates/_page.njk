@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	<title>{{ title }}</title>
+	<link href="/main.css" rel="stylesheet">
+	<link href=
+		{% if section == 'writing' %}
+			"/styles/writing.css"
+		{% elif section == 'music' %}
+			"/styles/music.css"
+		{% endif %}
+		rel="stylesheet">
+</head>
+<body class="
+	{% if section == 'writing' %}
+		writing
+	{% elif section == 'music' %}
+		music
+	{% endif %}
+	">
+	<div class="container">
+		<a href="/index.html">
+		<div class="header">
+				<!-- <img src="/library/logo_white_nourl.gif" height="90px" class="logo" /> -->
+		</div>
+		</a>
+
+		<div class="navbar aero-bg"></div>
+
+		<div class="navbar aero">
+			<ul class="dropdown-menu">
+				<li class="dropdown-item
+					{% if section == 'about' %}
+						active
+					{% endif %}">
+					<a href="/about/about.html"><div class="dropdown-link">About</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><h1>About</h1></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li style="padding-top: 15px"><a href="/about/about.html">About us</a></li>
+									<li><a href="/about/king-sejong.html">King Sejong</a></li>
+									<li><a href="/about/board.html">Committees and board</a></li>
+									<li><a href="/about/contact.html">Contact us</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item
+					{% if section == 'writing' %}
+						active
+					{% endif %}">
+					<a href="/writing/index.html"><div class="dropdown-link">Writing</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><a href="/writing/index.html"><h1>writing competition</h1></a></li>
+									<li><a href="/writing/competition.html">Applications</a></li>
+									<li><a href="/writing/teachers.html">For teachers</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><a href="/writing/essay.html"><h1>essay division</h1></a></li>
+									<li><a href="/writing/adult.html">Adult division</a></li>
+									<li><a href="/writing/senior.html">Senior division</a></li>
+									<li><a href="/writing/junior.html">Junior division</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><a href="/writing/sijo.html"><h1>sijo division</h1></a></li>
+									<li><a href="/resources/sijo-guide.html">How to write sijo</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>past</h1></a></li>
+									<li><a href="/writing/winners.html">Past winners</a></li>
+									<li><a href="/writing/winning-essays.html">Winning essays</a></li>
+									<li><a href="/writing/winning-sijo.html">Winning sijo</a></li>
+									<li><a href="/writing/judges.html">Judges</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item
+					{% if section == 'music' %}
+						active
+					{% endif %}">
+					<a href="/music/index.html"><div class="dropdown-link">Music</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><a href="/music/index.html"><h1>music competition</h1></a></li>
+									<li><a href="/writing/competition.html">Applications</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>current</h1></li>
+									<li><a href="/music/rules.html">Competition rules &amp; info</a></li>
+									<li><a href="/music/repertoire.html">Required repertoire</a></li>
+									<li><a href="/music/location.html">Location</a></li>
+									<li><a href="/music/concert-info.html">Winners' concert info</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>past</h1></li>
+									<li><a href="/music/winners.html">Winners</a></li>
+									<li><a href="/music/judges.html">Judges</a></li>
+									<li><a href="/music/concert-past.html">Past winners' concerts</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item
+					{% if section == 'composition' %}
+						active
+					{% endif %}">
+					<a href="/composition/index.html"><div class="dropdown-link">Composition</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><h1>music composition competition</h1></li>
+									<li><a href="/composition/index.html">Composition index</a></li>
+									<li><a href="/composition/about.html">About the competition</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>past</h1></li>
+									<li><a href="/composition/past.html">Past competitions</a></li>
+									<li><a href="/composition/winners.html">Winners and judges</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>pieces</h1></li>
+									<li><a href="/events/music.html">Performances of pieces</a></li>
+									<li><a href="/music/repertoire.html">Use as repertoire</a></li>
+									<li><a href="/resources/music-folk.html">Traditional Korean music</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item
+					{% if section == 'sijo' %}
+						active
+					{% endif %}">
+					<a href="/sijo/index.html"><div class="dropdown-link">Sijo projects</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><h1>sijo projects</h1></li>
+									<li><a href="/sijo/index.html">Sijo projects index</a></li>
+									<li><a href="/sijo/about.html">About our sijo projects</a></li>
+									<li><a href="/resources/sijo-guide.html">A beginner's guide to sijo</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>teaching sijo</h1></li>
+									<li><a href="/sijo/teaching.html">About teaching sijo</a></li>
+									<li><a href="/sijo/teacher-materials.html">Materials for teachers</a></li>
+									<li><a href="/sijo/teacher-videos.html">Lectures and video resources</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>sijo and music</h1></li>
+									<li><a href="/sijo/sijo-music.html">About sijo and music</a></li>
+									<li><a href="/sijo/sijo-composers.html">Composers and poets</a></li>
+									<li><a href="/events/sijo-and-music.html">Past and upcoming performances</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item
+					{% if section == 'events' %}
+						active
+					{% endif %}">
+					<a href="/events/index.html" ><div class="dropdown-link">Events</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><h1>events</h1></li>
+									<li><a href="/events/index.html">Events index</a></li>
+									<li><a href="/events/upcoming.html">Upcoming events</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>general events</h1></li>
+									<li><a href="/events/special.html">Special events</a></li>
+									<li><a href="/events/benefits.html">Benefits and keynote speakers</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>sijo</h1></li>
+									<li><a href="/events/sijo-and-music.html">Sijo and music performances</a></li>
+									<li><a href="/events/sijo-workshops.html">Lectures and workshops</a></li>
+									<li><a href="/events/sijo-other.html">Other sijo events</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>music</h1></li>
+									<li><a href="/events/music.html">Classical music performances</a></li>
+									<li><a href="/music/concert-past.html">Music competition winners' concerts</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item
+					{% if section == 'resources' %}
+						active
+					{% endif %}">
+					<a href="/resources/index.html"><div class="dropdown-link">Resources</div></a>
+					<div class="dropdown-inner">
+						<div class="dropdown-inner-container">
+							<div>
+								<ul>
+									<li><h1>resources</h1></li>
+									<li><a href="/resources/index.html">Resources index</a></li>
+									<li><a href="/resources/general.html">General resources about Korea</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>sijo</h1></li>
+									<li><a href="/resources/sijo-guide.html">A beginner's guide to sijo</a></li>
+									<li><a href="/resources/sijo-read.html">Read sijo poems</a></li>
+									<li><a href="/resources/sijo-chang.html">Traditional sijo music</a></li>
+									<li><a href="/resources/sijo-indepth.html">Sijo in-depth</a></li>
+									<li><a href="/resources/sijo-resources.html">Resources</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>traditional music</h1></li>
+									<li><a href="/resources/music.html">Introduction</a></li>
+									<li><a href="/resources/music-folk.html">Folk songs</a></li>
+									<li><a href="/resources/music-modern.html">Modern repertoire</a></li>
+								</ul>
+							</div>
+							<div>
+								<ul>
+									<li><h1>literature</h1></li>
+									<li><a href="/resources/literature.html">Contemporary short stories</a></li>
+									<li><a href="/resources/literature-folk.html">Korean folk tales</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-item-flex"></li>
+				<div id="auth"></div>
+			</ul>
+		</div>
+
+		{% include "../templates/_headerMobile.njk" %}
+
+		<div class="content">
+
+	    {% block content %}
+	    {% endblock %}
+
+		</div>
+
+<div class="footer">
+  <ul class="footer-menu">
+    <li class="footer-item"><a href="/about/contact.html">Contact us</a></li>
+    <li class="footer-item"><a href="/sitemap.html">Site map</a></li>
+    <li class="flex"></li>
+    <li class="footer-right">social media stuff</li>
+  </ul>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
+<script type="text/javascript" src="/bundle.js"></script>
+
+<script>
+  function expandNav() {
+      var x = document.getElementById("mobile-navbar");
+      if (x.className === "mobile-navbar") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-navbar";
+      }
+  }
+  function expand02() {
+      var x = document.getElementById("mobile-12");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+  function expand03() {
+      var x = document.getElementById("mobile-13");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+  function expand04() {
+      var x = document.getElementById("mobile-14");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+  function expand05() {
+      var x = document.getElementById("mobile-15");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+  function expand06() {
+      var x = document.getElementById("mobile-16");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+  function expand07() {
+      var x = document.getElementById("mobile-17");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+  function expand08() {
+      var x = document.getElementById("mobile-18");
+      if (x.className === "mobile-m10") {
+          x.className += " expand";
+      } else {
+          x.className = "mobile-m10";
+      }
+  }
+</script>
+</body>

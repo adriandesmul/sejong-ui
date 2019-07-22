@@ -13,11 +13,13 @@ class SijoEntry extends React.Component {
       title: '',
       body: '',
       msg: null,
+      unsavedChanges: false,
       haveData: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handlePreview = this.handlePreview.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +27,7 @@ class SijoEntry extends React.Component {
       !this.isCancelled && this.setState({
         title: data ? data.title : '',
         body: data ? data.body : '',
+        unsavedChanges: false,
         haveData: true
       })
     });
@@ -37,13 +40,16 @@ class SijoEntry extends React.Component {
   handleInputChange(event) {
     const target = event.target;
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
+      unsavedChanges: true
     });
   }
 
   handleBodyChange(content) {
+    if (content === this.state.body) { return; }
     this.setState({
-      body: content
+      body: content,
+      unsavedChanges: true
     });
   }
 
@@ -55,17 +61,39 @@ class SijoEntry extends React.Component {
     }
 
     API.post('/writing/save', payload, (status) => {
-      if (status != '200') {
+      console.log(status)
+      if (status !== 200) {
         this.setState({ msg: {
           body: 'Save error',
           type: 'error'
         }});
       } else {
-        this.setState({ msg: {
-          body: 'Save successful',
-          type: 'success'
-        }});
+        this.setState({
+          msg: {
+            body: 'Save successful',
+            type: 'success'
+          }, unsavedChanges: false
+        });
       }
+    })
+  }
+
+  handlePreview() {
+    API.get('/writing/generate/sijo', (error, data) => {
+      console.log(data)
+      var newBlob = new Blob([data], {type: "application/pdf"})
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob);
+        return;
+      }
+
+      const url = window.URL.createObjectURL(newBlob);
+      var link = document.createElement('a');
+      link.href = url;
+      link.download="preview.pdf";
+      link.click();
+      setTimeout(() => window.URL.revokeObjectURL(url), 100)
     })
   }
 
@@ -75,28 +103,38 @@ class SijoEntry extends React.Component {
     if (msg) { msgClass = classNames(['scs-message', msg.type]) }
 
     return (
-      <div className="scs-module">
-        <div className="scs-header">Sijo Entry</div>
+      <div className="scs-module sijo">
+	      <div className="scs-header">
+	        <p>Sijo Entry</p>
+	        {this.state.unsavedChanges && <p className="unsaved">Unsaved changes</p>}
+	      </div>
         {msg &&
           <div className={msgClass}>{msg.body}</div>
         }
         {this.state.haveData &&
-        <input
-          type="text"
-          name="title"
-          placeholder="Sijo title"
-          className="scs-input"
-          value={this.state.title}
-          onChange={this.handleInputChange}
-        />
+        <div className="scs-module-element">
+          <label>Title: </label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Sijo title optional"
+            className="scs-input"
+            value={this.state.title}
+            onChange={this.handleInputChange}
+          />
+        </div>
         }
         {this.state.haveData &&
-        <EntryArea
-          initialValue={this.state.body}
-          onChange={this.handleBodyChange}
-        />
+				<div className="scs-entry-area sijo">
+	        <EntryArea
+	          initialValue={this.state.body}
+	          onChange={this.handleBodyChange}
+	          type='sijo'
+	        />
+				</div>
         }
-        <a className="scs-button" onClick={this.handleSave}>Save</a>
+        <a className="scs-button save" onClick={this.handleSave}>Save</a>
+        <a className="scs-button preview" onClick={this.handlePreview}>Preview</a>
       </div>
     )
   }

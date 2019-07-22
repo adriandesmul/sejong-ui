@@ -1,6 +1,8 @@
 import React from 'react';
 import API from '../api/api';
 
+const classNames = require('classnames');
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,8 @@ class Login extends React.Component {
       password: null,
       loginOpen: false,
       forgotPasswordOpen: false,
-      forgotPasswordSuccess: false
+      forgotPasswordSuccess: false,
+      error: null
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -40,6 +43,12 @@ class Login extends React.Component {
     this.props.attemptLogin({
       username: this.state.username,
       password: this.state.password
+    }, (result) => {
+      if (result) {
+        this.setState({
+          error: result
+        })
+      }
     });
   }
 
@@ -71,11 +80,21 @@ class Login extends React.Component {
   }
 
   render() {
+    var error;
+
+    if (this.state.error) {
+      error = (<div className="scs-error">{this.state.error}</div>)
+    }
+
     return (
       <div>
-        <p onClick={() => {this.setState((state) => {
-          return {'loginOpen': !state.loginOpen}
-        })}}>Login</p>
+        <div className="dropdown-item">
+					<a>
+						<div className="dropdown-link" onClick={() => {this.setState((state) => {
+		          return {'loginOpen': !state.loginOpen}
+						})}}>Log in</div>
+					</a>
+				</div>
         {this.state.loginOpen &&
           <div className="scs-loginWindow">
             <input
@@ -91,8 +110,9 @@ class Login extends React.Component {
               onChange={this.handleInputChange}
               onKeyPress={this.handleKeyPress}
             />
-            <a className="scs-button" onClick={this.handleSubmit}>Login</a>
-            <a className="scs-button" onClick={this.handleForgotPassword}>Forgot password</a>
+            {error}
+            <a className="scs-button" onClick={this.handleSubmit}>Log in</a>
+            <a className="scs-button pw" onClick={this.handleForgotPassword}>Forgot password</a>
           </div>
         }
         {this.state.forgotPasswordOpen &&

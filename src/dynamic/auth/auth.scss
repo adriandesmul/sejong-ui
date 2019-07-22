@@ -1,7 +1,10 @@
 @import '../../styles/colors';
 
 .scs-auth {
+/*
   display: flex;
+	overflow: hidden;
+*/
 
   input {
     border-radius: 5px;
@@ -14,36 +17,29 @@
     cursor: pointer;
   }
 }
-
 .scs-loginWindow, .scs-createAccountWindow {
-  position: fixed;
-  background-color: #333;
+  position: absolute;
   z-index: 200;
+	background-color: $backgroundDark;
+	border: solid 2px;
+	border-top: none;
 
-  width: 20rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 20px 10px;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
 
-  right: 1rem;
-  top: 5rem;
+  right: 15%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   input {
-    width: 19rem;
+    width: 15rem;
     margin-bottom: 0.5rem;
   }
 
-  .scs-button {
-    background-color: $lightAccent;
-    color: black;
-    width: auto;
-  }
-
   .scs-error {
-    width: 19rem;
+    //width: 19rem;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     background-color: $failure;
@@ -59,4 +55,10 @@
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+@media screen and (max-width: 1400px) {
+	.scs-loginWindow, .scs-createAccountWindow {
+		right: 0;
+	}
 }

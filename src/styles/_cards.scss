@@ -1,0 +1,43 @@
+.theater {
+	&-tab {
+		background-color: $backgroundDark;
+		padding: 0.2rem;
+		margin: 0;
+		border: solid 2px $primary;
+		border-bottom: none;
+		cursor: pointer;
+
+		&:last-of-type {
+			border-bottom: solid 2px $primary;
+		}
+		&.active, &:hover {
+			background-color: $primary;
+			color: white;
+		}
+		&-contain {
+			margin-bottom: 1rem;
+		}
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+
+	&-mov {
+		&-caption {
+			h2 {
+				margin-top: 1rem;
+				margin-bottom: -0.5rem;
+				color: black;
+			}
+		}
+	}
+	&-info {
+		h3 {
+			+ p {
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+	}
+}

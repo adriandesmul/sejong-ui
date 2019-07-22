@@ -5,14 +5,14 @@ const webpack = require('webpack');
 const Nunjucks = require('nunjucks');
 const mkdirp = require('mkdirp');
 const watch = require('watch');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 Nunjucks.configure({noCache: true})
 
 const API_URL = {
-  local: JSON.stringify('http://localhost:3000')
+  local: JSON.stringify('http://localhost:3000'),
+  prod: JSON.stringify('https://api.sejongculturalsociety.info')
 }
-
-var environment = (process.env.NODE_ENV == 'local') ? 'local' : 'production'
 
 var htmlFiles = [];
 
@@ -45,70 +45,89 @@ htmlFiles.map((file) => {
   fs.writeFileSync(saveTo, compiledFile);
 })
 
-// FONT TRANSFER
-var fontFiles = [];
-fromDir('./src', '.eot', fontFiles);
-fromDir('./src', '.woff', fontFiles);
-fromDir('./src', '.woff2', fontFiles);
-fromDir('./src', '.ttf', fontFiles);
-fromDir('./src', '.css', fontFiles);
 
-fontFiles.map((file) => {
-  console.log('Building: ', file)
-  let saveTo = path.join('./dist',file.split(path.normalize('./src'))[1]);
-  mkdirp.sync(path.dirname(saveTo))
-  fs.copyFileSync(file, saveTo);
-})
-
-
-if (environment == 'local') {
-  watch.createMonitor('./src/static', (monitor) => {
-    monitor.on('changed', () => {
-
-      console.log("-- Update HTML --")
-
-      htmlFiles = [];
-
-      fromDir('./src/static', '.html', htmlFiles);
-      htmlFiles.map((file) => {
-        let compiledFile = Nunjucks.render(file);
-        let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
-        console.log(saveTo)
-        mkdirp.sync(path.dirname(saveTo))
-        fs.writeFileSync(saveTo, compiledFile);
-      })
-
-    })
-  })
-}
-
+>>>>>>> dev
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
     new htmlWebpackPlugin({
       template: './src/dynamic/index.html',
       filename: './writing/competition/index.html'
     }),
     new webpack.DefinePlugin({
-      'API_URL': API_URL[environment]
+      'API_URL': API_URL['local']
     })
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    compress: true
+    compress: true,
+    watchOptions: {
+      poll: true
+    },
+    after: (app, server) => {
+      watch.createMonitor('./src', (monitor) => {
+        monitor.on('changed', () => {
+
+          console.log("-- Update HTML --")
+
+          htmlFiles = [];
+
+          fromDir('./src/static', '.html', htmlFiles);
+          htmlFiles.map((file) => {
+            let compiledFile = Nunjucks.render(file);
+            let saveTo = path.join('./dist',file.split(path.normalize('./src/static'))[1]);
+            console.log(saveTo)
+            mkdirp.sync(path.dirname(saveTo))
+            fs.writeFileSync(saveTo, compiledFile);
+          })
+
+        })
+      })
+    }
   },
   module: {
     rules: [
       {
         test: /\.?css$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          {
+            loader: MiniCssExtractPlugin.loader
+          }, {
+            loader: 'css-loader'
+          }, {
+            loader: 'resolve-url-loader',
+            options: {
+              root: ''
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }, {
+        test: /\.(eot|woff|woff2|ttf|jpg|png|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath(url, resourcePath, context) {
+                const relativePath = path.relative(context, resourcePath);
+                const newPath = relativePath.split(path.normalize('src/'))[1]
+                return newPath
+              }
+            }
+          }
         ]
       }, {
         test: /\.js$/,

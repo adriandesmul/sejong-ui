@@ -1,0 +1,5 @@
+<div ng-repeat="entry in vm.winners | filter:vm.year | filter:{place: '2', category: 'essay', division: 'adult'}">
+	<b>{{entry.firstName}} {{entry.lastName}}</b><br/>
+	{{entry.city}}, {{entry.state}}<br/>
+	{{entry.school}}
+</div>

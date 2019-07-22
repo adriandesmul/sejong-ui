@@ -1,0 +1,12 @@
+@mixin theme($name, $primary, $secondary) {
+	.#{$name} {
+		h1 {
+			color: $primary;
+		}
+		p {
+			color: $secondary;
+		}
+	}
+}
+@include theme(writing, blue, purple);
+@include theme(music, green, yellow);

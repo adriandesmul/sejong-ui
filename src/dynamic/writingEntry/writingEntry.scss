@@ -1,45 +1,18 @@
 @import '../../styles/colors';
 
-.scs-module {
-
-  width: 50rem;
-  margin: 10px;
-  align-self: center;
-  border: 1px solid;
+.scs-writing {
   display: flex;
-  flex-direction: column;
 
-  .scs-header {
-    background: $primary;
-    color: white;
-    padding: 1rem;
+  section {
+    flex: 1;
   }
+}
 
-  .scs-message {
-
-    margin: 1rem;
-    border-radius: 0.5rem;
-    padding: 1rem;
-
-    &.error {
-      background-color: $failure;
-      color: white;
+#essay {
+  .ql-editor {
+    p {
+      margin-bottom: 1rem;
+      text-indent: 2rem;
     }
-
-    &.success {
-      background-color: $success;
-      color: white;
-    }
-  }
-
-  .scs-input {
-    margin: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid $primary;
-    padding: 0.5rem;
-  }
-
-  .quill {
-    margin: 1rem;
   }
 }

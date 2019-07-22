@@ -1,11 +1,88 @@
-$primary: #003153;
-$light: #FAF7F7;
-$lightAccent: #4CAAC5;
-$dark: #18151D;
-$darkAccent: #8D5B62;
+:root {
+    --turquoise: #54aba5;
+    --duskrose: #ab5482;
+    --bronze: #ab9454;
+    --lilac: #c7c3f2;
+    --bubblegum: #edbfe8;
+    --chartreuse: #d4ed96;
+    --peach: #edcd96;
+    --sky: #c3eaf2;
+}
 
-$success: #3E8F58;
-$warning: #BB7F20;
-$failure: #F44336;
+$primary: darkseagreen;
+$light: palegoldenrod;
+$lightAccent: coral;
+$dark: steelblue;
+$darkAccent: #4CAAC5;
+
+$background: #efefef;
+$backgroundDark: #dddddd;
+$success: limegreen;
+$warning: sandybrown;
+$failure: crimson;
+$failureLight: lightpink;
 
 $blue: #1010BB;
+
+
+a {
+	color: $darkAccent;
+}
+a:hover {
+	color:grey;
+}
+h2 {
+	color:grey;
+}
+
+.wrapper, .text {
+	background-color: $background;
+}
+
+.green {
+	border-color: darkgreen;
+	background-color: #B0D0B0;
+	color:darkgreen;
+}
+.blue {
+	border-color: #23577e;
+	background-color: #c5e3fa;
+	color:#23577e;
+}
+
+/* ------------------------------------------------------------------- layout */
+.navbar.active, .dropdown-item:hover, div.dropdown-item:hover, .dropdown-item.active {
+	border-color: violet;
+}
+.navbar.aero {
+	background: rgba(0, 0, 0, 0.4);
+}
+.dropdown-menu a, .dropdown-inner {
+	color: white;
+}
+.dropdown-inner a {
+	color: $light;
+}
+.dropdown-inner a:hover {
+	color:$lightAccent;
+}
+
+.footer {
+	background-color:dimgrey;
+	color: white;
+}
+.footer a {
+	color: $light;
+}
+.footer a:hover {
+	color: $lightAccent;
+}
+
+/*
+.header, .logo {
+	background-color: darkseagreen;
+}
+.dropdown-item:hover {
+	color:lightpink;
+}
+*/
