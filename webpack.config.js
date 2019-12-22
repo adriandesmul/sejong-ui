@@ -53,10 +53,10 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new htmlWebpackPlugin({
-      template: "./src/dynamic/index.html",
-      filename: "./writing/competition/index.html"
-    }),
+    // new htmlWebpackPlugin({
+    //   template: "./src/dynamic/index.html",
+    //   filename: "./writing/competition/index.html"
+    // }),
     new webpack.DefinePlugin({
       API_URL: API_URL["local"]
     })

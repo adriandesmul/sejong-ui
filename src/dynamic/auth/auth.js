@@ -1,68 +1,38 @@
-import React from 'react';
+import React from "react";
 
-import Username from './username';
-import Login from './login';
-import Logout from './logout';
-import CreateAccount from './createAccount';
-import './auth.scss';
-
-const classNames = require('classnames');
+import Username from "./username";
+import Login from "./login";
+import Logout from "./logout";
+import "./auth.scss";
 
 class Auth extends React.Component {
   constructor(props) {
     super(props);
 
-    this.attemptLogin = this.attemptLogin.bind(this);
-    this.newAccountLogin = this.newAccountLogin.bind(this);
     this.logout = this.logout.bind(this);
+
+    const url_hash = window.location.hash;
+    let token;
+
+    if (url_hash.indexOf("id_token") !== -1) {
+      token = url_hash.substring(
+        url_hash.indexOf("id_token") + 9,
+        url_hash.indexOf("&", url_hash.indexOf("id_token"))
+      );
+      localStorage.setItem("loginToken", token);
+      decodeToken(token);
+    }
 
     var userData = decodeToken();
 
     this.state = {
       username: userData.username,
       admin: userData.admin
-    }
-  }
-
-  attemptLogin(data, cb) {
-
-    const loginString =
-      encodeURIComponent('username') + '=' +
-      encodeURIComponent(data.username) + '&' +
-      encodeURIComponent('password') + '=' +
-      encodeURIComponent(data.password);
-
-    fetch(API_URL + '/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      },
-      body: loginString
-    }).then((results) => {
-        if (results.status !== 200) {
-          cb('Wrong password')
-          return null;
-        }
-        return results.text();
-    }).then((data) => {
-        if (!data) { return; }
-        localStorage.setItem('loginToken', data);
-        var userData = decodeToken(data);
-        this.setState(userData);
-        window.location.reload();
-    });
-
-  }
-
-  newAccountLogin(data) {
-    localStorage.setItem('loginToken', data);
-    var userData = decodeToken(data);
-    this.setState(userData);
-    window.location.reload();
+    };
   }
 
   logout() {
-    localStorage.removeItem('loginToken');
+    localStorage.removeItem("loginToken");
     this.setState(decodeToken());
     window.location.reload();
   }
@@ -71,15 +41,10 @@ class Auth extends React.Component {
     if (!this.state.username) {
       return (
         <div className="scs-auth">
-          <Login attemptLogin={this.attemptLogin}/>
+          <Login />
         </div>
-      )
-    } else
-
-		// <span>&nbsp;|&nbsp;</span>
-		// <CreateAccount newAccountLogin={this.newAccountLogin}/>
-
-		{
+      );
+    } else {
       return (
         <div className="scs-auth dropdown-item">
           <div className="dropdown-link">
@@ -87,37 +52,38 @@ class Auth extends React.Component {
             <Logout logout={this.logout} />
           </div>
         </div>
-      )
+      );
     }
   }
 }
 
 function decodeToken(token) {
-
-  var loginToken = token || localStorage.getItem('loginToken');
+  var loginToken = token || localStorage.getItem("loginToken");
 
   var userObj = {
     username: null,
     admin: null
-  }
+  };
 
   if (loginToken) {
-    var encodedDetails = loginToken.split('.')[1];
+    var encodedDetails = loginToken.split(".")[1];
     var userDetails;
 
     try {
       userDetails = JSON.parse(atob(encodedDetails));
-    } catch(error) {
+    } catch (error) {
       localStorage.clear();
     }
 
-    if (!userDetails) { return userObj; }
-    userObj.username = userDetails.user;
+    if (!userDetails) {
+      return userObj;
+    }
+    userObj.username = userDetails.email;
+    userObj.sub = userDetails.sub;
     userObj.admin = userDetails.admin;
   }
 
   return userObj;
-
 }
 
 export default Auth;
