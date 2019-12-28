@@ -6,9 +6,12 @@ class Login extends React.Component {
   }
 
   render() {
+	  console.log(AUTH_URL)
+	  const url = "https://auth.dev.sejongculturalsociety.info/login?response_type=token&client_id=38b25du3o8d7pc2kqp5jn33duu&redirect_uri=" + AUTH_URL +"/writing/competition.html";
+
     return (
       <div className="dropdown-link">
-        <a href="https://auth.dev.sejongculturalsociety.info/login?response_type=token&client_id=38b25du3o8d7pc2kqp5jn33duu&redirect_uri=http://localhost:8080/writing/competition.html">
+        <a href={url}>
           Login
         </a>
       </div>

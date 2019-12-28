@@ -14,6 +14,12 @@ const API_URL = {
   prod: JSON.stringify("https://api.sejongculturalsociety.info")
 };
 
+const AUTH_URL = {
+	local: JSON.stringify("http://localhost:8080"),
+	dev: JSON.stringify("https://dev.sejongculturalsociety.info"),
+	prod: JSON.stringify("https://sejongculturalsociety.info")
+};
+
 var htmlFiles = [];
 
 function fromDir(startPath, filter, arr) {
@@ -58,7 +64,8 @@ module.exports = {
     //   filename: "./writing/competition/index.html"
     // }),
     new webpack.DefinePlugin({
-      API_URL: API_URL["local"]
+      API_URL: API_URL["local"],
+	  AUTH_URL: AUTH_URL["local"]
     })
   ],
   output: {
@@ -103,7 +110,10 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader
           },
           {
-            loader: "css-loader"
+            loader: "css-loader",
+			options: {
+				url: false
+			}
           },
           {
             loader: "resolve-url-loader",
@@ -127,7 +137,7 @@ module.exports = {
             options: {
               outputPath(url, resourcePath, context) {
                 const relativePath = path.relative(context, resourcePath);
-                const newPath = relativePath.split(path.normalize("src/"))[1];
+                const newPath = path.normalize(relativePath.split(path.normalize("src/"))[1]);
                 return newPath;
               }
             }
