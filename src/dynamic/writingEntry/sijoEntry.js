@@ -1,6 +1,7 @@
 import React from "react";
 import EntryArea from "./entryArea";
 import API from "../api/api";
+import Loader from "../common/loader";
 import "./writingEntry.scss";
 
 const classNames = require("classnames");
@@ -114,6 +115,7 @@ class SijoEntry extends React.Component {
       <div className="scs-module sijo">
         <div className="scs-header">
           <p>Sijo Entry</p>
+          {!this.state.haveData && <Loader />}
           {this.state.unsavedChanges && (
             <p className="unsaved">Unsaved changes</p>
           )}
@@ -141,12 +143,16 @@ class SijoEntry extends React.Component {
             />
           </div>
         )}
-        <a className="scs-button save" onClick={this.handleSave}>
-          Save
-        </a>
-        <a className="scs-button preview" onClick={this.handlePreview}>
-          Preview
-        </a>
+        {this.state.haveData && (
+          <a className="scs-button save" onClick={this.handleSave}>
+            Save
+          </a>
+        )}
+        {this.state.haveData && (
+          <a className="scs-button preview" onClick={this.handlePreview}>
+            Preview
+          </a>
+        )}
       </div>
     );
   }

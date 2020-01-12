@@ -5,6 +5,8 @@ import Login from "./login";
 import Logout from "./logout";
 import "./auth.scss";
 
+// TODO: When get a fail, drop the token or refresh
+
 class Auth extends React.Component {
   constructor(props) {
     super(props);

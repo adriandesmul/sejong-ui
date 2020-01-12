@@ -2,11 +2,14 @@ import React from "react";
 import EntryArea from "./entryArea";
 import API from "../api/api";
 import "./writingEntry.scss";
+import Loader from "../common/loader";
 import ButtonOptions from "../common/buttonOptions";
 import DropdownOptions from "../common/dropdownOptions";
 import constants from "../common/constants";
 
 const classNames = require("classnames");
+
+// TODO: Refresh when it's offline
 
 class EssayEntry extends React.Component {
   constructor(props) {
@@ -140,30 +143,35 @@ class EssayEntry extends React.Component {
       <div className="scs-module essay">
         <div className="scs-header">
           <p>Essay Entry</p>
+          {!this.state.haveData && <Loader />}
           {this.state.unsavedChanges && (
             <p className="unsaved">Unsaved changes</p>
           )}
         </div>
         {msg && <div className={msgClass}>{msg.body}</div>}
-        <div className="scs-module-element">
-          <label>Title: </label>
-          <input
-            type="text"
-            name="title"
-            placeholder="Essay title optional"
-            className="scs-input"
-            value={this.state.title}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div className="scs-module-element">
-          <label>Division: </label>
-          <ButtonOptions
-            options={constants.essayDivisions}
-            onUpdate={this.selectDivison}
-            value={this.state.division}
-          />
-        </div>
+        {this.state.haveData && (
+          <div className="scs-module-element">
+            <label>Title: </label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Essay title optional"
+              className="scs-input"
+              value={this.state.title}
+              onChange={this.handleInputChange}
+            />
+          </div>
+        )}
+        {this.state.haveData && (
+          <div className="scs-module-element">
+            <label>Division: </label>
+            <ButtonOptions
+              options={constants.essayDivisions}
+              onUpdate={this.selectDivison}
+              value={this.state.division}
+            />
+          </div>
+        )}
         {this.state.division === "Junior" && (
           <div className="scs-module-element">
             <label>Folktale: </label>
@@ -183,12 +191,16 @@ class EssayEntry extends React.Component {
             />
           </div>
         )}
-        <a className="scs-button save" onClick={this.handleSave}>
-          Save
-        </a>
-        <a className="scs-button preview" onClick={this.handlePreview}>
-          Preview
-        </a>
+        {this.state.haveData && (
+          <a className="scs-button save" onClick={this.handleSave}>
+            Save
+          </a>
+        )}
+        {this.state.haveData && (
+          <a className="scs-button preview" onClick={this.handlePreview}>
+            Preview
+          </a>
+        )}
       </div>
     );
   }

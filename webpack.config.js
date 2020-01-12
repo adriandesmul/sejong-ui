@@ -15,9 +15,9 @@ const API_URL = {
 };
 
 const AUTH_URL = {
-	local: JSON.stringify("http://localhost:8080"),
-	dev: JSON.stringify("https://dev.sejongculturalsociety.info"),
-	prod: JSON.stringify("https://sejongculturalsociety.info")
+  local: JSON.stringify("http://localhost:8080"),
+  dev: JSON.stringify("https://dev.sejongculturalsociety.info"),
+  prod: JSON.stringify("https://sejongculturalsociety.info")
 };
 
 var htmlFiles = [];
@@ -65,7 +65,7 @@ module.exports = {
     // }),
     new webpack.DefinePlugin({
       API_URL: API_URL["local"],
-	  AUTH_URL: AUTH_URL["local"]
+      AUTH_URL: AUTH_URL["local"]
     })
   ],
   output: {
@@ -111,9 +111,9 @@ module.exports = {
           },
           {
             loader: "css-loader",
-			options: {
-				url: false
-			}
+            options: {
+              url: true // This could be the source of PC issues
+            }
           },
           {
             loader: "resolve-url-loader",
@@ -137,7 +137,9 @@ module.exports = {
             options: {
               outputPath(url, resourcePath, context) {
                 const relativePath = path.relative(context, resourcePath);
-                const newPath = path.normalize(relativePath.split(path.normalize("src/"))[1]);
+                const newPath = path.normalize(
+                  relativePath.split(path.normalize("src/"))[1]
+                );
                 return newPath;
               }
             }
