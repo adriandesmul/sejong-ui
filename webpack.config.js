@@ -10,7 +10,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 Nunjucks.configure({ noCache: true });
 
 const API_URL = {
-  local: JSON.stringify("https://api.dev.sejongculturalsociety.info"),
+  local: JSON.stringify("http://localhost:3000"),
+  dev: JSON.stringify("https://api.dev.sejongculturalsociety.info"),
   prod: JSON.stringify("https://api.sejongculturalsociety.info")
 };
 
