@@ -1,16 +1,15 @@
-{% set title = "submit entry | sejong writing competition" %}
-{% extends "../../templates/_page.njk" %}
+{% set title = "submit entry | sejong writing competition" %} {% extends
+"../../templates/_page.njk" %} {% block content %}
+<div class="wrapper">
+  <h1>Submit writing entry</h1>
 
-	{% block content %}
-		<div class="wrapper">
-			<h1>Submit writing entry</h1>
+  <div id="demographics" class="scs-demographics"></div>
 
-			<div id="demographics" class="scs-demographics"></div>
+  <div class="scs-writing">
+    <section id="sijo"></section>
+    <section id="essay"></section>
+  </div>
 
-	    <div class="scs-writing">
-	      <section id="sijo"></section>
-	      <section id="essay"></section>
-	    </div>
-
-		</div>
-	{% endblock %}
+  <div id="education" class="scs-demographics"></div>
+</div>
+{% endblock %}
