@@ -12,13 +12,13 @@ Nunjucks.configure({ noCache: true });
 const API_URL = {
   local: JSON.stringify("http://localhost:3000"),
   dev: JSON.stringify("https://api.dev.sejongculturalsociety.info"),
-  prod: JSON.stringify("https://api.sejongculturalsociety.info")
+  master: JSON.stringify("https://api.sejongculturalsociety.info")
 };
 
 const AUTH_URL = {
   local: JSON.stringify("http://localhost:8080"),
   dev: JSON.stringify("https://dev.sejongculturalsociety.info"),
-  prod: JSON.stringify("https://sejongculturalsociety.info")
+  master: JSON.stringify("https://sejongculturalsociety.info")
 };
 
 var htmlFiles = [];
@@ -65,8 +65,8 @@ module.exports = {
     //   filename: "./writing/competition/index.html"
     // }),
     new webpack.DefinePlugin({
-      API_URL: API_URL["local"],
-      AUTH_URL: AUTH_URL["local"]
+      API_URL: API_URL[process.env.CIRCLE_BRANCH || "local"],
+      AUTH_URL: AUTH_URL[process.env.CIRCLE_BRANCH || "local"]
     })
   ],
   output: {
