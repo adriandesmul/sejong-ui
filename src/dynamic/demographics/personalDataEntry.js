@@ -57,6 +57,126 @@ export default function PersonalDataEntry() {
     });
   }
 
+  const monthOptions = () => {
+    let months = [
+      "01 - Jan",
+      "02 - Feb",
+      "03 - Mar",
+      "04 - Apr",
+      "05 - May",
+      "06 - Jun",
+      "07 - Jul",
+      "08 - Aug",
+      "09 - Sep",
+      "10 - Oct",
+      "11 - Nov",
+      "12 - Dec"
+    ];
+    return months.map((month, idx) => (
+      <option value={idx + 1} key={month}>
+        {month}
+      </option>
+    ));
+  };
+
+  const dayOptions = () => {
+    let days = [];
+    for (let i = 1; i <= 31; i++) {
+      days.push(
+        <option value={i} key={"day_" + i}>
+          {i}
+        </option>
+      );
+    }
+    return days;
+  };
+
+  const yearOptions = () => {
+    let years = [];
+    for (let i = 1920; i <= 2020; i++) {
+      years.push(
+        <option value={i} key={"year_" + i}>
+          {i}
+        </option>
+      );
+    }
+    return years;
+  };
+
+  const stateOptions = () => {
+    let states = [
+      { key: "AK", value: "AK - Alaska" },
+      { key: "AL", value: "AL - Alabama" },
+      { key: "AR", value: "AR - Arkansas" },
+      { key: "AZ", value: "AZ - Arizona" },
+      { key: "CA", value: "CA - California" },
+      { key: "CO", value: "CO - Colorado" },
+      { key: "CT", value: "CT - Connecticut" },
+      { key: "DC", value: "DC - District Of Columbia" },
+      { key: "DE", value: "DE - Delaware" },
+      { key: "FL", value: "FL - Florida" },
+      { key: "GA", value: "GA - Georgia" },
+      { key: "HI", value: "HI - Hawaii" },
+      { key: "IA", value: "IA - Iowa" },
+      { key: "ID", value: "ID - Idaho" },
+      { key: "IL", value: "IL - Illinois" },
+      { key: "IN", value: "IN - Indiana" },
+      { key: "KS", value: "KS - Kansas" },
+      { key: "KY", value: "KY - Kentucky" },
+      { key: "LA", value: "LA - Louisiana" },
+      { key: "MA", value: "MA - Massachusetts" },
+      { key: "MD", value: "MD - Maryland" },
+      { key: "ME", value: "ME - Maine" },
+      { key: "MI", value: "MI - Michigan" },
+      { key: "MN", value: "MN - Minnesota" },
+      { key: "MO", value: "MO - Missouri" },
+      { key: "MS", value: "MS - Mississippi" },
+      { key: "MT", value: "MT - Montana" },
+      { key: "NC", value: "NC - North Carolina" },
+      { key: "ND", value: "ND - North Dakota" },
+      { key: "NE", value: "NE - Nebraska" },
+      { key: "NH", value: "NH - New Hampshire" },
+      { key: "NJ", value: "NJ - New Jersey" },
+      { key: "NM", value: "NM - New Mexico" },
+      { key: "NV", value: "NV - Nevada" },
+      { key: "NY", value: "NY - New York" },
+      { key: "OH", value: "OH - Ohio" },
+      { key: "OK", value: "OK - Oklahoma" },
+      { key: "OR", value: "OR - Oregon" },
+      { key: "PA", value: "PA - Pennsylvania" },
+      { key: "RI", value: "RI - Rhode Island" },
+      { key: "SC", value: "SC - South Carolina" },
+      { key: "SD", value: "SD - South Dakota" },
+      { key: "TN", value: "TN - Tennessee" },
+      { key: "TX", value: "TX - Texas" },
+      { key: "UT", value: "UT - Utah" },
+      { key: "VA", value: "VA - Virginia" },
+      { key: "VT", value: "VT - Vermont" },
+      { key: "WA", value: "WA - Washington" },
+      { key: "WI", value: "WI - Wisconsin" },
+      { key: "WV", value: "WV - West Virginia" },
+      { key: "WY", value: "WY - Wyoming" },
+      { key: "AB", value: "AB - Alberta" },
+      { key: "BC", value: "BC - British Columbia" },
+      { key: "MB", value: "MB - Manitoba" },
+      { key: "NB", value: "NB - New Brunswick" },
+      { key: "NL", value: "NL - Newfoundland" },
+      { key: "NS", value: "NS - Nova Scotia" },
+      { key: "NT", value: "NT - Northwest Territories" },
+      { key: "NU", value: "NU - Nunavut" },
+      { key: "ON", value: "ON - Ontario" },
+      { key: "PE", value: "PE - Prince Edward Island" },
+      { key: "QC", value: "QC - Quebec" },
+      { key: "SK", value: "SK - Saskatchewan" },
+      { key: "YT", value: "YT - Yukon" }
+    ];
+    return states.map(state => (
+      <option value={state.key} key={state.key}>
+        {state.value}
+      </option>
+    ));
+  };
+
   return (
     <div className="scs-module">
       <div className="scs-header">
@@ -90,32 +210,38 @@ export default function PersonalDataEntry() {
       </div>
       <div className="scs-module-element">
         <label>Date of Birth:</label>
-        <input
+        <select
           type="number"
           name="personal_date_of_birth_month"
           value={demographics.personal_date_of_birth_month}
-          placeholder="MM"
           className="scs-input"
           onChange={handleInputChange}
-        />
+        >
+          <option value="">MM</option>
+          {monthOptions()}
+        </select>
         &nbsp;/&nbsp;
-        <input
+        <select
           type="number"
           name="personal_date_of_birth_day"
           value={demographics.personal_date_of_birth_day}
-          placeholder="DD"
           className="scs-input"
           onChange={handleInputChange}
-        />
+        >
+          <option value="">DD</option>
+          {dayOptions()}
+        </select>
         &nbsp;/&nbsp;
-        <input
+        <select
           type="number"
           name="personal_date_of_birth_year"
           value={demographics.personal_date_of_birth_year}
-          placeholder="YYYY"
           className="scs-input"
           onChange={handleInputChange}
-        />
+        >
+          <option value="">YYYY</option>
+          {yearOptions()}
+        </select>
       </div>
       <div className="scs-module-element">
         <label>Address:</label>
@@ -146,22 +272,28 @@ export default function PersonalDataEntry() {
           className="scs-input"
           onChange={handleInputChange}
         />
-        <input
-          type="text"
+        <select
+          type="number"
           name="address_state"
           value={demographics.address_state}
-          placeholder="State"
           className="scs-input"
           onChange={handleInputChange}
-        />
-        <input
-          type="text"
+        >
+          <option value="">State</option>
+          {stateOptions()}
+        </select>
+        <select
+          type="number"
           name="address_country"
           value={demographics.address_country}
-          placeholder="Country"
           className="scs-input"
           onChange={handleInputChange}
-        />
+        >
+          <option value="">Country</option>
+          <option value="USA">USA</option>
+          <option value="CAD">Canada</option>
+          <option value="Other">Other</option>
+        </select>
         <input
           type="text"
           name="address_zip"
@@ -173,6 +305,7 @@ export default function PersonalDataEntry() {
       </div>
       <a
         className="scs-button save"
+        style={{ marginTop: "1rem" }}
         onClick={() => {
           handleSave();
         }}
