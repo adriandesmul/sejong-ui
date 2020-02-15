@@ -86,7 +86,7 @@ class SijoEntry extends React.Component {
   }
 
   handlePreview() {
-    API.get("/writing/generate/sijo", (error, data) => {
+    API.get("/writing/export?type=sijo", (error, data) => {
       console.log(data);
       var newBlob = new Blob([data], { type: "application/pdf" });
 

@@ -114,7 +114,7 @@ class EssayEntry extends React.Component {
   }
 
   handlePreview() {
-    API.get("/writing/generate/essay", (error, data) => {
+    API.get("/writing/export?type=essay", (error, data) => {
       console.log(data);
       var newBlob = new Blob([data], { type: "application/pdf" });
 
