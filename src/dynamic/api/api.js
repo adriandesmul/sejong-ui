@@ -9,7 +9,13 @@ function formatPayload(payload) {
   return formattedPayload;
 }
 
+function sleep(ms) {
+  console.log("Sleeping!");
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function get(route, cb) {
+  console.log("Trying again");
   var token = localStorage.getItem("loginToken");
   if (!token) {
     cb(true, null);
@@ -22,8 +28,7 @@ function get(route, cb) {
   })
     .then(results => {
       if (results.status !== 200) {
-        cb(true, null);
-        return;
+        return sleep(5000).then(() => get(route, cb));
       }
       if (
         route === "/writing/export?type=sijo" ||
