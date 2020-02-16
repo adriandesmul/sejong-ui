@@ -40,6 +40,10 @@
     h2 {
       color: black;
     }
+
+    .fa-pencil-alt {
+      margin-left: 0.5rem;
+    }
   }
 
   .scs-message {
@@ -72,6 +76,30 @@
   }
   &.sijo {
     margin-right: 0.4rem;
+  }
+}
+
+.scs-missing-data {
+  position: relative;
+
+  .scs-missing-data-notes {
+    display: none;
+  }
+
+  &:hover {
+    .scs-missing-data-notes {
+      display: block;
+      position: absolute;
+      font-size: 1rem;
+      width: 20rem;
+      background: white;
+      padding: 0.5rem;
+      color: black;
+      border: 1px solid black;
+      border-radius: 0.5rem;
+      left: calc(50% - 10rem);
+      z-index: 100;
+    }
   }
 }
 

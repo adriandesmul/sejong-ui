@@ -5,34 +5,35 @@ import SchoolSelect from "./schoolSelect";
 class EductionSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      school: null,
-      teacher: null
-    };
+    // this.state = {
+    //   school: null,
+    //   teacher: null
+    // };
 
     this.updateSchool = this.updateSchool.bind(this);
     this.updateTeacher = this.updateTeacher.bind(this);
+    // this.handleEducationChange = this.props.handleEducationChange;
+
+    console.log(this.props);
   }
 
   updateSchool(school) {
     if (school === null) {
-      this.setState({
-        school: null,
-        teacher: null
-      });
+      this.props.handleEducationChange(null, null);
     } else {
-      this.setState({ school: school });
+      this.props.handleEducationChange(school, null);
     }
   }
 
   updateTeacher(teacher) {
-    this.setState({ teacher: teacher });
+    this.props.handleEducationChange(this.props.school, teacher);
   }
 
   render() {
-    const school = this.state.school;
-    const teacher = this.state.teacher;
-    console.log(school);
+    const school = this.props.school;
+    const teacher = this.props.teacher;
+    console.log("School: ", school);
+    console.log("Teacher: ", teacher);
 
     return (
       <div style={{ paddingBottom: "1rem" }}>
@@ -44,7 +45,7 @@ class EductionSelect extends React.Component {
               className="scs-inline-button"
               onClick={() => this.updateSchool(null)}
             >
-              &nbsp;Edit
+              &nbsp;<i className="fas fa-pencil-alt"></i>
             </div>
           </div>
         )}
@@ -64,7 +65,7 @@ class EductionSelect extends React.Component {
               onClick={() => this.updateTeacher(null)}
             >
               {" "}
-              &nbsp;Edit
+              &nbsp;<i className="fas fa-pencil-alt"></i>
             </div>
           </div>
         )}

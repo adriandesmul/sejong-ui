@@ -5,6 +5,7 @@ import "./writingEntry.scss";
 import Loader from "../common/loader";
 import ButtonOptions from "../common/buttonOptions";
 import DropdownOptions from "../common/dropdownOptions";
+import EducationSelect from "../educationSelect/educationSelect";
 import constants from "../common/constants";
 
 const classNames = require("classnames");
@@ -20,6 +21,8 @@ class EssayEntry extends React.Component {
       body: "",
       division: null,
       folktale: null,
+      school: null,
+      teacher: null,
       unsavedChanges: false,
       msg: null,
       haveData: false
@@ -28,6 +31,7 @@ class EssayEntry extends React.Component {
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.selectDivison = this.selectDivison.bind(this);
     this.selectFolktale = this.selectFolktale.bind(this);
+    this.handleEducationChange = this.handleEducationChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
   }
@@ -40,6 +44,8 @@ class EssayEntry extends React.Component {
           body: data ? data.body : "",
           division: data ? data.division : null,
           folktale: data ? data.folktale : null,
+          school: data ? data.school : null,
+          teacher: data ? data.teacher : null,
           unsavedChanges: false,
           haveData: true
         });
@@ -84,13 +90,19 @@ class EssayEntry extends React.Component {
     this.setState({ folktale: folktale, unsavedChanges: true });
   }
 
+  handleEducationChange(school, teacher) {
+    this.setState({ school, teacher });
+  }
+
   handleSave() {
     var payload = {
       title: this.state.title,
       body: this.state.body,
       division: this.state.division,
       folktale: this.state.folktale,
-      entry_type: "essay"
+      entry_type: "essay",
+      school_id: this.state.school ? this.state.school.school_id : null,
+      teacher_id: this.state.teacher ? this.state.teacher.teacher_id : null
     };
 
     API.post("/writing", payload, status => {
@@ -139,6 +151,8 @@ class EssayEntry extends React.Component {
       msgClass = classNames(["scs-message", msg.type]);
     }
 
+    let complete = this.state.body && this.state.school && this.state.teacher;
+
     if (!localStorage.getItem("loginToken")) {
       return <div>Please login to edit Essay entry</div>;
     }
@@ -147,6 +161,25 @@ class EssayEntry extends React.Component {
       <div className="scs-module essay">
         <div className="scs-header">
           <p>Essay Entry</p>
+          {this.state.haveData && !complete && (
+            <div className="scs-missing-data">
+              <i
+                className="fas fa-exclamation-circle"
+                style={{ color: "#ff9999" }}
+              ></i>
+              <div className="scs-missing-data-notes">
+                You are missing the following data:
+                <ul>
+                  {!this.state.body && <li>A sijo</li>}
+                  {!this.state.school_id && <li>A school</li>}
+                  {!this.state.teacher_id && <li>A teacher</li>}
+                </ul>
+              </div>
+            </div>
+          )}
+          {this.state.haveData && complete && (
+            <i className="fas fa-check-circle" style={{ color: "#5fdc5f" }}></i>
+          )}
           {!this.state.haveData && <Loader />}
           {this.state.unsavedChanges && (
             <p className="unsaved">Unsaved changes</p>
@@ -195,6 +228,11 @@ class EssayEntry extends React.Component {
             />
           </div>
         )}
+        <EducationSelect
+          school={this.state.school}
+          teacher={this.state.teacher}
+          handleEducationChange={this.handleEducationChange}
+        />
         {this.state.haveData && (
           <a className="scs-button save" onClick={this.handleSave}>
             Save

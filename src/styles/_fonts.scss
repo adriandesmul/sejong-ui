@@ -26,36 +26,38 @@
 	 * © 2018 MyFonts Inc
 	*/
 
+/* @import must be at top of file, otherwise CSS will not work */
+//@import url("//hello.myfonts.net/count/37f332");
 
-	/* @import must be at top of file, otherwise CSS will not work */
-	//@import url("//hello.myfonts.net/count/37f332");
+@font-face {
+  font-family: "Bison-Bold";
+  src: url("./webfonts/37F332_0_0.eot");
+  src: url("./webfonts/37F332_0_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/37F332_0_0.woff2") format("woff2"),
+    url("./webfonts/37F332_0_0.woff") format("woff"),
+    url("./webfonts/37F332_0_0.ttf") format("truetype");
+  font-weight: bold;
+}
 
-	@font-face {font-family: 'Bison-Bold';
-		src: url('./webfonts/37F332_0_0.eot');
-		src: url('./webfonts/37F332_0_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/37F332_0_0.woff2') format('woff2'),
-			url('./webfonts/37F332_0_0.woff') format('woff'),
-			url('./webfonts/37F332_0_0.ttf') format('truetype');
-		font-weight: bold;
-	}
+@font-face {
+  font-family: "Bison-Regular";
+  src: url("./webfonts/37F332_1_0.eot");
+  src: url("./webfonts/37F332_1_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/37F332_1_0.woff2") format("woff2"),
+    url("./webfonts/37F332_1_0.woff") format("woff"),
+    url("./webfonts/37F332_1_0.ttf") format("truetype");
+}
 
-	@font-face {font-family: 'Bison-Regular';
-		src: url('./webfonts/37F332_1_0.eot');
-		src: url('./webfonts/37F332_1_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/37F332_1_0.woff2') format('woff2'),
-			url('./webfonts/37F332_1_0.woff') format('woff'),
-			url('./webfonts/37F332_1_0.ttf') format('truetype');
-	}
+@font-face {
+  font-family: "Bison-DemiBold";
+  src: url("./webfonts/37F332_2_0.eot");
+  src: url("./webfonts/37F332_2_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/37F332_2_0.woff2") format("woff2"),
+    url("./webfonts/37F332_2_0.woff") format("woff"),
+    url("./webfonts/37F332_2_0.ttf") format("truetype");
+}
 
-	@font-face {font-family: 'Bison-DemiBold';
-		src: url('./webfonts/37F332_2_0.eot');
-		src: url('./webfonts/37F332_2_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/37F332_2_0.woff2') format('woff2'),
-			url('./webfonts/37F332_2_0.woff') format('woff'),
-			url('./webfonts/37F332_2_0.ttf') format('truetype');
-	}
-
-	/*
+/*
 	 * @license
 	 * MyFonts Webfont Build ID 3666739, 2018-11-04T14:58:21-0500
 	 *
@@ -82,33 +84,33 @@
 	 * © 2018 MyFonts Inc
 	*/
 
-	@font-face {font-family: 'GillSansMTPro-Bold';
-		src: url('./webfonts/37F333_0_0.eot');
-		src: url('./webfonts/37F333_0_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/37F333_0_0.woff2') format('woff2'),
-			url('./webfonts/37F333_0_0.woff') format('woff'),
-			url('./webfonts/37F333_0_0.ttf') format('truetype');
-		font-weight: bold;
-	}
+@font-face {
+  font-family: "GillSansMTPro-Bold";
+  src: url("./webfonts/37F333_0_0.eot");
+  src: url("./webfonts/37F333_0_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/37F333_0_0.woff2") format("woff2"),
+    url("./webfonts/37F333_0_0.woff") format("woff"),
+    url("./webfonts/37F333_0_0.ttf") format("truetype");
+  font-weight: bold;
+}
 
+@font-face {
+  font-family: "GillSansMTPro-Light";
+  src: url("./webfonts/37F333_1_0.eot");
+  src: url("./webfonts/37F333_1_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/37F333_1_0.woff2") format("woff2"),
+    url("./webfonts/37F333_1_0.woff") format("woff"),
+    url("./webfonts/37F333_1_0.ttf") format("truetype");
+}
 
-	@font-face {font-family: 'GillSansMTPro-Light';
-		src: url('./webfonts/37F333_1_0.eot');
-		src: url('./webfonts/37F333_1_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/37F333_1_0.woff2') format('woff2'),
-			url('./webfonts/37F333_1_0.woff') format('woff'),
-			url('./webfonts/37F333_1_0.ttf') format('truetype');
-	}
-
-
-	@font-face {font-family: 'GillSansMTPro-LightItalic';
-		src: url('./webfonts/37F333_2_0.eot');
-		src: url('./webfonts/37F333_2_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/37F333_2_0.woff2') format('woff2'),
-			url('./webfonts/37F333_2_0.woff') format('woff'),
-			url('./webfonts/37F333_2_0.ttf') format('truetype');
-	}
-
+@font-face {
+  font-family: "GillSansMTPro-LightItalic";
+  src: url("./webfonts/37F333_2_0.eot");
+  src: url("./webfonts/37F333_2_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/37F333_2_0.woff2") format("woff2"),
+    url("./webfonts/37F333_2_0.woff") format("woff"),
+    url("./webfonts/37F333_2_0.ttf") format("truetype");
+}
 
 /**
  * @license
@@ -131,10 +133,15 @@
  * © 2019 MyFonts Inc
 */
 
-	@font-face {
-		font-family: 'GillSansMTPro-Medium';
-		src: url('./webfonts/38881D_0_0.eot');
-		src: url('./webfonts/38881D_0_0.eot?#iefix') format('embedded-opentype'),
-			url('./webfonts/38881D_0_0.woff2') format('woff2'),
-			url('./webfonts/38881D_0_0.woff') format('woff'),
-			url('./webfonts/38881D_0_0.ttf') format('truetype');}
+@font-face {
+  font-family: "GillSansMTPro-Medium";
+  src: url("./webfonts/38881D_0_0.eot");
+  src: url("./webfonts/38881D_0_0.eot?#iefix") format("embedded-opentype"),
+    url("./webfonts/38881D_0_0.woff2") format("woff2"),
+    url("./webfonts/38881D_0_0.woff") format("woff"),
+    url("./webfonts/38881D_0_0.ttf") format("truetype");
+}
+
+.bold {
+  font-family: "GillSansMTPro-Medium";
+}

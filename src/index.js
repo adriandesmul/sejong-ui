@@ -5,7 +5,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Auth from "./dynamic/auth/auth";
-import DemographicsEntry from "./dynamic/demographics/demographicsEntry";
 import PersonalDataEntry from "./dynamic/demographics/personalDataEntry";
 import SijoEntry from "./dynamic/writingEntry/sijoEntry";
 import EssayEntry from "./dynamic/writingEntry/essayEntry";
@@ -25,8 +24,6 @@ if (document.getElementById("demographics"))
     <PersonalDataEntry />,
     document.getElementById("demographics")
   );
-if (document.getElementById("education"))
-  ReactDOM.render(<DemographicsEntry />, document.getElementById("education"));
 if (document.getElementById("sijo"))
   ReactDOM.render(<SijoEntry />, document.getElementById("sijo"));
 if (document.getElementById("essay"))

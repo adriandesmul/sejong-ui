@@ -2,6 +2,7 @@ import React from "react";
 import EntryArea from "./entryArea";
 import API from "../api/api";
 import Loader from "../common/loader";
+import EducationSelect from "../educationSelect/educationSelect";
 import "./writingEntry.scss";
 
 const classNames = require("classnames");
@@ -13,12 +14,15 @@ class SijoEntry extends React.Component {
     this.state = {
       title: "",
       body: "",
+      school: null,
+      teacher: null,
       msg: null,
       unsavedChanges: false,
       haveData: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
+    this.handleEducationChange = this.handleEducationChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
   }
@@ -29,6 +33,8 @@ class SijoEntry extends React.Component {
         this.setState({
           title: data ? data.title : "",
           body: data ? data.body : "",
+          school: data ? data.school : null,
+          teacher: data ? data.teacher : null,
           unsavedChanges: false,
           haveData: true
         });
@@ -57,11 +63,17 @@ class SijoEntry extends React.Component {
     });
   }
 
+  handleEducationChange(school, teacher) {
+    this.setState({ school, teacher });
+  }
+
   handleSave() {
     var payload = {
       title: this.state.title,
       body: this.state.body,
-      entry_type: "sijo"
+      entry_type: "sijo",
+      school_id: this.state.school ? this.state.school.school_id : null,
+      teacher_id: this.state.teacher ? this.state.teacher.teacher_id : null
     };
 
     API.post("/writing", payload, status => {
@@ -111,6 +123,8 @@ class SijoEntry extends React.Component {
       msgClass = classNames(["scs-message", msg.type]);
     }
 
+    let complete = this.state.body && this.state.school && this.state.teacher;
+
     if (!localStorage.getItem("loginToken")) {
       return <div>Please login to edit Sijo entry</div>;
     }
@@ -119,6 +133,25 @@ class SijoEntry extends React.Component {
       <div className="scs-module sijo">
         <div className="scs-header">
           <p>Sijo Entry</p>
+          {this.state.haveData && !complete && (
+            <div className="scs-missing-data">
+              <i
+                className="fas fa-exclamation-circle"
+                style={{ color: "#ff9999" }}
+              ></i>
+              <div className="scs-missing-data-notes">
+                You are missing the following data:
+                <ul>
+                  {!this.state.body && <li>A sijo</li>}
+                  {!this.state.school_id && <li>A school</li>}
+                  {!this.state.teacher_id && <li>A teacher</li>}
+                </ul>
+              </div>
+            </div>
+          )}
+          {this.state.haveData && complete && (
+            <i className="fas fa-check-circle" style={{ color: "#5fdc5f" }}></i>
+          )}
           {!this.state.haveData && <Loader />}
           {this.state.unsavedChanges && (
             <p className="unsaved">Unsaved changes</p>
@@ -147,6 +180,11 @@ class SijoEntry extends React.Component {
             />
           </div>
         )}
+        <EducationSelect
+          school={this.state.school}
+          teacher={this.state.teacher}
+          handleEducationChange={this.handleEducationChange}
+        />
         {this.state.haveData && (
           <a className="scs-button save" onClick={this.handleSave}>
             Save
