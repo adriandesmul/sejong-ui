@@ -27,12 +27,13 @@ function get(route, cb) {
     headers: { Authorization: "Bearer " + token }
   })
     .then(results => {
-      if (results.status !== 200) {
-        return sleep(5000).then(() => get(route, cb));
-      }
       if (results.status === 401) {
         localStorage.removeItem("loginToken");
         window.location.reload();
+        return;
+      }
+      if (results.status !== 200) {
+        return sleep(5000).then(() => get(route, cb));
       }
       if (
         route === "/writing/export?type=sijo" ||
