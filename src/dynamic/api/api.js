@@ -30,6 +30,10 @@ function get(route, cb) {
       if (results.status !== 200) {
         return sleep(5000).then(() => get(route, cb));
       }
+      if (results.status === 401) {
+        localStorage.removeItem("loginToken");
+        window.location.reload();
+      }
       if (
         route === "/writing/export?type=sijo" ||
         route === "/writing/export?type=essay"
