@@ -139,6 +139,10 @@ class EssayEntry extends React.Component {
       msgClass = classNames(["scs-message", msg.type]);
     }
 
+    if (!localStorage.getItem("loginToken")) {
+      return <div>Please login to edit Essay entry</div>;
+    }
+
     return (
       <div className="scs-module essay">
         <div className="scs-header">

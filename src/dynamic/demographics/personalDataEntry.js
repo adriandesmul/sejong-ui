@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../api/api";
+import Loader from "../common/loader";
 
 const classNames = require("classnames");
 
@@ -19,6 +20,7 @@ export default function PersonalDataEntry() {
   });
   const [msg, setMsg] = useState({});
   const [unsavedChanges, setUnsavedChanges] = useState(false);
+  const [haveData, setHaveData] = useState(false);
 
   useEffect(() => {
     API.get("/demographics", (err, data) => {
@@ -28,6 +30,7 @@ export default function PersonalDataEntry() {
         combinedData[key] = data[key] || demographics[key];
       }
       setDemographics(combinedData);
+      setHaveData(true);
     });
   }, []);
 
@@ -177,141 +180,150 @@ export default function PersonalDataEntry() {
     ));
   };
 
+  if (!localStorage.getItem("loginToken")) {
+    return <div>Please login to edit Personal Information</div>;
+  }
+
   return (
     <div className="scs-module">
       <div className="scs-header">
         <p>Personal information</p>
+        {!haveData && <Loader />}
         {unsavedChanges && <p className="unsaved">Unsaved changes</p>}
       </div>
       {msg.body && (
         <div className={classNames(["scs-message", msg.type])}>{msg.body}</div>
       )}
-      <div className="scs-module-element">
-        <label>First Name:</label>
-        <input
-          type="text"
-          name="personal_first_name"
-          value={demographics.personal_first_name}
-          placeholder="First name"
-          className="scs-input"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="scs-module-element">
-        <label>Last Name:</label>
-        <input
-          type="text"
-          name="personal_last_name"
-          value={demographics.personal_last_name}
-          placeholder="Last name"
-          className="scs-input"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="scs-module-element">
-        <label>Date of Birth:</label>
-        <select
-          type="number"
-          name="personal_date_of_birth_month"
-          value={demographics.personal_date_of_birth_month}
-          className="scs-input"
-          onChange={handleInputChange}
-        >
-          <option value="">MM</option>
-          {monthOptions()}
-        </select>
-        &nbsp;/&nbsp;
-        <select
-          type="number"
-          name="personal_date_of_birth_day"
-          value={demographics.personal_date_of_birth_day}
-          className="scs-input"
-          onChange={handleInputChange}
-        >
-          <option value="">DD</option>
-          {dayOptions()}
-        </select>
-        &nbsp;/&nbsp;
-        <select
-          type="number"
-          name="personal_date_of_birth_year"
-          value={demographics.personal_date_of_birth_year}
-          className="scs-input"
-          onChange={handleInputChange}
-        >
-          <option value="">YYYY</option>
-          {yearOptions()}
-        </select>
-      </div>
-      <div className="scs-module-element">
-        <label>Address:</label>
-        <input
-          type="text"
-          name="address_line_1"
-          value={demographics.address_line_1}
-          placeholder="Address 1"
-          className="scs-input"
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="address_line_2"
-          value={demographics.address_line_2}
-          placeholder="Address 2"
-          className="scs-input"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="scs-module-element">
-        <label>Address:</label>
-        <input
-          type="text"
-          name="address_town"
-          value={demographics.address_town}
-          placeholder="Town"
-          className="scs-input"
-          onChange={handleInputChange}
-        />
-        <select
-          type="number"
-          name="address_state"
-          value={demographics.address_state}
-          className="scs-input"
-          onChange={handleInputChange}
-        >
-          <option value="">State</option>
-          {stateOptions()}
-        </select>
-        <select
-          type="number"
-          name="address_country"
-          value={demographics.address_country}
-          className="scs-input"
-          onChange={handleInputChange}
-        >
-          <option value="">Country</option>
-          <option value="USA">USA</option>
-          <option value="CAD">Canada</option>
-          <option value="Other">Other</option>
-        </select>
-        <input
-          type="text"
-          name="address_zip"
-          value={demographics.address_zip}
-          placeholder="Zip Code"
-          className="scs-input"
-          onChange={handleInputChange}
-        />
-      </div>
-      <a
-        className="scs-button save"
-        style={{ marginTop: "1rem" }}
-        onClick={() => {
-          handleSave();
-        }}
-      >
-        Save
-      </a>
+      {haveData && (
+        <>
+          <div className="scs-module-element">
+            <label>First Name:</label>
+            <input
+              type="text"
+              name="personal_first_name"
+              value={demographics.personal_first_name}
+              placeholder="First name"
+              className="scs-input"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="scs-module-element">
+            <label>Last Name:</label>
+            <input
+              type="text"
+              name="personal_last_name"
+              value={demographics.personal_last_name}
+              placeholder="Last name"
+              className="scs-input"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="scs-module-element">
+            <label>Date of Birth:</label>
+            <select
+              type="number"
+              name="personal_date_of_birth_month"
+              value={demographics.personal_date_of_birth_month}
+              className="scs-input"
+              onChange={handleInputChange}
+            >
+              <option value="">MM</option>
+              {monthOptions()}
+            </select>
+            &nbsp;/&nbsp;
+            <select
+              type="number"
+              name="personal_date_of_birth_day"
+              value={demographics.personal_date_of_birth_day}
+              className="scs-input"
+              onChange={handleInputChange}
+            >
+              <option value="">DD</option>
+              {dayOptions()}
+            </select>
+            &nbsp;/&nbsp;
+            <select
+              type="number"
+              name="personal_date_of_birth_year"
+              value={demographics.personal_date_of_birth_year}
+              className="scs-input"
+              onChange={handleInputChange}
+            >
+              <option value="">YYYY</option>
+              {yearOptions()}
+            </select>
+          </div>
+          <div className="scs-module-element">
+            <label>Address:</label>
+            <input
+              type="text"
+              name="address_line_1"
+              value={demographics.address_line_1}
+              placeholder="Address 1"
+              className="scs-input"
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="address_line_2"
+              value={demographics.address_line_2}
+              placeholder="Address 2"
+              className="scs-input"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="scs-module-element">
+            <label>Address:</label>
+            <input
+              type="text"
+              name="address_town"
+              value={demographics.address_town}
+              placeholder="Town"
+              className="scs-input"
+              onChange={handleInputChange}
+            />
+            <select
+              type="number"
+              name="address_state"
+              value={demographics.address_state}
+              className="scs-input"
+              onChange={handleInputChange}
+            >
+              <option value="">State</option>
+              {stateOptions()}
+            </select>
+            <select
+              type="number"
+              name="address_country"
+              value={demographics.address_country}
+              className="scs-input"
+              onChange={handleInputChange}
+            >
+              <option value="">Country</option>
+              <option value="USA">USA</option>
+              <option value="CAD">Canada</option>
+              <option value="Other">Other</option>
+            </select>
+            <input
+              type="text"
+              name="address_zip"
+              value={demographics.address_zip}
+              placeholder="Zip Code"
+              className="scs-input"
+              onChange={handleInputChange}
+            />
+          </div>
+          <a
+            className="scs-button save"
+            style={{ marginTop: "1rem" }}
+            onClick={() => {
+              handleSave();
+            }}
+          >
+            Save
+          </a>
+        </>
+      )}
     </div>
   );
 }

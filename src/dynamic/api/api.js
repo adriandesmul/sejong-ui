@@ -10,12 +10,10 @@ function formatPayload(payload) {
 }
 
 function sleep(ms) {
-  console.log("Sleeping!");
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function get(route, cb) {
-  console.log("Trying again");
   var token = localStorage.getItem("loginToken");
   if (!token) {
     cb(true, null);

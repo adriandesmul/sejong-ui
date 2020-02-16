@@ -111,6 +111,10 @@ class SijoEntry extends React.Component {
       msgClass = classNames(["scs-message", msg.type]);
     }
 
+    if (!localStorage.getItem("loginToken")) {
+      return <div>Please login to edit Sijo entry</div>;
+    }
+
     return (
       <div className="scs-module sijo">
         <div className="scs-header">
