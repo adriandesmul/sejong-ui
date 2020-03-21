@@ -1,19 +1,20 @@
 :root {
-    --turquoise: #54aba5;
-    --duskrose: #ab5482;
-    --bronze: #ab9454;
-    --lilac: #c7c3f2;
-    --bubblegum: #edbfe8;
-    --chartreuse: #d4ed96;
-    --peach: #edcd96;
-    --sky: #c3eaf2;
+  --turquoise: #54aba5;
+  --duskrose: #ab5482;
+  --bronze: #ab9454;
+  --lilac: #c7c3f2;
+  --bubblegum: #edbfe8;
+  --chartreuse: #d4ed96;
+  --peach: #edcd96;
+  --sky: #c3eaf2;
 }
 
 $primary: darkseagreen;
+$primary-active: hsl(120, 25%, 35%);
 $light: palegoldenrod;
 $lightAccent: coral;
 $dark: steelblue;
-$darkAccent: #4CAAC5;
+$darkAccent: #4caac5;
 
 $background: #efefef;
 $backgroundDark: #dddddd;
@@ -22,60 +23,64 @@ $warning: sandybrown;
 $failure: crimson;
 $failureLight: lightpink;
 
-$blue: #1010BB;
-
+$blue: #1010bb;
 
 a {
-	color: $darkAccent;
+  color: $darkAccent;
 }
 a:hover {
-	color:grey;
+  color: grey;
 }
 h2 {
-	color:grey;
+  color: grey;
 }
 
-.wrapper, .text {
-	background-color: $background;
+.wrapper,
+.text {
+  background-color: $background;
 }
 
 .green {
-	border-color: darkgreen;
-	background-color: #B0D0B0;
-	color:darkgreen;
+  border-color: darkgreen;
+  background-color: #b0d0b0;
+  color: darkgreen;
 }
 .blue {
-	border-color: #23577e;
-	background-color: #c5e3fa;
-	color:#23577e;
+  border-color: #23577e;
+  background-color: #c5e3fa;
+  color: #23577e;
 }
 
 /* ------------------------------------------------------------------- layout */
-.navbar.active, .dropdown-item:hover, div.dropdown-item:hover, .dropdown-item.active {
-	border-color: violet;
+.navbar.active,
+.dropdown-item:hover,
+div.dropdown-item:hover,
+.dropdown-item.active {
+  border-color: violet;
 }
 .navbar.aero {
-	background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
-.dropdown-menu a, .dropdown-inner {
-	color: white;
+.dropdown-menu a,
+.dropdown-inner {
+  color: white;
 }
 .dropdown-inner a {
-	color: $light;
+  color: $light;
 }
 .dropdown-inner a:hover {
-	color:$lightAccent;
+  color: $lightAccent;
 }
 
 .footer {
-	background-color:dimgrey;
-	color: white;
+  background-color: dimgrey;
+  color: white;
 }
 .footer a {
-	color: $light;
+  color: $light;
 }
 .footer a:hover {
-	color: $lightAccent;
+  color: $lightAccent;
 }
 
 /*

@@ -250,6 +250,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.active {
+      background-color: $primary-active;
+    }
   }
 
   &-create {

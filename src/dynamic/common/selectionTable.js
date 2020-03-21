@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+const classnames = require("classnames");
 
 class SelectionTable extends React.Component {
   constructor(props) {
@@ -6,6 +7,7 @@ class SelectionTable extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     this.updateField = this.updateField.bind(this);
     this.createItem = this.createItem.bind(this);
+    this.isActive = this.isActive.bind(this);
   }
 
   selectItem(id) {
@@ -13,7 +15,7 @@ class SelectionTable extends React.Component {
   }
 
   updateField(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   createItem() {
@@ -26,32 +28,72 @@ class SelectionTable extends React.Component {
       } else {
         haveAllFields = false;
       }
-    })
+    });
 
-    if (haveAllFields) { this.props.onCreate(data); }
+    if (haveAllFields) {
+      this.props.onCreate(data);
+    }
+  }
+
+  isActive() {
+    let haveAllFields = true;
+    console.log(this.props.labels, this.state);
+
+    if (!this.state) {
+      return "scs-selectionTable-select";
+    }
+
+    this.props.labels.forEach(label => {
+      if (!this.state[label]) {
+        haveAllFields = false;
+      }
+    });
+
+    return classnames("scs-selectionTable-select", { active: haveAllFields });
   }
 
   render() {
-    const labels = this.props.labels.map(d => <div key={d} className="scs-selectionTable-cell">{d}</div>)
+    const labels = this.props.labels.map(d => (
+      <div key={d} className="scs-selectionTable-cell">
+        {d}
+      </div>
+    ));
     const rows = this.props.options.map(item => {
-      const data = item.data.map((d, i) => <div key={item.id.toString() + '-' + i.toString()} className="scs-selectionTable-cell">{d}</div>)
+      const data = item.data.map((d, i) => (
+        <div
+          key={item.id.toString() + "-" + i.toString()}
+          className="scs-selectionTable-cell"
+        >
+          {d}
+        </div>
+      ));
 
       return (
         <div key={item.id.toString()} className="scs-selectionTable-row">
           <div className="scs-selectionTable-cell cell-sm">
-            <div className="scs-selectionTable-select" onClick={() => this.selectItem(item.id)}>Select</div>
+            <div
+              className="scs-selectionTable-select active"
+              onClick={() => this.selectItem(item.id)}
+            >
+              Select
+            </div>
           </div>
           {data}
         </div>
-      )
-    })
+      );
+    });
     const createRow = this.props.labels.map(label => {
       return (
-        <div key={'create-'+label} className="scs-selectionTable-cell">
-          <input name={label} className="scs-selectionTable-create" placeholder={label} onChange={this.updateField} />
+        <div key={"create-" + label} className="scs-selectionTable-cell">
+          <input
+            name={label}
+            className="scs-selectionTable-create"
+            placeholder={label}
+            onChange={this.updateField}
+          />
         </div>
-      )
-    })
+      );
+    });
 
     return (
       <div className="scs-selectionTable">
@@ -62,12 +104,14 @@ class SelectionTable extends React.Component {
         {rows}
         <div className="scs-selectionTable-row">
           <div className="scs-selectionTable-cell cell-sm">
-            <div className="scs-selectionTable-select" onClick={() => this.createItem()}>Create</div>
+            <div className={this.isActive()} onClick={() => this.createItem()}>
+              Create
+            </div>
           </div>
           {createRow}
         </div>
       </div>
-    )
+    );
   }
 }
 
