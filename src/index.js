@@ -1,5 +1,7 @@
+import "antd/dist/antd.css";
 import "./style.scss";
 import "react-quill/dist/quill.snow.css";
+// import "antd/dist/antd.js";
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -9,8 +11,7 @@ import PersonalDataEntry from "./dynamic/demographics/personalDataEntry";
 import SijoEntry from "./dynamic/writingEntry/sijoEntry";
 import EssayEntry from "./dynamic/writingEntry/essayEntry";
 import WritingPM from "./dynamic/videos/writingPM";
-import AdminPanel from "./dynamic/admin/adminPanel";
-import UserDetailPanel from "./dynamic/admin/userDetailPanel";
+import AdminEntryList from "./dynamic/admin/entryList";
 import MyDropdown from "./dynamic/videos/test";
 import WinnersWritingTable from "./dynamic/past/winnersWriting";
 
@@ -30,8 +31,11 @@ if (document.getElementById("essay"))
   ReactDOM.render(<EssayEntry />, document.getElementById("essay"));
 if (document.getElementById("writingPM"))
   ReactDOM.render(<WritingPM />, document.getElementById("writingPM"));
-if (document.getElementById("adminPanel"))
-  ReactDOM.render(<AdminPanel />, document.getElementById("adminPanel"));
+if (document.getElementById("adminEntryList"))
+  ReactDOM.render(
+    <AdminEntryList />,
+    document.getElementById("adminEntryList")
+  );
 if (document.getElementById("userDetailPanel"))
   ReactDOM.render(
     <UserDetailPanel />,

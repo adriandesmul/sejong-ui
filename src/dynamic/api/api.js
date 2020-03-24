@@ -14,6 +14,7 @@ function sleep(ms) {
 }
 
 function get(route, cb) {
+  console.log("GET: " + route);
   var token = localStorage.getItem("loginToken");
   if (!token) {
     cb(true, null);
@@ -25,12 +26,14 @@ function get(route, cb) {
     headers: { Authorization: "Bearer " + token }
   })
     .then(results => {
+      console.log(route, results.status);
       if (results.status === 401) {
         localStorage.removeItem("loginToken");
         window.location.reload();
         return;
       }
-      if (results.status !== 200) {
+      if (!(results.status === 200 || results.status === 201)) {
+        console.log("Retrying");
         return sleep(5000).then(() => get(route, cb));
       }
       if (
@@ -39,6 +42,7 @@ function get(route, cb) {
       ) {
         return results.blob();
       } else {
+        if (results.status === 201) return null;
         return results.json();
       }
     })
