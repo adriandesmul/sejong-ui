@@ -1,7 +1,11 @@
-import React from "react";
-import { Table, Button, Tag, Tooltip, message, Popover } from "antd";
-import { InfoCircleFilled } from "@ant-design/icons";
+import React, { useState } from "react";
+import API from "../api/api";
+import { Table, Tag, Tooltip, Popover, Input } from "antd";
+const { Search } = Input;
+import { InfoCircleFilled, EyeTwoTone } from "@ant-design/icons";
 import "./entryList.scss";
+import { useEffect } from "react";
+import styled from "styled-components";
 
 const columns = [
   {
@@ -9,15 +13,28 @@ const columns = [
     dataIndex: "user",
     key: "user",
     render: value => (
-      <Tooltip title="Click to spoof">
-        <a>{value}</a>
-      </Tooltip>
+      <>
+        <Tooltip title="Click to spoof">
+          <a>{value.user}</a>
+        </Tooltip>
+        {value.search && (
+          <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
+        )}
+      </>
     )
   },
   {
     title: "Email",
     dataIndex: "email",
-    key: "email"
+    key: "email",
+    render: value => (
+      <>
+        {value.email}
+        {value.search && (
+          <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
+        )}
+      </>
+    )
   },
   {
     title: "Demographics",
@@ -63,6 +80,9 @@ const columns = [
             &nbsp;&nbsp;
             <InfoCircleFilled></InfoCircleFilled>
           </Tag>
+          {value.search && (
+            <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
+          )}
         </Popover>
       );
     }
@@ -72,7 +92,7 @@ const columns = [
     dataIndex: "sijo",
     key: "sijo",
     render: value => {
-      if (!value) {
+      if (!value || !value.body) {
         return <Tag>Not started</Tag>;
       }
 
@@ -87,13 +107,13 @@ const columns = [
           </p>
           <br />
           <p>
-            <span className="bold">School: </span> {value.schoolName}
+            <span className="bold">School: </span> {value.school_name}
           </p>
           <p>
-            <span className="bold">Teacher: </span> {value.teacherName}
+            <span className="bold">Teacher: </span> {value.teacher_name}
           </p>
           <p>
-            <span className="bold">Email: </span> {value.teacherEmail}
+            <span className="bold">Email: </span> {value.teacher_email}
           </p>
         </div>
       );
@@ -107,6 +127,9 @@ const columns = [
             {value.complete ? "Complete" : "Incomplete"}&nbsp;&nbsp;
             <InfoCircleFilled></InfoCircleFilled>
           </Tag>
+          {value.search && (
+            <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
+          )}
         </Popover>
       );
     }
@@ -116,7 +139,7 @@ const columns = [
     dataIndex: "essay",
     key: "essay",
     render: value => {
-      if (!value) {
+      if (!value || !value.body) {
         return <Tag>Not started</Tag>;
       }
 
@@ -137,13 +160,13 @@ const columns = [
           </p>
           <br />
           <p>
-            <span className="bold">School: </span> {value.schoolName}
+            <span className="bold">School: </span> {value.school_name}
           </p>
           <p>
-            <span className="bold">Teacher: </span> {value.teacherName}
+            <span className="bold">Teacher: </span> {value.teacher_name}
           </p>
           <p>
-            <span className="bold">Email: </span> {value.teacherEmail}
+            <span className="bold">Email: </span> {value.teacher_email}
           </p>
         </div>
       );
@@ -157,87 +180,106 @@ const columns = [
             {value.complete ? "Complete" : "Incomplete"}&nbsp;&nbsp;
             <InfoCircleFilled></InfoCircleFilled>
           </Tag>
+          {value.search && (
+            <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
+          )}
         </Popover>
       );
     }
   }
 ];
 
-const data = [
-  {
-    key: 1,
-    user: "xxx-xxx-xx1",
-    email: "adriandesmul@gmail.com",
-    demographics: {
-      complete: false,
-      personal_first_name: "Adrian",
-      personal_last_name: "De Smul",
-      personal_date_of_birth_day: 10,
-      personal_date_of_birth_month: 12,
-      personal_date_of_birth_year: 1991
-    },
-    sijo: {
-      complete: true,
-      title: "My sijo",
-      body: "This is my sijo",
-      schoolName: "Highcrest Middle School",
-      teacherName: "Mr. Kim",
-      teacherEmail: "kim@example.com"
-    },
-    essay: null
-  },
-  {
-    key: 2,
-    user: "xxx-xxx-xx2",
-    email: "neildesmul@gmail.com",
-    demographics: null,
-    sijo: {
-      complete: false,
-      title: "My title",
-      body: null,
-      schoolName: null,
-      teacherName: null,
-      teacherEmail: null
-    },
-    essay: {
-      complete: true,
-      title: "Essay title",
-      body: null,
-      division: "Senior",
-      folktale: "Folktale A: Snakes!",
-      schoolName: "New Trier",
-      teacherName: "Mr. Kim",
-      teacherEmail: "kim@example.com"
-    }
-  },
-  {
-    key: 3,
-    user: "xxx-xxx-xx3",
-    email: "herahkim@gmail.com",
-    demographics: {
-      complete: true,
-      personal_first_name: "Herah",
-      personal_last_name: "Kim",
-      personal_date_of_birth_day: 10,
-      personal_date_of_birth_month: 12,
-      personal_date_of_birth_year: 1991,
-      address_line_1: "606 Forest Rd.",
-      address_line_2: "Apt. 123",
-      address_town: "Glenview",
-      address_state: "IL",
-      address_zip: "60091",
-      address_country: "USA"
-    },
-    sijo: null,
-    essay: null
-  }
-];
+function includes(value, term) {
+  if (!value) return false;
+  return value.toLowerCase().indexOf(term.toLowerCase()) !== -1;
+}
+
+const SearchBar = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: row-reverse;
+`;
 
 export default function AdminEntryList(props) {
-  const msg = () => {
-    message.success("Hello!");
-    console.log("Did it!");
-  };
+  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
 
-  return <Table columns={columns} dataSource={data} size="small"></Table>;
+  useEffect(() => {
+    API.get("/admin/users", (err, data) => {
+      setUsers(data);
+      console.log(data);
+    });
+  }, []);
+
+  let displayUsers = users.map(user => {
+    return {
+      key: user.key,
+      user: { user: user.user, search: false },
+      email: { email: user.email, search: false },
+      demographics: user.demographics,
+      sijo: user.sijo,
+      essay: user.essay
+    };
+  });
+
+  if (search.length > 1) {
+    displayUsers = displayUsers
+      .filter(
+        user =>
+          includes(user.user.user, search) ||
+          includes(user.email.email, search) ||
+          (user.demographics &&
+            includes(user.demographics.personal_first_name, search)) ||
+          (user.demographics &&
+            includes(user.demographics.personal_last_name, search)) ||
+          (user.essay && includes(user.essay.school_name, search)) ||
+          (user.essay && includes(user.essay.teacher_name, search)) ||
+          (user.sijo && includes(user.sijo.school_name, search)) ||
+          (user.sijo && includes(user.sijo.teacher_name, search))
+      )
+      .map(user => {
+        return {
+          key: user.key,
+          user: { ...user.user, search: includes(user.user.user, search) },
+          email: { ...user.email, search: includes(user.email.email, search) },
+          demographics: {
+            ...user.demographics,
+            search:
+              (user.demographics &&
+                includes(user.demographics.personal_first_name, search)) ||
+              (user.demographics &&
+                includes(user.demographics.personal_last_name, search))
+          },
+          sijo: {
+            ...user.sijo,
+            search:
+              (user.sijo && includes(user.sijo.school_name, search)) ||
+              (user.sijo && includes(user.sijo.teacher_name, search))
+          },
+          essay: {
+            ...user.essay,
+            search:
+              (user.essay && includes(user.essay.school_name, search)) ||
+              (user.essay && includes(user.essay.teacher_name, search))
+          }
+        };
+      });
+  }
+
+  console.log(displayUsers);
+
+  return (
+    <>
+      <SearchBar>
+        <Search
+          style={{ width: "200px" }}
+          onSearch={value => setSearch(value)}
+        ></Search>
+        <div style={{ lineHeight: "32px" }}>
+          Currently showing: <Tag>{search.length > 1 ? search : "All"}</Tag>
+        </div>
+      </SearchBar>
+      <Table columns={columns} dataSource={displayUsers} size="small"></Table>
+    </>
+  );
 }
