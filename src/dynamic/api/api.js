@@ -10,7 +10,7 @@ function formatPayload(payload) {
 }
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function get(route, cb) {
@@ -23,9 +23,9 @@ function get(route, cb) {
 
   fetch(API_URL + route, {
     method: "GET",
-    headers: { Authorization: "Bearer " + token }
+    headers: { Authorization: "Bearer " + token },
   })
-    .then(results => {
+    .then((results) => {
       console.log(route, results.status);
       if (results.status === 401) {
         localStorage.removeItem("loginToken");
@@ -36,17 +36,14 @@ function get(route, cb) {
         console.log("Retrying");
         return sleep(5000).then(() => get(route, cb));
       }
-      if (
-        route === "/writing/export?type=sijo" ||
-        route === "/writing/export?type=essay"
-      ) {
+      if (route.indexOf("export") !== -1 && results.status === 200) {
         return results.blob();
       } else {
         if (results.status === 201) return null;
         return results.json();
       }
     })
-    .then(data => {
+    .then((data) => {
       cb(false, data);
     });
 }
@@ -62,18 +59,18 @@ function post(route, payload, cb) {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      Authorization: "Bearer " + token
+      Authorization: "Bearer " + token,
     },
-    body: formatPayload(payload)
+    body: formatPayload(payload),
   })
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200) {
         cb(res.status, res.text());
         return null;
       }
       return res.text();
     })
-    .then(results => {
+    .then((results) => {
       if (!results) {
         cb(500);
         return;
@@ -88,17 +85,17 @@ function post_unsecure(route, payload, cb) {
   fetch(API_URL + route, {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
-    body: formatPayload(payload)
+    body: formatPayload(payload),
   })
-    .then(results => {
+    .then((results) => {
       if (results.status !== 200) {
         err = true;
       }
       return results.text();
     })
-    .then(data => {
+    .then((data) => {
       cb(err, data);
     });
 }
@@ -106,5 +103,5 @@ function post_unsecure(route, payload, cb) {
 module.exports = {
   get: get,
   post: post,
-  post_unsecure: post_unsecure
+  post_unsecure: post_unsecure,
 };

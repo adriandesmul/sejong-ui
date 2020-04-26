@@ -18,7 +18,7 @@ class SijoEntry extends React.Component {
       teacher: null,
       msg: null,
       unsavedChanges: false,
-      haveData: false
+      haveData: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
@@ -36,7 +36,7 @@ class SijoEntry extends React.Component {
           school: data ? data.school : null,
           teacher: data ? data.teacher : null,
           unsavedChanges: false,
-          haveData: true
+          haveData: true,
         });
     });
   }
@@ -49,7 +49,7 @@ class SijoEntry extends React.Component {
     const target = event.target;
     this.setState({
       [target.name]: target.value,
-      unsavedChanges: true
+      unsavedChanges: true,
     });
   }
 
@@ -59,7 +59,7 @@ class SijoEntry extends React.Component {
     }
     this.setState({
       body: content,
-      unsavedChanges: true
+      unsavedChanges: true,
     });
   }
 
@@ -73,25 +73,25 @@ class SijoEntry extends React.Component {
       body: this.state.body,
       entry_type: "sijo",
       school_id: this.state.school ? this.state.school.school_id : null,
-      teacher_id: this.state.teacher ? this.state.teacher.teacher_id : null
+      teacher_id: this.state.teacher ? this.state.teacher.teacher_id : null,
     };
 
-    API.post("/writing", payload, status => {
+    API.post("/writing", payload, (status) => {
       console.log(status);
       if (status !== 200) {
         this.setState({
           msg: {
             body: "Save error",
-            type: "error"
-          }
+            type: "error",
+          },
         });
       } else {
         this.setState({
           msg: {
             body: "Save successful",
-            type: "success"
+            type: "success",
           },
-          unsavedChanges: false
+          unsavedChanges: false,
         });
       }
     });
