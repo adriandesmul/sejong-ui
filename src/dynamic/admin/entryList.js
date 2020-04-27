@@ -12,7 +12,7 @@ const columns = [
     title: "User",
     dataIndex: "user",
     key: "user",
-    render: value => (
+    render: (value) => (
       <>
         <Tooltip title="Click to spoof">
           <a>{value.user}</a>
@@ -21,26 +21,26 @@ const columns = [
           <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
         )}
       </>
-    )
+    ),
   },
   {
     title: "Email",
     dataIndex: "email",
     key: "email",
-    render: value => (
+    render: (value) => (
       <>
         {value.email}
         {value.search && (
           <EyeTwoTone twoToneColor="#fa8c16" style={{ marginLeft: "10px" }} />
         )}
       </>
-    )
+    ),
   },
   {
     title: "Demographics",
     dataIndex: "demographics",
     key: "demographics",
-    render: value => {
+    render: (value) => {
       if (!value) {
         return <Tag color="red">Incomplete</Tag>;
       }
@@ -85,13 +85,13 @@ const columns = [
           )}
         </Popover>
       );
-    }
+    },
   },
   {
     title: "Sijo",
     dataIndex: "sijo",
     key: "sijo",
-    render: value => {
+    render: (value) => {
       if (!value || !value.body) {
         return <Tag>Not started</Tag>;
       }
@@ -132,13 +132,13 @@ const columns = [
           )}
         </Popover>
       );
-    }
+    },
   },
   {
     title: "Essay",
     dataIndex: "essay",
     key: "essay",
-    render: value => {
+    render: (value) => {
       if (!value || !value.body) {
         return <Tag>Not started</Tag>;
       }
@@ -185,8 +185,8 @@ const columns = [
           )}
         </Popover>
       );
-    }
-  }
+    },
+  },
 ];
 
 function includes(value, term) {
@@ -207,25 +207,24 @@ export default function AdminEntryList(props) {
   useEffect(() => {
     API.get("/admin/users", (err, data) => {
       setUsers(data);
-      console.log(data);
     });
   }, []);
 
-  let displayUsers = users.map(user => {
+  let displayUsers = users.map((user) => {
     return {
       key: user.key,
       user: { user: user.user, search: false },
       email: { email: user.email, search: false },
       demographics: user.demographics,
       sijo: user.sijo,
-      essay: user.essay
+      essay: user.essay,
     };
   });
 
   if (search.length > 1) {
     displayUsers = displayUsers
       .filter(
-        user =>
+        (user) =>
           includes(user.user.user, search) ||
           includes(user.email.email, search) ||
           (user.demographics &&
@@ -237,7 +236,7 @@ export default function AdminEntryList(props) {
           (user.sijo && includes(user.sijo.school_name, search)) ||
           (user.sijo && includes(user.sijo.teacher_name, search))
       )
-      .map(user => {
+      .map((user) => {
         return {
           key: user.key,
           user: { ...user.user, search: includes(user.user.user, search) },
@@ -248,32 +247,30 @@ export default function AdminEntryList(props) {
               (user.demographics &&
                 includes(user.demographics.personal_first_name, search)) ||
               (user.demographics &&
-                includes(user.demographics.personal_last_name, search))
+                includes(user.demographics.personal_last_name, search)),
           },
           sijo: {
             ...user.sijo,
             search:
               (user.sijo && includes(user.sijo.school_name, search)) ||
-              (user.sijo && includes(user.sijo.teacher_name, search))
+              (user.sijo && includes(user.sijo.teacher_name, search)),
           },
           essay: {
             ...user.essay,
             search:
               (user.essay && includes(user.essay.school_name, search)) ||
-              (user.essay && includes(user.essay.teacher_name, search))
-          }
+              (user.essay && includes(user.essay.teacher_name, search)),
+          },
         };
       });
   }
-
-  console.log(displayUsers);
 
   return (
     <>
       <SearchBar>
         <Search
           style={{ width: "200px" }}
-          onSearch={value => setSearch(value)}
+          onSearch={(value) => setSearch(value)}
         ></Search>
         <div style={{ lineHeight: "32px" }}>
           Currently showing: <Tag>{search.length > 1 ? search : "All"}</Tag>

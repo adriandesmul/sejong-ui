@@ -22,7 +22,7 @@ class SelectionTable extends React.Component {
     let haveAllFields = true;
     let data = {};
 
-    this.props.labels.forEach(label => {
+    this.props.labels.forEach((label) => {
       if (this.state[label]) {
         data[label] = this.state[label];
       } else {
@@ -37,13 +37,12 @@ class SelectionTable extends React.Component {
 
   isActive() {
     let haveAllFields = true;
-    console.log(this.props.labels, this.state);
 
     if (!this.state) {
       return "scs-selectionTable-select";
     }
 
-    this.props.labels.forEach(label => {
+    this.props.labels.forEach((label) => {
       if (!this.state[label]) {
         haveAllFields = false;
       }
@@ -53,12 +52,12 @@ class SelectionTable extends React.Component {
   }
 
   render() {
-    const labels = this.props.labels.map(d => (
+    const labels = this.props.labels.map((d) => (
       <div key={d} className="scs-selectionTable-cell">
         {d}
       </div>
     ));
-    const rows = this.props.options.map(item => {
+    const rows = this.props.options.map((item) => {
       const data = item.data.map((d, i) => (
         <div
           key={item.id.toString() + "-" + i.toString()}
@@ -82,7 +81,7 @@ class SelectionTable extends React.Component {
         </div>
       );
     });
-    const createRow = this.props.labels.map(label => {
+    const createRow = this.props.labels.map((label) => {
       return (
         <div key={"create-" + label} className="scs-selectionTable-cell">
           <input

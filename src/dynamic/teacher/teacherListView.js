@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, List, message, Tag, Modal } from "antd";
-import { CheckOutlined, ExclamationOutlined } from "@ant-design/icons";
+import { Avatar, List, message, Tag, Modal, Divider } from "antd";
+import {
+  CheckOutlined,
+  ExclamationOutlined,
+  EditOutlined,
+} from "@ant-design/icons";
 import API from "../api/api";
 import "./teacherListView.scss";
 
@@ -50,7 +54,6 @@ function getPreview(user_id, type, first_name, last_name) {
   API.get(
     "/teacher/export?type=" + type + "&user_id=" + user_id,
     (error, data) => {
-      console.log(data);
       if (!data) {
         message.error("Cannot export file");
         return;
@@ -70,71 +73,6 @@ function getPreview(user_id, type, first_name, last_name) {
       setTimeout(() => window.URL.revokeObjectURL(url), 100);
       message.success("Downloading PDF for " + first_name + " " + last_name);
     }
-  );
-}
-
-function renderStudent(student) {
-  return (
-    <List.Item
-      actions={[
-        <a key="list-view" onClick={() => showModal(student)}>
-          View Entry
-        </a>,
-        <a
-          key="list-pdf-sijo"
-          onClick={() =>
-            getPreview(
-              student.user_id,
-              "sijo",
-              student.first_name,
-              student.last_name
-            )
-          }
-        >
-          Export Sijo
-        </a>,
-        <a
-          key="list-pdf-essay"
-          onClick={() =>
-            getPreview(
-              student.user_id,
-              "essay",
-              student.first_name,
-              student.last_name
-            )
-          }
-        >
-          Export Essay
-        </a>,
-      ]}
-    >
-      <List.Item.Meta
-        avatar={
-          student.demographics_complete &&
-          (student.sijo_complete || student.essay_complete) ? (
-            <Avatar
-              style={{ backgroundColor: "green", paddingTop: "3px" }}
-              icon={<CheckOutlined />}
-            />
-          ) : (
-            <Avatar
-              style={{
-                backgroundColor: "red",
-                paddingTop: "3px",
-              }}
-              icon={<ExclamationOutlined />}
-            />
-          )
-        }
-        title={student.first_name + " " + student.last_name}
-        description={student.email}
-      />
-      <Tag color={student.demographics_complete ? "green" : "red"}>
-        Personal Info
-      </Tag>
-      <Tag color={student.essay_complete ? "green" : "red"}>Essay</Tag>
-      <Tag color={student.sijo_complete ? "green" : "red"}>Sijo</Tag>
-    </List.Item>
   );
 }
 
@@ -158,9 +96,89 @@ export default function TeacherListView(props) {
         school_name: data.school_name,
       });
       setStudents(data.students);
-      console.log(data);
     });
   }, []);
+
+  function renderStudent(student) {
+    const teacher_submitted = student.user_id.indexOf("mock-") !== -1;
+
+    return (
+      <List.Item
+        actions={[
+          <a key="list-view" onClick={() => showModal(student)}>
+            View Entry
+          </a>,
+          <a
+            key="list-pdf-sijo"
+            onClick={() =>
+              getPreview(
+                student.user_id,
+                "sijo",
+                student.first_name,
+                student.last_name
+              )
+            }
+          >
+            Export Sijo
+          </a>,
+          <a
+            key="list-pdf-essay"
+            onClick={() =>
+              getPreview(
+                student.user_id,
+                "essay",
+                student.first_name,
+                student.last_name
+              )
+            }
+          >
+            Export Essay
+          </a>,
+        ]}
+      >
+        <List.Item.Meta
+          avatar={
+            student.demographics_complete &&
+            (student.sijo_complete || student.essay_complete) ? (
+              <Avatar
+                style={{ backgroundColor: "green", paddingTop: "3px" }}
+                icon={<CheckOutlined />}
+              />
+            ) : (
+              <Avatar
+                style={{
+                  backgroundColor: "red",
+                  paddingTop: "3px",
+                }}
+                icon={<ExclamationOutlined />}
+              />
+            )
+          }
+          title={
+            <>
+              {student.first_name + " " + student.last_name}
+              {teacher_submitted && (
+                <>
+                  <Divider type="vertical" />
+                  <a onClick={() => props.editEntry(student)}>
+                    <EditOutlined />
+                  </a>
+                </>
+              )}
+            </>
+          }
+          description={
+            teacher_submitted ? "Teacher submitted" : "Student submitted"
+          }
+        />
+        <Tag color={student.demographics_complete ? "green" : "red"}>
+          Personal Info
+        </Tag>
+        <Tag color={student.sijo_complete ? "green" : ""}>Sijo</Tag>
+        <Tag color={student.essay_complete ? "green" : ""}>Essay</Tag>
+      </List.Item>
+    );
+  }
 
   if (error) {
     return <h2>{error}</h2>;
@@ -176,7 +194,7 @@ export default function TeacherListView(props) {
           backgroundColor: "white",
           padding: "10px",
           borderRadius: "5px",
-          border: "1px solid #9e9e9e",
+          //border: "1px solid #9e9e9e",
         }}
         dataSource={students}
         renderItem={renderStudent}

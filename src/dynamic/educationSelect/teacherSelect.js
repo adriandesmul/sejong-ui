@@ -7,7 +7,7 @@ class TeacherSelect extends React.Component {
     super(props);
     this.state = {
       teachers: null,
-      teachersTable: null
+      teachersTable: null,
     };
 
     this.selectTeacher = this.selectTeacher.bind(this);
@@ -16,10 +16,10 @@ class TeacherSelect extends React.Component {
 
   componentDidMount() {
     API.get("/teachers?school_id=" + this.props.school_id, (error, data) => {
-      const teachers = data.map(item => {
+      const teachers = data.map((item) => {
         return {
           id: item.teacher_id,
-          data: [item.teacher_name, item.teacher_email]
+          data: [item.teacher_name, item.teacher_email],
         };
       });
       this.setState({ teachers: data, teachersTable: teachers });
@@ -28,7 +28,7 @@ class TeacherSelect extends React.Component {
 
   selectTeacher(teacher_id) {
     const teacher = this.state.teachers.find(
-      item => item.teacher_id === teacher_id
+      (item) => item.teacher_id === teacher_id
     );
     if (teacher) {
       this.props.onUpdate(teacher);
@@ -36,13 +36,12 @@ class TeacherSelect extends React.Component {
   }
 
   createTeacher(data) {
-    console.log(data);
     API.post(
       "/teachers",
       {
         school_id: this.props.school_id,
         teacher_name: data.Teacher,
-        teacher_email: data.Email
+        teacher_email: data.Email,
       },
       (status, data) => {
         if (status === 200) {

@@ -12,7 +12,7 @@ import SijoEntry from "./dynamic/writingEntry/sijoEntry";
 import EssayEntry from "./dynamic/writingEntry/essayEntry";
 import WritingPM from "./dynamic/videos/writingPM";
 import AdminEntryList from "./dynamic/admin/entryList";
-import TeacherListView from "./dynamic/teacher/teacherListView";
+import TeacherView from "./dynamic/teacher/teacherView";
 import MyDropdown from "./dynamic/videos/test";
 import WinnersWritingTable from "./dynamic/past/winnersWriting";
 
@@ -42,11 +42,8 @@ if (document.getElementById("userDetailPanel"))
     <UserDetailPanel />,
     document.getElementById("userDetailPanel")
   );
-if (document.getElementById("teacher-list-view"))
-  ReactDOM.render(
-    <TeacherListView />,
-    document.getElementById("teacher-list-view")
-  );
+if (document.getElementById("teacher-view"))
+  ReactDOM.render(<TeacherView />, document.getElementById("teacher-view"));
 if (document.getElementById("my-dropdown-slidedown"))
   ReactDOM.render(
     <MyDropdown />,

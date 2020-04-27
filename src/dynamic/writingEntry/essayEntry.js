@@ -25,7 +25,7 @@ class EssayEntry extends React.Component {
       teacher: null,
       unsavedChanges: false,
       msg: null,
-      haveData: false
+      haveData: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
@@ -47,7 +47,7 @@ class EssayEntry extends React.Component {
           school: data ? data.school : null,
           teacher: data ? data.teacher : null,
           unsavedChanges: false,
-          haveData: true
+          haveData: true,
         });
     });
   }
@@ -60,7 +60,7 @@ class EssayEntry extends React.Component {
     const target = event.target;
     this.setState({
       [target.name]: target.value,
-      unsavedChanges: true
+      unsavedChanges: true,
     });
   }
 
@@ -70,7 +70,7 @@ class EssayEntry extends React.Component {
     }
     this.setState({
       body: content,
-      unsavedChanges: true
+      unsavedChanges: true,
     });
   }
 
@@ -81,7 +81,7 @@ class EssayEntry extends React.Component {
       this.setState({
         division: division,
         folktale: null,
-        unsavedChanges: true
+        unsavedChanges: true,
       });
     }
   }
@@ -102,24 +102,24 @@ class EssayEntry extends React.Component {
       folktale: this.state.folktale,
       entry_type: "essay",
       school_id: this.state.school ? this.state.school.school_id : null,
-      teacher_id: this.state.teacher ? this.state.teacher.teacher_id : null
+      teacher_id: this.state.teacher ? this.state.teacher.teacher_id : null,
     };
 
-    API.post("/writing", payload, status => {
+    API.post("/writing", payload, (status) => {
       if (status !== 200) {
         this.setState({
           msg: {
             body: "Save error",
-            type: "error"
-          }
+            type: "error",
+          },
         });
       } else {
         this.setState({
           msg: {
             body: "Save successful",
-            type: "success"
+            type: "success",
           },
-          unsavedChanges: false
+          unsavedChanges: false,
         });
       }
     });
@@ -127,7 +127,6 @@ class EssayEntry extends React.Component {
 
   handlePreview() {
     API.get("/writing/export?type=essay", (error, data) => {
-      console.log(data);
       var newBlob = new Blob([data], { type: "application/pdf" });
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {

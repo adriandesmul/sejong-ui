@@ -13,8 +13,6 @@ class EductionSelect extends React.Component {
     this.updateSchool = this.updateSchool.bind(this);
     this.updateTeacher = this.updateTeacher.bind(this);
     // this.handleEducationChange = this.props.handleEducationChange;
-
-    console.log(this.props);
   }
 
   updateSchool(school) {
@@ -32,8 +30,6 @@ class EductionSelect extends React.Component {
   render() {
     const school = this.props.school;
     const teacher = this.props.teacher;
-    console.log("School: ", school);
-    console.log("Teacher: ", teacher);
 
     return (
       <div style={{ paddingBottom: "1rem" }}>

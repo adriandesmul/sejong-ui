@@ -12,7 +12,7 @@ class SchoolSelect extends React.Component {
       country: null,
       state: null,
       schools: null,
-      schoolsTable: null
+      schoolsTable: null,
     };
 
     this.selectCountry = this.selectCountry.bind(this);
@@ -27,35 +27,34 @@ class SchoolSelect extends React.Component {
       this.getSchools(country, country);
       this.setState({
         country: country,
-        state: country
+        state: country,
       });
     } else {
       this.setState({
         country: country,
         state: null,
-        schools: null
+        schools: null,
       });
     }
   }
 
   selectState(state) {
-    console.log(state);
     if (state) {
       this.getSchools(this.state.country, state);
       this.setState({
-        state: state
+        state: state,
       });
     } else {
       this.setState({
         state: state,
-        schools: null
+        schools: null,
       });
     }
   }
 
   selectSchool(school_id) {
     const school = this.state.schools.find(
-      item => item.school_id === school_id
+      (item) => item.school_id === school_id
     );
     if (school) {
       this.props.onUpdate(school);
@@ -64,11 +63,10 @@ class SchoolSelect extends React.Component {
 
   getSchools(country, state) {
     API.get("/schools?state=" + state, (error, data) => {
-      console.log(data);
-      const schools = data.map(item => {
+      const schools = data.map((item) => {
         return {
           id: item.school_id,
-          data: [item.school_name, item.school_city]
+          data: [item.school_name, item.school_city],
         };
       });
       this.setState({ schools: data, schoolsTable: schools });
@@ -82,7 +80,7 @@ class SchoolSelect extends React.Component {
         school_name: data.School,
         school_city: data.City,
         school_state: this.state.state,
-        school_country: this.state.country
+        school_country: this.state.country,
       },
       (status, data) => {
         if (status === 200) {

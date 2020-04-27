@@ -77,7 +77,6 @@ class SijoEntry extends React.Component {
     };
 
     API.post("/writing", payload, (status) => {
-      console.log(status);
       if (status !== 200) {
         this.setState({
           msg: {
@@ -99,7 +98,6 @@ class SijoEntry extends React.Component {
 
   handlePreview() {
     API.get("/writing/export?type=sijo", (error, data) => {
-      console.log(data);
       var newBlob = new Blob([data], { type: "application/pdf" });
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {
