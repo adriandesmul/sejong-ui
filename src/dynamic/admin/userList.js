@@ -200,7 +200,7 @@ const SearchBar = styled.div`
   flex-direction: row-reverse;
 `;
 
-export default function AdminEntryList(props) {
+export default function UserList(props) {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 

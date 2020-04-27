@@ -11,7 +11,7 @@ import PersonalDataEntry from "./dynamic/demographics/personalDataEntry";
 import SijoEntry from "./dynamic/writingEntry/sijoEntry";
 import EssayEntry from "./dynamic/writingEntry/essayEntry";
 import WritingPM from "./dynamic/videos/writingPM";
-import AdminEntryList from "./dynamic/admin/entryList";
+import AdminView from "./dynamic/admin/admin";
 import TeacherView from "./dynamic/teacher/teacherView";
 import MyDropdown from "./dynamic/videos/test";
 import WinnersWritingTable from "./dynamic/past/winnersWriting";
@@ -33,10 +33,7 @@ if (document.getElementById("essay"))
 if (document.getElementById("writingPM"))
   ReactDOM.render(<WritingPM />, document.getElementById("writingPM"));
 if (document.getElementById("adminEntryList"))
-  ReactDOM.render(
-    <AdminEntryList />,
-    document.getElementById("adminEntryList")
-  );
+  ReactDOM.render(<AdminView />, document.getElementById("adminEntryList"));
 if (document.getElementById("userDetailPanel"))
   ReactDOM.render(
     <UserDetailPanel />,
