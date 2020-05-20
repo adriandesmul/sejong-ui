@@ -4,9 +4,11 @@ import API from "../api/api";
 import EntryArea from "../writingEntry/entryArea";
 
 export default function TeacherEntryView(props) {
-  const [type, setType] = useState(props.student.type);
-  const [division, setDivision] = useState(props.student.division);
-  const [body, setBody] = useState(props.student.body);
+  const [type, setType] = useState(props.student ? props.student.type : null);
+  const [division, setDivision] = useState(
+    props.student ? props.student.division : null
+  );
+  const [body, setBody] = useState(props.student ? props.student.body : null);
   const [form] = Form.useForm();
 
   const layout = {
