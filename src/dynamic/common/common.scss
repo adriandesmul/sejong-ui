@@ -116,6 +116,9 @@
 
       @at-root .essay#{&} {
         height: 20rem;
+        p {
+          text-indent: 1.5rem;
+        }
       }
     }
   }

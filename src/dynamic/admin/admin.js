@@ -11,7 +11,7 @@ import SubmissionList from "./submissionList";
 import TeacherLink from "./teacherLink";
 
 export default function AdminView(props) {
-  const [tab, setTab] = useState("teachers");
+  const [tab, setTab] = useState("submissions");
 
   return (
     <div style={{ marginTop: "10px" }}>
