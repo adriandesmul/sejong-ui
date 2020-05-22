@@ -1,5 +1,9 @@
 @import "../../styles/colors";
 
+.scs-module-element {
+  display: flex;
+}
+
 .scs-module {
   margin: 1.6rem 0;
   align-self: center;

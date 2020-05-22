@@ -1,73 +1,53 @@
 import React from "react";
 import TeacherSelect from "./teacherSelect";
 import SchoolSelect from "./schoolSelect";
+import { EditOutlined } from "@ant-design/icons";
 
-class EductionSelect extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   school: null,
-    //   teacher: null
-    // };
+export default function EductionSelect(props) {
+  const { school, teacher } = props;
 
-    this.updateSchool = this.updateSchool.bind(this);
-    this.updateTeacher = this.updateTeacher.bind(this);
-    // this.handleEducationChange = this.props.handleEducationChange;
-  }
-
-  updateSchool(school) {
+  function updateSchool(school) {
     if (school === null) {
-      this.props.handleEducationChange(null, null);
+      props.handleEducationChange(null, null);
     } else {
-      this.props.handleEducationChange(school, null);
+      props.handleEducationChange(school, null);
     }
   }
 
-  updateTeacher(teacher) {
-    this.props.handleEducationChange(this.props.school, teacher);
+  function updateTeacher(teacher) {
+    props.handleEducationChange(props.school, teacher);
   }
 
-  render() {
-    const school = this.props.school;
-    const teacher = this.props.teacher;
-
-    return (
-      <div style={{ paddingBottom: "1rem" }}>
-        {school && (
-          <div className="scs-module-element">
-            <span className="bold">School:</span>&nbsp;
-            {school.school_name}, {school.school_city}, {school.school_state}
-            <div
-              className="scs-inline-button"
-              onClick={() => this.updateSchool(null)}
-            >
-              &nbsp;<i className="fas fa-pencil-alt"></i>
-            </div>
+  return (
+    <div style={{ marginTop: "10px", paddingBottom: "1rem" }}>
+      {school && (
+        <div className="scs-module-element">
+          <span className="bold">School:</span>&nbsp;
+          {school.school_name}, {school.school_city}, {school.school_state}
+          <div className="scs-inline-button" onClick={() => updateSchool(null)}>
+            &nbsp;
+            <EditOutlined />
           </div>
-        )}
-        {!school && <SchoolSelect onUpdate={this.updateSchool} />}
-        {school && !teacher && (
-          <TeacherSelect
-            onUpdate={this.updateTeacher}
-            school_id={school.school_id}
-          />
-        )}
-        {teacher && (
-          <div className="scs-module-element">
-            <span className="bold">Teacher:</span>&nbsp;
-            {teacher.teacher_name}
-            <div
-              className="scs-inline-button"
-              onClick={() => this.updateTeacher(null)}
-            >
-              {" "}
-              &nbsp;<i className="fas fa-pencil-alt"></i>
-            </div>
+        </div>
+      )}
+      {!school && <SchoolSelect onUpdate={updateSchool} />}
+      {school && !teacher && (
+        <TeacherSelect onUpdate={updateTeacher} school_id={school.school_id} />
+      )}
+      {teacher && (
+        <div className="scs-module-element">
+          <span className="bold">Teacher:</span>&nbsp;
+          {teacher.teacher_name}
+          <div
+            className="scs-inline-button"
+            onClick={() => updateTeacher(null)}
+          >
+            {" "}
+            &nbsp;
+            <EditOutlined />
           </div>
-        )}
-      </div>
-    );
-  }
+        </div>
+      )}
+    </div>
+  );
 }
-
-export default EductionSelect;

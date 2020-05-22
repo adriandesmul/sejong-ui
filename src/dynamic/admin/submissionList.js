@@ -55,7 +55,6 @@ export default function SubmissionList(props) {
           };
         })
       );
-      console.log(data);
     });
   }, []);
 
@@ -110,7 +109,6 @@ export default function SubmissionList(props) {
           />
           <EditOutlined
             onClick={() => {
-              console.log(item);
               setStudent(item);
               setModal(true);
             }}
@@ -120,18 +118,60 @@ export default function SubmissionList(props) {
     },
   ];
 
+  function saveDemographics(values) {
+    API.post(
+      "/demographics",
+      { user_id: student.user_id, ...values },
+      (status) => {
+        if (status !== 200) {
+          message.error("Save error");
+        } else {
+          message.success("Save complete!");
+        }
+      }
+    );
+  }
+
+  function saveWriting(values) {
+    API.post(
+      "/writing",
+      {
+        user_id: student.user_id,
+        title: values.title,
+        body: values.body,
+        entry_type: values.type,
+        division: values.division,
+        folktale: values.folktale,
+        school_id: values.school.school_id,
+        teacher_id: values.teacher.teacher_id,
+      },
+      (status) => {
+        if (status !== 200) {
+          message.error("Save error");
+        } else {
+          message.success("Save complete!");
+        }
+      }
+    );
+  }
+
   return (
     <>
       <Table columns={columns} dataSource={entries} size="small"></Table>
-      <Modal
-        visible={modal}
-        onCancel={() => setModal(false)}
-        width={800}
-        title="Edit Entry"
-      >
-        <Demographics initialValues={student} />
-        <Writing initialValues={student} />
-      </Modal>
+      {student && (
+        <Modal
+          visible={modal}
+          onCancel={() => {
+            setModal(false);
+            setStudent();
+          }}
+          width={800}
+          title="Edit Entry"
+        >
+          <Demographics initialValues={student} save={saveDemographics} />
+          <Writing initialValues={student} save={saveWriting} />
+        </Modal>
+      )}
     </>
   );
 }

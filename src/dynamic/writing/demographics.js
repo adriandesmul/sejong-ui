@@ -13,14 +13,14 @@ const tailLayout = {
 };
 
 export default function Demographics(props) {
-  if (props.initialValues && props.initialValues.personal_date_of_birth) {
+  if (props.initialValues && props.initialValues.personal_date_of_birth_year) {
     props.initialValues.personal_date_of_birth = moment(
       `${props.initialValues.personal_date_of_birth_year}-${props.initialValues.personal_date_of_birth_month}-${props.initialValues.personal_date_of_birth_day}`
     );
   }
 
-  function save(values) {
-    console.log({
+  function onFinish(values) {
+    props.save({
       ...values,
       personal_date_of_birth_month: values.personal_date_of_birth.month() + 1,
       personal_date_of_birth_day: values.personal_date_of_birth.date(),
@@ -34,7 +34,7 @@ export default function Demographics(props) {
       <Form
         name="demographics"
         {...layout}
-        onFinish={save}
+        onFinish={onFinish}
         initialValues={props.initialValues}
       >
         <Form.Item

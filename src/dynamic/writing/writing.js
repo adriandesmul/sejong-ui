@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Radio, Button, Input, Select } from "antd";
 import EntryArea from "../writingEntry/entryArea";
+import EducationSelect from "../educationSelect/educationSelect";
 
 const layout = {
   labelCol: { span: 8 },
@@ -21,10 +22,30 @@ export default function Writing(props) {
   const [body, setBody] = useState(
     props.initialValues ? props.initialValues.body : null
   );
+  const [school, setSchool] = useState(
+    props.initialValues
+      ? {
+          school_id: props.initialValues.school_id,
+          school_name: props.initialValues.school_name,
+          school_city: props.initialValues.school_city,
+          school_state: props.initialValues.school_state,
+          school_country: props.initialValues.school_country,
+        }
+      : null
+  );
+  const [teacher, setTeacher] = useState(
+    props.initialValues
+      ? {
+          teacher_id: props.initialValues.teacher_id,
+          teacher_email: props.initialValues.teacher_email,
+          teacher_name: props.initialValues.teacher_name,
+        }
+      : null
+  );
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log({ ...values, body });
+    props.save({ ...values, body, school, teacher });
   };
 
   const onChange = (changedField) => {
@@ -43,6 +64,11 @@ export default function Writing(props) {
 
   const onBodyChange = (content) => {
     setBody(content);
+  };
+
+  const handleEducationChange = (s, t) => {
+    setSchool(s);
+    setTeacher(t);
   };
 
   return (
@@ -134,6 +160,12 @@ export default function Writing(props) {
             />
           </div>
         )}
+
+        <EducationSelect
+          school={school}
+          teacher={teacher}
+          handleEducationChange={handleEducationChange}
+        />
 
         <Form.Item {...tailLayout} style={{ marginTop: "24px" }}>
           <Button type="primary" htmlType="submit">

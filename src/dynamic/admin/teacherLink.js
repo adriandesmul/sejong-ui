@@ -103,7 +103,6 @@ export default function TeacherLink(props) {
   }
 
   function onFinish(values) {
-    console.log(values);
     API.get(
       `/admin/teacherSearch?country=${values.country}&state=${values.state}`,
       (err, data) => {

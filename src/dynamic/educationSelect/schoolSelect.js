@@ -1,132 +1,86 @@
-import React from "react";
-import ButtonOptions from "../common/buttonOptions";
-import DropdownOptions from "../common/dropdownOptions";
+import React, { useState } from "react";
+import { Radio, Form, Select } from "antd";
 import SelectionTable from "../common/selectionTable";
 import API from "../api/api";
 import constants from "../common/constants";
 
-class SchoolSelect extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      country: null,
-      state: null,
-      schools: null,
-      schoolsTable: null,
-    };
+export default function SchoolSelect(props) {
+  const [country, setCountry] = useState();
+  const [state, setState] = useState();
+  const [schools, setSchools] = useState();
+  const [schoolsTable, setSchoolsTable] = useState();
 
-    this.selectCountry = this.selectCountry.bind(this);
-    this.selectState = this.selectState.bind(this);
-    this.selectSchool = this.selectSchool.bind(this);
-    this.getSchools = this.getSchools.bind(this);
-    this.createSchool = this.createSchool.bind(this);
-  }
-
-  selectCountry(country) {
-    if (country === "Other") {
-      this.getSchools(country, country);
-      this.setState({
-        country: country,
-        state: country,
-      });
-    } else {
-      this.setState({
-        country: country,
-        state: null,
-        schools: null,
-      });
-    }
-  }
-
-  selectState(state) {
-    if (state) {
-      this.getSchools(this.state.country, state);
-      this.setState({
-        state: state,
-      });
-    } else {
-      this.setState({
-        state: state,
-        schools: null,
-      });
-    }
-  }
-
-  selectSchool(school_id) {
-    const school = this.state.schools.find(
-      (item) => item.school_id === school_id
-    );
-    if (school) {
-      this.props.onUpdate(school);
-    }
-  }
-
-  getSchools(country, state) {
-    API.get("/schools?state=" + state, (error, data) => {
+  function getSchools(s) {
+    API.get("/schools?state=" + s, (error, data) => {
       const schools = data.map((item) => {
         return {
           id: item.school_id,
           data: [item.school_name, item.school_city],
         };
       });
-      this.setState({ schools: data, schoolsTable: schools });
+      setSchools(data);
+      setSchoolsTable(schools);
     });
   }
 
-  createSchool(data) {
+  function selectSchool(school_id) {
+    const school = schools.find((item) => item.school_id === school_id);
+    if (school) {
+      props.onUpdate(school);
+    }
+  }
+
+  function createSchool(data) {
     API.post(
       "/schools",
       {
         school_name: data.School,
         school_city: data.City,
-        school_state: this.state.state,
-        school_country: this.state.country,
+        school_state: state,
+        school_country: country,
       },
       (status, data) => {
         if (status === 200) {
-          this.props.onUpdate(JSON.parse(data));
+          props.onUpdate(JSON.parse(data));
         }
       }
     );
   }
 
-  render() {
-    return (
-      <div>
-        <div className="scs-module-element">
-          <p>
-            <b>Select your school</b>
-          </p>
-        </div>
-        <div className="scs-module-element">
-          <label>Country: </label>
-          <ButtonOptions
-            options={constants.countries}
-            onUpdate={this.selectCountry}
-            value={this.state.country}
-          />
-        </div>
-        {this.state.country && constants.states[this.state.country] && (
-          <div className="scs-module-element">
-            <label>State: </label>
-            <DropdownOptions
-              options={constants.states[this.state.country]}
-              onUpdate={this.selectState}
-              value={this.state.state}
-            />
-          </div>
-        )}
-        {this.state.schools && (
-          <SelectionTable
-            options={this.state.schoolsTable}
-            labels={["School", "City"]}
-            onUpdate={this.selectSchool}
-            onCreate={this.createSchool}
-          />
-        )}
+  return (
+    <>
+      <div className="scs-module-element">
+        <p className="bold">Select your school</p>
       </div>
-    );
-  }
+      <Form.Item label="Country" className="scs-module-element">
+        <Radio.Group
+          onChange={(e) => setCountry(e.target.value)}
+          options={constants.countries.map((i) => {
+            return { label: i, value: i };
+          })}
+        ></Radio.Group>
+      </Form.Item>
+      {country && (
+        <Form.Item label="State" className="scs-module-element">
+          <Select
+            onChange={(v) => {
+              setState(v);
+              getSchools(v);
+            }}
+            options={constants.states[country].map((i) => {
+              return { label: i, value: i };
+            })}
+          ></Select>
+        </Form.Item>
+      )}
+      {schoolsTable && (
+        <SelectionTable
+          options={schoolsTable}
+          labels={["School", "City"]}
+          onUpdate={selectSchool}
+          onCreate={createSchool}
+        />
+      )}
+    </>
+  );
 }
-
-export default SchoolSelect;
